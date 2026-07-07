@@ -90,15 +90,9 @@ export function ShowcaseSlide({
           </p>
         </div>
 
-        {/* mockup stage */}
-        <div
-          data-reveal
-          className="zco-stage"
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <div className="zco-float">
-            <div className="zco-tilt">{mockup}</div>
-          </div>
+        {/* mockup stage (ExpandableMockup provides its own stage/tilt) */}
+        <div data-reveal style={{ display: 'flex', justifyContent: 'center' }}>
+          {mockup}
         </div>
       </div>
     </div>

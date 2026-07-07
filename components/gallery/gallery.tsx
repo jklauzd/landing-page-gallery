@@ -7,7 +7,7 @@ import { GalleryProgress } from './progress'
 import { HeroSlide } from '@/components/slides/hero-slide'
 import { ShowcaseSlide } from '@/components/slides/showcase-slide'
 import { ContactSlide } from '@/components/slides/contact-slide'
-import { BrowserFrame } from '@/components/mockups/frames'
+import { ExpandableMockup } from '@/components/mockups/expandable-mockup'
 import { LandingMockup } from '@/components/mockups/landing-mockup'
 import { EcommerceMockup } from '@/components/mockups/ecommerce-mockup'
 import { DashboardMockup } from '@/components/mockups/dashboard-mockup'
@@ -126,7 +126,9 @@ export function Gallery() {
   }, [])
 
   useEffect(() => {
+    const overlayOpen = () => document.body.dataset.zcoOverlay === 'open'
     const onWheel = (e: WheelEvent) => {
+      if (overlayOpen()) return
       e.preventDefault()
       if (lockRef.current) return
       wheelAccum.current += e.deltaY
@@ -136,15 +138,18 @@ export function Gallery() {
       }
     }
     const onTouchStart = (e: TouchEvent) => {
+      if (overlayOpen()) return
       touchStartY.current = e.touches[0].clientY
     }
     const onTouchEnd = (e: TouchEvent) => {
-      if (touchStartY.current === null || lockRef.current) return
+      if (overlayOpen() || touchStartY.current === null || lockRef.current)
+        return
       const delta = touchStartY.current - e.changedTouches[0].clientY
       if (Math.abs(delta) >= TOUCH_THRESHOLD) step(delta > 0 ? 1 : -1)
       touchStartY.current = null
     }
     const onKey = (e: KeyboardEvent) => {
+      if (overlayOpen()) return
       const target = e.target as HTMLElement | null
       if (
         target &&
@@ -229,9 +234,13 @@ export function Gallery() {
           }
           description="Páginas rápidas, elegantes e feitas para transformar visitantes em clientes."
           mockup={
-            <BrowserFrame url="lumen.com.br">
+            <ExpandableMockup
+              url="aureola.com.br"
+              designWidth={1200}
+              label="Auréola — Landing page"
+            >
               <LandingMockup />
-            </BrowserFrame>
+            </ExpandableMockup>
           }
         />
       </section>
@@ -250,9 +259,13 @@ export function Gallery() {
           }
           description="Vitrines completas com catálogo, carrinho e checkout — prontas para escalar."
           mockup={
-            <BrowserFrame url="casanova.store">
+            <ExpandableMockup
+              url="marcenaria.store"
+              designWidth={1200}
+              label="Marcenaria — E-commerce"
+            >
               <EcommerceMockup />
-            </BrowserFrame>
+            </ExpandableMockup>
           }
         />
       </section>
@@ -271,9 +284,13 @@ export function Gallery() {
           }
           description="Painéis claros e em tempo real para você acompanhar o que importa."
           mockup={
-            <BrowserFrame url="app.orbita.io">
+            <ExpandableMockup
+              url="app.fluxo.io"
+              designWidth={1200}
+              label="Fluxo — Dashboard"
+            >
               <DashboardMockup />
-            </BrowserFrame>
+            </ExpandableMockup>
           }
         />
       </section>
@@ -294,9 +311,13 @@ export function Gallery() {
           }
           description="Autenticação robusta com uma experiência de entrada simples e confiável."
           mockup={
-            <BrowserFrame url="conta.zcompany.com" width={560}>
+            <ExpandableMockup
+              url="voa.app/entrar"
+              designWidth={1200}
+              label="Voa — Sistema de login"
+            >
               <LoginMockup />
-            </BrowserFrame>
+            </ExpandableMockup>
           }
         />
       </section>

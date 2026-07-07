@@ -1,163 +1,259 @@
+import Image from 'next/image'
+
 /**
- * A miniature landing page rendered inside a browser frame — the
- * "landing page within the landing page". Pure presentation, Primer tokens.
+ * A realistic full-size landing page for a fictional skincare brand, "Auréola".
+ * Warm, light, editorial — deliberately nothing like the zcompany dark site,
+ * so it reads as a real client project rather than a clone of our own page.
+ * Designed at 1200px wide; the Screen wrapper scales it to any container.
  */
 export function LandingMockup() {
   return (
-    <div style={{ padding: '18px 22px 24px' }}>
-      {/* mini nav */}
+    <div
+      style={{
+        width: 1200,
+        fontFamily: 'var(--zco-mono)',
+        background: '#f4ece1',
+        color: '#3a3128',
+      }}
+    >
+      {/* nav */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginBottom: 26,
+          padding: '26px 48px',
         }}
       >
         <span
-          className="zco-display"
-          style={{ fontSize: 15, color: 'var(--fgColor-default)' }}
+          style={{
+            fontFamily: 'var(--zco-display)',
+            fontSize: 26,
+            letterSpacing: '0.02em',
+            color: '#2c241c',
+          }}
         >
-          lumen
-          <span className="zco-accent">.</span>
+          Auréola
         </span>
-        <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-          {['Produto', 'Preços', 'Sobre'].map((l) => (
-            <span
-              key={l}
-              style={{ fontSize: 9, color: 'var(--fgColor-muted)' }}
-            >
+        <div style={{ display: 'flex', gap: 34, alignItems: 'center', fontSize: 14 }}>
+          {['Rotina', 'Produtos', 'Ciência', 'Sobre'].map((l) => (
+            <span key={l} style={{ color: '#6b5f50' }}>
               {l}
             </span>
           ))}
           <span
             style={{
-              fontSize: 9,
-              color: 'var(--bgColor-default)',
-              background: 'var(--zco-lime)',
+              background: '#2c241c',
+              color: '#f4ece1',
               borderRadius: 999,
-              padding: '4px 10px',
-              fontWeight: 600,
+              padding: '11px 22px',
+              fontSize: 13,
             }}
           >
-            Começar
+            Comprar
           </span>
         </div>
       </div>
 
       {/* hero */}
-      <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-        <div style={{ flex: 1.1 }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 40,
+          alignItems: 'center',
+          padding: '30px 48px 60px',
+        }}
+      >
+        <div>
           <div
             style={{
-              fontSize: 9,
-              letterSpacing: '0.24em',
+              fontSize: 14,
+              letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: 'var(--zco-lime)',
-              marginBottom: 12,
-              fontFamily: 'var(--zco-mono)',
+              color: '#9c8b74',
+              marginBottom: 22,
             }}
           >
-            Nova coleção
+            Skincare consciente
           </div>
           <div
-            className="zco-display"
             style={{
-              fontSize: 30,
-              color: 'var(--fgColor-default)',
-              lineHeight: 1.05,
-              marginBottom: 12,
+              fontFamily: 'var(--zco-display)',
+              fontSize: 74,
+              lineHeight: 0.98,
+              color: '#2c241c',
+              marginBottom: 26,
             }}
           >
-            Luz que
+            A pele
             <br />
-            desenha o dia
+            que respira.
           </div>
           <div
             style={{
-              fontSize: 10,
-              color: 'var(--fgColor-muted)',
-              lineHeight: 1.6,
-              maxWidth: 200,
-              marginBottom: 16,
+              fontSize: 17,
+              lineHeight: 1.7,
+              color: '#6b5f50',
+              maxWidth: 380,
+              marginBottom: 34,
             }}
           >
-            Iluminação inteligente que se adapta ao seu ritmo, do amanhecer ao
-            fim da noite.
+            Fórmulas minimalistas com ativos naturais. Menos passos, mais
+            resultado — para a sua rotina de todos os dias.
           </div>
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
             <span
               style={{
-                fontSize: 9,
-                color: 'var(--bgColor-default)',
-                background: 'var(--fgColor-default)',
-                borderRadius: 8,
-                padding: '7px 14px',
-                fontWeight: 600,
+                background: '#2c241c',
+                color: '#f4ece1',
+                borderRadius: 999,
+                padding: '15px 30px',
+                fontSize: 15,
               }}
             >
-              Comprar agora
+              Montar minha rotina
             </span>
             <span
               style={{
-                fontSize: 9,
-                color: 'var(--fgColor-default)',
-                border: '1px solid var(--borderColor-default)',
-                borderRadius: 8,
-                padding: '7px 14px',
+                fontFamily: 'var(--zco-display)',
+                fontSize: 17,
+                color: '#2c241c',
+                borderBottom: '1px solid #2c241c',
+                paddingBottom: 3,
               }}
             >
-              Ver demo
+              Ver ingredientes
             </span>
           </div>
         </div>
+
         <div
           style={{
-            flex: 0.9,
-            aspectRatio: '3 / 4',
-            borderRadius: 12,
-            background:
-              'radial-gradient(120% 90% at 30% 15%, rgba(199,237,79,0.22), transparent 55%), linear-gradient(160deg, var(--bgColor-inset), var(--bgColor-muted))',
-            border: '1px solid var(--borderColor-muted)',
             position: 'relative',
+            aspectRatio: '4 / 5',
+            borderRadius: 24,
             overflow: 'hidden',
+            boxShadow: '0 40px 80px -40px rgba(60,45,30,0.5)',
           }}
         >
+          <Image
+            src="/mockups/skincare-hero.png"
+            alt=""
+            fill
+            sizes="600px"
+            style={{ objectFit: 'cover' }}
+          />
           <div
             style={{
               position: 'absolute',
-              inset: '18% 30% 40% 22%',
-              borderRadius: 999,
-              background:
-                'radial-gradient(circle at 40% 35%, rgba(255,255,255,0.5), rgba(199,237,79,0.35) 45%, transparent 70%)',
-              filter: 'blur(1px)',
+              left: 20,
+              bottom: 20,
+              background: 'rgba(244,236,225,0.92)',
+              borderRadius: 16,
+              padding: '14px 18px',
+              display: 'flex',
+              gap: 12,
+              alignItems: 'center',
+              backdropFilter: 'blur(6px)',
             }}
-          />
+          >
+            <span
+              style={{
+                fontFamily: 'var(--zco-display)',
+                fontSize: 30,
+                color: '#2c241c',
+              }}
+            >
+              98%
+            </span>
+            <span style={{ fontSize: 12, color: '#6b5f50', lineHeight: 1.4 }}>
+              relataram pele
+              <br />
+              mais macia em 14 dias
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* logo strip */}
+      {/* product strip */}
       <div
         style={{
-          display: 'flex',
-          gap: 22,
-          justifyContent: 'center',
-          marginTop: 22,
-          paddingTop: 16,
-          borderTop: '1px solid var(--borderColor-muted)',
+          background: '#ece0d0',
+          padding: '46px 48px 56px',
         }}
       >
-        {[36, 28, 40, 24, 32].map((w, i) => (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'baseline',
+            justifyContent: 'space-between',
+            marginBottom: 30,
+          }}
+        >
           <span
-            key={i}
             style={{
-              width: w,
-              height: 8,
-              borderRadius: 4,
-              background: 'var(--borderColor-default)',
+              fontFamily: 'var(--zco-display)',
+              fontSize: 34,
+              color: '#2c241c',
             }}
-          />
-        ))}
+          >
+            Os favoritos
+          </span>
+          <span style={{ fontSize: 14, color: '#9c8b74' }}>Ver tudo →</span>
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 24,
+          }}
+        >
+          {[
+            { n: 'Sérum de Vitamina C', p: 'R$ 189' },
+            { n: 'Hidratante Calêndula', p: 'R$ 129' },
+            { n: 'Óleo Noturno de Rosa', p: 'R$ 215' },
+          ].map((p) => (
+            <div
+              key={p.n}
+              style={{
+                background: '#f7f1e8',
+                borderRadius: 18,
+                padding: 20,
+              }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  aspectRatio: '1 / 1',
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                  marginBottom: 16,
+                  background: '#efe6d8',
+                }}
+              >
+                <Image
+                  src="/mockups/skincare-hero.png"
+                  alt=""
+                  fill
+                  sizes="320px"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div
+                style={{
+                  fontFamily: 'var(--zco-display)',
+                  fontSize: 19,
+                  color: '#2c241c',
+                  marginBottom: 6,
+                }}
+              >
+                {p.n}
+              </div>
+              <div style={{ fontSize: 15, color: '#6b5f50' }}>{p.p}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
