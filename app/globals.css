@@ -1,0 +1,187 @@
+/* Primer Primitives — design tokens (CSS custom properties).
+   These imports establish the token + theme baseline that every Primer
+   component and all of our own CSS reads from. Order matters: base + functional
+   tokens first, then the per-theme functional color sets. */
+@import '@primer/primitives/dist/css/base/size/size.css';
+@import '@primer/primitives/dist/css/base/typography/typography.css';
+@import '@primer/primitives/dist/css/base/motion/motion.css';
+@import '@primer/primitives/dist/css/functional/size/border.css';
+@import '@primer/primitives/dist/css/functional/size/breakpoints.css';
+@import '@primer/primitives/dist/css/functional/size/size-coarse.css';
+@import '@primer/primitives/dist/css/functional/size/size-fine.css';
+@import '@primer/primitives/dist/css/functional/size/size.css';
+@import '@primer/primitives/dist/css/functional/size/viewport.css';
+@import '@primer/primitives/dist/css/functional/typography/typography.css';
+
+@import '@primer/primitives/dist/css/functional/themes/light.css';
+@import '@primer/primitives/dist/css/functional/themes/dark.css';
+@import '@primer/primitives/dist/css/functional/themes/dark-dimmed.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  background-color: var(--bgColor-default);
+  color: var(--fgColor-default);
+  font-family: var(
+    --fontStack-system,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif
+  );
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+/* ===== ZCompany gallery interactions (token-driven) ===== */
+
+/* Nav link with left-growing underline */
+.zco-link {
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--fgColor-muted);
+  font-family: var(--fontStack-sansSerif);
+  font-size: var(--text-body-size-small);
+  transition: color var(--duration-fast, 0.2s) ease;
+}
+.zco-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: var(--fgColor-default);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.zco-link:hover,
+.zco-link[data-active='true'] {
+  color: var(--fgColor-default);
+}
+.zco-link:hover::after,
+.zco-link[data-active='true']::after {
+  transform: scaleX(1);
+}
+
+/* Large CTA link with growing underline */
+.zco-cta-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--base-size-8);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0 0 var(--base-size-8) 0;
+  color: var(--fgColor-default);
+}
+.zco-cta-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--fgColor-default);
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.zco-cta-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hoverable feature / product cards */
+.zco-card {
+  transition:
+    transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.zco-card:hover {
+  transform: translateY(calc(-1 * var(--base-size-4)));
+  border-color: var(--borderColor-emphasis) !important;
+  box-shadow: var(--shadow-floating-small);
+}
+
+/* Progress rail dots */
+.zco-dot {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: var(--base-size-4);
+  display: flex;
+  align-items: center;
+  gap: var(--base-size-8);
+  color: var(--fgColor-muted);
+  transition: color 0.25s ease;
+}
+.zco-dot .zco-dot-bar {
+  display: block;
+  width: var(--base-size-16);
+  height: 2px;
+  background: var(--borderColor-default);
+  transition:
+    width 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+    background 0.35s ease;
+}
+.zco-dot[data-active='true'] .zco-dot-bar {
+  width: var(--base-size-32);
+  background: var(--fgColor-default);
+}
+.zco-dot:hover {
+  color: var(--fgColor-default);
+}
+.zco-dot[data-active='true'] {
+  color: var(--fgColor-default);
+}
+
+/* Scroll indicator bounce-free pulse */
+@keyframes zco-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(var(--base-size-8));
+    opacity: 1;
+  }
+}
+.zco-scroll-hint {
+  animation: zco-drift 2.4s ease-in-out infinite;
+}
+
+/* Slow ambient gradient drift on hero */
+@keyframes zco-mesh {
+  0%,
+  100% {
+    transform: translate(-8%, -6%) scale(1);
+  }
+  50% {
+    transform: translate(6%, 8%) scale(1.15);
+  }
+}
+.zco-mesh {
+  animation: zco-mesh 14s ease-in-out infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .zco-mesh,
+  .zco-scroll-hint {
+    animation: none;
+  }
+}
