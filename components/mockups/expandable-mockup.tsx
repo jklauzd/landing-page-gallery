@@ -24,11 +24,14 @@ export function ExpandableMockup({
   url,
   designWidth,
   label,
+  fold = 760,
   children,
 }: {
   url: string
   designWidth: number
   label: string
+  /** Visible design-height shown in the small preview before clipping. */
+  fold?: number
   children: ReactNode
 }) {
   const previewRef = useRef<HTMLDivElement>(null)
@@ -136,12 +139,17 @@ export function ExpandableMockup({
   return (
     <>
       {/* Tilted preview */}
-      <div className="zco-stage" style={{ width: '100%' }}>
+      <div
+        className="zco-stage"
+        style={{ width: '100%', maxWidth: 560, margin: '0 auto' }}
+      >
         <div className="zco-float">
           <div className="zco-tilt">
             <div ref={previewRef}>
               <BrowserFrame url={url}>
-                <Screen designWidth={designWidth}>{children}</Screen>
+                <Screen designWidth={designWidth} mode="preview" fold={fold}>
+                  {children}
+                </Screen>
               </BrowserFrame>
             </div>
           </div>
@@ -188,7 +196,9 @@ export function ExpandableMockup({
             <div ref={frameRef} className="zco-overlay-frame">
               <BrowserFrame url={url} radius={16}>
                 <div ref={scrollRef} className="zco-overlay-scroll">
-                  <Screen designWidth={designWidth}>{children}</Screen>
+                  <Screen designWidth={designWidth} mode="full">
+                    {children}
+                  </Screen>
                 </div>
               </BrowserFrame>
             </div>
