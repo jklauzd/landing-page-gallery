@@ -5,19 +5,21 @@ import gsap from 'gsap'
 import { GalleryNav } from './nav'
 import { GalleryProgress } from './progress'
 import { HeroSlide } from '@/components/slides/hero-slide'
-import { MeridianSlide } from '@/components/slides/meridian-slide'
-import { AuroraSlide } from '@/components/slides/aurora-slide'
-import { VaultSlide } from '@/components/slides/vault-slide'
-import { KineticSlide } from '@/components/slides/kinetic-slide'
+import { ShowcaseSlide } from '@/components/slides/showcase-slide'
 import { ContactSlide } from '@/components/slides/contact-slide'
+import { BrowserFrame } from '@/components/mockups/frames'
+import { LandingMockup } from '@/components/mockups/landing-mockup'
+import { EcommerceMockup } from '@/components/mockups/ecommerce-mockup'
+import { DashboardMockup } from '@/components/mockups/dashboard-mockup'
+import { LoginMockup } from '@/components/mockups/login-mockup'
 
 const SLIDE_LABELS = [
-  'ZCompany',
-  'Meridian',
-  'Aurora',
-  'Vault',
-  'Kinetic',
-  'Contact',
+  'Início',
+  'Landing pages',
+  'E-commerce',
+  'Dashboards',
+  'Login',
+  'Contato',
 ]
 
 const TRANSITION = 1.0 // seconds
@@ -67,7 +69,6 @@ export function Gallery() {
         defaults: { ease: 'power3.inOut' },
         onComplete: () => {
           gsap.set(outEl, { autoAlpha: 0, scale: 1, yPercent: 100 })
-          // brief cooldown so trackpad momentum doesn't chain slides
           window.setTimeout(() => {
             lockRef.current = false
           }, 250)
@@ -94,11 +95,13 @@ export function Gallery() {
     [goTo],
   )
 
-  // Initial state: hide all but first, reveal first slide's content
   useEffect(() => {
     slideRefs.current.forEach((el, i) => {
       if (!el) return
-      gsap.set(el, i === 0 ? { yPercent: 0, autoAlpha: 1 } : { yPercent: 100, autoAlpha: 0 })
+      gsap.set(
+        el,
+        i === 0 ? { yPercent: 0, autoAlpha: 1 } : { yPercent: 100, autoAlpha: 0 },
+      )
     })
     const first = slideRefs.current[0]
     if (first) {
@@ -106,7 +109,14 @@ export function Gallery() {
       gsap.fromTo(
         reveals,
         { y: 48, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: 'power3.out', delay: 0.2 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.09,
+          ease: 'power3.out',
+          delay: 0.2,
+        },
       )
     }
     document.body.style.overflow = 'hidden'
@@ -115,7 +125,6 @@ export function Gallery() {
     }
   }, [])
 
-  // Wheel, touch, keyboard
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
       e.preventDefault()
@@ -181,9 +190,11 @@ export function Gallery() {
     willChange: 'transform',
   }
 
+  const total = String(SLIDE_LABELS.length - 2).padStart(2, '0')
+
   return (
     <main
-      aria-label="ZCompany — gallery of living landing pages"
+      aria-label="zcompany — vitrine de produtos digitais"
       style={{
         position: 'fixed',
         inset: 0,
@@ -201,18 +212,95 @@ export function Gallery() {
       <section ref={setSlideRef(0)} style={slideStyle} aria-hidden={activeIndex !== 0}>
         <HeroSlide onExplore={() => goTo(1)} />
       </section>
+
       <section ref={setSlideRef(1)} style={slideStyle} aria-hidden={activeIndex !== 1}>
-        <MeridianSlide />
+        <ShowcaseSlide
+          index="01"
+          total={total}
+          eyebrow="Landing pages"
+          title={
+            <>
+              Primeiras
+              <br />
+              impressões que
+              <br />
+              convertem<span className="zco-accent">.</span>
+            </>
+          }
+          description="Páginas rápidas, elegantes e feitas para transformar visitantes em clientes."
+          mockup={
+            <BrowserFrame url="lumen.com.br">
+              <LandingMockup />
+            </BrowserFrame>
+          }
+        />
       </section>
+
       <section ref={setSlideRef(2)} style={slideStyle} aria-hidden={activeIndex !== 2}>
-        <AuroraSlide active={activeIndex === 2} />
+        <ShowcaseSlide
+          index="02"
+          total={total}
+          eyebrow="E-commerce"
+          title={
+            <>
+              Lojas que
+              <br />
+              vendem<span className="zco-accent">.</span>
+            </>
+          }
+          description="Vitrines completas com catálogo, carrinho e checkout — prontas para escalar."
+          mockup={
+            <BrowserFrame url="casanova.store">
+              <EcommerceMockup />
+            </BrowserFrame>
+          }
+        />
       </section>
+
       <section ref={setSlideRef(3)} style={slideStyle} aria-hidden={activeIndex !== 3}>
-        <VaultSlide />
+        <ShowcaseSlide
+          index="03"
+          total={total}
+          eyebrow="Dashboards"
+          title={
+            <>
+              Dados que
+              <br />
+              viram decisão<span className="zco-accent">.</span>
+            </>
+          }
+          description="Painéis claros e em tempo real para você acompanhar o que importa."
+          mockup={
+            <BrowserFrame url="app.orbita.io">
+              <DashboardMockup />
+            </BrowserFrame>
+          }
+        />
       </section>
+
       <section ref={setSlideRef(4)} style={slideStyle} aria-hidden={activeIndex !== 4}>
-        <KineticSlide />
+        <ShowcaseSlide
+          index="04"
+          total={total}
+          eyebrow="Sistemas de login"
+          title={
+            <>
+              Acesso
+              <br />
+              seguro e
+              <br />
+              sem atrito<span className="zco-accent">.</span>
+            </>
+          }
+          description="Autenticação robusta com uma experiência de entrada simples e confiável."
+          mockup={
+            <BrowserFrame url="conta.zcompany.com" width={560}>
+              <LoginMockup />
+            </BrowserFrame>
+          }
+        />
       </section>
+
       <section ref={setSlideRef(5)} style={slideStyle} aria-hidden={activeIndex !== 5}>
         <ContactSlide />
       </section>

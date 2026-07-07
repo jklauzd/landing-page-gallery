@@ -41,7 +41,35 @@ body {
   min-height: 100vh;
 }
 
-/* ===== ZCompany gallery interactions (token-driven) ===== */
+/* ===== zcompany — brand layer (token-driven) ===== */
+
+:root {
+  /* Brand accent taken from the logo sparkle. Defined once as a brand token
+     so the rest of the app references it via var() rather than raw hex. */
+  --zco-lime: #c7ed4f;
+  --zco-lime-dim: rgba(199, 237, 79, 0.14);
+  --zco-display: var(--font-display), 'Georgia', 'Times New Roman', serif;
+  --zco-mono: var(--font-mono-brand), ui-monospace, monospace;
+}
+
+.zco-display {
+  font-family: var(--zco-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+}
+
+.zco-eyebrow {
+  font-family: var(--zco-mono);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--fgColor-muted);
+}
+
+.zco-accent {
+  color: var(--zco-lime);
+}
 
 /* Nav link with left-growing underline */
 .zco-link {
@@ -51,18 +79,20 @@ body {
   border: none;
   padding: 0;
   color: var(--fgColor-muted);
-  font-family: var(--fontStack-sansSerif);
-  font-size: var(--text-body-size-small);
+  font-family: var(--zco-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   transition: color var(--duration-fast, 0.2s) ease;
 }
 .zco-link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -6px;
   height: 1px;
   width: 100%;
-  background: var(--fgColor-default);
+  background: var(--zco-lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
@@ -104,7 +134,91 @@ body {
   transform: scaleX(1);
 }
 
-/* Hoverable feature / product cards */
+/* ===== 3D mockup stage — "landing page inside the landing page" ===== */
+.zco-stage {
+  perspective: 2200px;
+  perspective-origin: 50% 45%;
+}
+.zco-tilt {
+  transform: rotateY(-22deg) rotateX(8deg) rotate(0.5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.zco-stage:hover .zco-tilt {
+  transform: rotateY(-13deg) rotateX(4deg) rotate(0deg);
+}
+.zco-float {
+  animation: zco-float 7s ease-in-out infinite;
+}
+@keyframes zco-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Browser chrome frame */
+.zco-browser {
+  border: 1px solid var(--borderColor-default);
+  border-radius: 14px;
+  background: var(--bgColor-inset);
+  overflow: hidden;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.04) inset,
+    0 40px 80px -30px rgba(0, 0, 0, 0.8),
+    0 12px 32px -12px rgba(0, 0, 0, 0.6);
+}
+.zco-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bgColor-muted);
+  border-bottom: 1px solid var(--borderColor-muted);
+}
+.zco-browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--borderColor-emphasis);
+}
+.zco-url {
+  flex: 1;
+  margin-left: 8px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--bgColor-default);
+  border: 1px solid var(--borderColor-muted);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-family: var(--zco-mono);
+  font-size: 10px;
+  color: var(--fgColor-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Phone frame */
+.zco-phone {
+  border: 8px solid var(--bgColor-emphasis, #161b22);
+  border-radius: 34px;
+  background: var(--bgColor-inset);
+  overflow: hidden;
+  box-shadow:
+    0 40px 80px -30px rgba(0, 0, 0, 0.85),
+    0 0 0 1px var(--borderColor-default);
+}
+
+/* generic soft float shadow for cards under the tilt */
+.zco-elevate {
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+}
+
+/* Contact / hoverable cards */
 .zco-card {
   transition:
     transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
@@ -112,9 +226,9 @@ body {
     box-shadow 0.35s ease;
 }
 .zco-card:hover {
-  transform: translateY(calc(-1 * var(--base-size-4)));
-  border-color: var(--borderColor-emphasis) !important;
-  box-shadow: var(--shadow-floating-small);
+  transform: translateY(-4px);
+  border-color: var(--zco-lime) !important;
+  box-shadow: 0 20px 44px -24px rgba(0, 0, 0, 0.7);
 }
 
 /* Progress rail dots */
@@ -165,23 +279,12 @@ body {
   animation: zco-drift 2.4s ease-in-out infinite;
 }
 
-/* Slow ambient gradient drift on hero */
-@keyframes zco-mesh {
-  0%,
-  100% {
-    transform: translate(-8%, -6%) scale(1);
-  }
-  50% {
-    transform: translate(6%, 8%) scale(1.15);
-  }
-}
-.zco-mesh {
-  animation: zco-mesh 14s ease-in-out infinite;
-  will-change: transform;
-}
 @media (prefers-reduced-motion: reduce) {
-  .zco-mesh,
-  .zco-scroll-hint {
+  .zco-scroll-hint,
+  .zco-float {
     animation: none;
+  }
+  .zco-tilt {
+    transition: none;
   }
 }

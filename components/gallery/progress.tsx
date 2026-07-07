@@ -11,7 +11,7 @@ export function GalleryProgress({
 }) {
   return (
     <nav
-      aria-label="Gallery progress"
+      aria-label="Progresso da navegação"
       style={{
         position: 'fixed',
         right: 'var(--base-size-24)',
@@ -31,7 +31,7 @@ export function GalleryProgress({
           className="zco-dot"
           data-active={activeIndex === i}
           onClick={() => onNavigate(i)}
-          aria-label={`Go to ${label}`}
+          aria-label={`Ir para ${label}`}
           aria-current={activeIndex === i ? 'true' : undefined}
         >
           <span

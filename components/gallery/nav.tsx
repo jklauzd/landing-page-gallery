@@ -1,12 +1,10 @@
 'use client'
 
-import { Stack, Text, Button } from '@primer/react'
-
 const LINKS = [
-  { label: 'Work', slide: 1 },
-  { label: 'Approach', slide: 2 },
-  { label: 'Services', slide: 3 },
-  { label: 'Contact', slide: 5 },
+  { label: 'Landing', slide: 1 },
+  { label: 'E-commerce', slide: 2 },
+  { label: 'Dashboards', slide: 3 },
+  { label: 'Login', slide: 4 },
 ]
 
 export function GalleryNav({
@@ -26,7 +24,9 @@ export function GalleryNav({
         left: 0,
         right: 0,
         zIndex: 40,
-        backgroundColor: scrolled ? 'var(--overlay-bgColor, var(--bgColor-default))' : 'transparent',
+        backgroundColor: scrolled
+          ? 'color-mix(in srgb, var(--bgColor-default) 72%, transparent)'
+          : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled
@@ -36,43 +36,38 @@ export function GalleryNav({
           'background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease',
       }}
     >
-      <Stack
-        direction="horizontal"
-        justify="space-between"
-        align="center"
+      <div
         style={{
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
+          maxWidth: 1240,
           margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-          paddingBlock: 'var(--base-size-16)',
+          padding: '18px 40px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
         <button
           type="button"
           onClick={() => onNavigate(0)}
-          aria-label="ZCompany home"
+          aria-label="zcompany — início"
+          className="zco-display"
           style={{
             background: 'none',
             border: 'none',
             cursor: 'pointer',
             padding: 0,
+            fontSize: 22,
+            color: 'var(--fgColor-default)',
+            lineHeight: 1,
           }}
         >
-          <Text
-            weight="semibold"
-            style={{
-              fontFamily: 'var(--fontStack-monospace)',
-              fontSize: 'var(--text-body-size-large)',
-              letterSpacing: '0.06em',
-              color: 'var(--fgColor-default)',
-            }}
-          >
-            ZCO
-          </Text>
+          zcompany<span className="zco-accent">.</span>
         </button>
 
-        <nav aria-label="Gallery sections">
-          <Stack direction="horizontal" gap="spacious" align="center">
+        <nav aria-label="Seções">
+          <div
+            style={{ display: 'flex', gap: 28, alignItems: 'center' }}
+          >
             {LINKS.map((link) => (
               <button
                 key={link.label}
@@ -84,13 +79,27 @@ export function GalleryNav({
                 {link.label}
               </button>
             ))}
-          </Stack>
+          </div>
         </nav>
 
-        <Button variant="primary" onClick={() => onNavigate(5)}>
-          Start a Project
-        </Button>
-      </Stack>
+        <button
+          type="button"
+          onClick={() => onNavigate(5)}
+          style={{
+            cursor: 'pointer',
+            border: 'none',
+            borderRadius: 999,
+            padding: '9px 18px',
+            background: 'var(--zco-lime)',
+            color: 'var(--bgColor-default)',
+            fontSize: 12,
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+          }}
+        >
+          Fale conosco
+        </button>
+      </div>
     </header>
   )
 }

@@ -1,144 +1,72 @@
 'use client'
 
-import { Stack, Text, Button } from '@primer/react'
-import { ArrowDownIcon, SparkleFillIcon } from '@primer/octicons-react'
+import Image from 'next/image'
+import { ArrowDownIcon } from '@primer/octicons-react'
 
 export function HeroSlide({ onExplore }: { onExplore: () => void }) {
   return (
-    <Stack
-      direction="vertical"
-      justify="space-between"
+    <div
       style={{
-        position: 'relative',
-        height: '100%',
-        overflow: 'hidden',
+        position: 'absolute',
+        inset: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        padding: '0 24px',
         backgroundColor: 'var(--bgColor-default)',
       }}
     >
-      {/* Ambient token-colored mesh */}
+      <div data-reveal className="zco-eyebrow" style={{ marginBottom: 8 }}>
+        Estúdio de produtos digitais
+      </div>
+
       <div
-        aria-hidden="true"
-        className="zco-mesh"
-        style={{
-          position: 'absolute',
-          inset: '-20%',
-          background:
-            'radial-gradient(ellipse 40% 35% at 30% 40%, var(--bgColor-accent-muted), transparent 70%), radial-gradient(ellipse 35% 30% at 70% 65%, var(--bgColor-done-muted), transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+        data-reveal
+        style={{ width: 'min(440px, 68vw)', marginBottom: 4, marginTop: 4 }}
+      >
+        <Image
+          src="/images/zcompany-logo.png"
+          alt="zcompany"
+          width={1000}
+          height={560}
+          priority
+          style={{ width: '100%', height: 'auto' }}
+        />
+      </div>
 
-      <div />
-
-      <Stack
-        direction="vertical"
-        gap="spacious"
-        align="start"
+      <p
+        data-reveal
+        className="zco-display"
         style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
+          fontSize: 'clamp(18px, 2.4vw, 26px)',
+          color: 'var(--fgColor-muted)',
+          maxWidth: 620,
+          margin: 0,
+          lineHeight: 1.35,
+          fontWeight: 400,
         }}
       >
-        <div data-reveal>
-          <Stack direction="horizontal" gap="condensed" align="center">
-            <SparkleFillIcon size={16} fill="var(--fgColor-accent)" />
-            <Text
-              size="small"
-              style={{
-                fontFamily: 'var(--fontStack-monospace)',
-                color: 'var(--fgColor-muted)',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-              }}
-            >
-              ZCompany — Digital Atelier
-            </Text>
-          </Stack>
-        </div>
+        Landing pages, e-commerces, dashboards e sistemas de login — desenhados
+        e construídos sob medida.
+      </p>
 
-        <h1
-          data-reveal
-          className="text-balance"
-          style={{
-            fontFamily: 'var(--fontStack-sansSerifDisplay)',
-            fontSize: 'clamp(3rem, 8vw, 7.5rem)',
-            lineHeight: 1.02,
-            letterSpacing: '-0.02em',
-            fontWeight: 600,
-            color: 'var(--fgColor-default)',
-            maxWidth: '14ch',
-            textWrap: 'balance',
-          }}
+      <button
+        data-reveal
+        type="button"
+        onClick={onExplore}
+        className="zco-cta-underline"
+        style={{ marginTop: 32, fontSize: 15 }}
+      >
+        Ver nossos produtos
+        <span
+          className="zco-scroll-hint"
+          style={{ display: 'inline-flex', color: 'var(--zco-lime)' }}
         >
-          Digital experiences that define brands
-        </h1>
-
-        <div data-reveal>
-          <Text
-            as="p"
-            size="large"
-            style={{ color: 'var(--fgColor-muted)', maxWidth: '44ch' }}
-          >
-            We craft landing pages as living artifacts. Scroll down — every
-            screen you pass through is a real case, built end to end by our
-            studio.
-          </Text>
-        </div>
-
-        <div data-reveal>
-          <Stack direction="horizontal" gap="normal" align="center">
-            <Button
-              variant="primary"
-              size="large"
-              trailingVisual={ArrowDownIcon}
-              onClick={onExplore}
-            >
-              Explore Our Work
-            </Button>
-            <Text
-              size="small"
-              style={{
-                fontFamily: 'var(--fontStack-monospace)',
-                color: 'var(--fgColor-muted)',
-              }}
-            >
-              4 live cases
-            </Text>
-          </Stack>
-        </div>
-      </Stack>
-
-      <Stack
-        direction="horizontal"
-        justify="space-between"
-        align="center"
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-          paddingBottom: 'var(--base-size-32)',
-        }}
-      >
-        <div data-reveal>
-          <Text
-            size="small"
-            style={{
-              fontFamily: 'var(--fontStack-monospace)',
-              color: 'var(--fgColor-muted)',
-            }}
-          >
-            01 / 06
-          </Text>
-        </div>
-        <div data-reveal className="zco-scroll-hint" aria-hidden="true">
-          <ArrowDownIcon size={16} fill="var(--fgColor-muted)" />
-        </div>
-      </Stack>
-    </Stack>
+          <ArrowDownIcon size={16} />
+        </span>
+      </button>
+    </div>
   )
 }
