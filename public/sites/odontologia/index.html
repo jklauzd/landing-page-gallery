@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sorriso Elevado - Clínica Odontológica Premium. Lentes de contato, implantes, Invisalign e estética dental avançada com tecnologia de ponta.">
+    <title>Sorriso Elevado | Odontologia Estética & Implantes Premium</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="ph-bold ph-activity"></i></span>
+                <span class="logo-text">Sorriso<span>Elevado</span></span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Início</a>
+                <a href="#sobre" class="nav-link">A Clínica</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#antes-depois" class="nav-link">Antes & Depois</a>
+                <a href="#tecnologia" class="nav-link">Tecnologia</a>
+                <a href="#faq" class="nav-link">Dúvidas</a>
+                <a href="#agendamento" class="nav-btn-mobile btn btn-primary">Agendar Consulta</a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#agendamento" class="btn btn-primary btn-header-desktop">Agendar Consulta</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
+                    <i class="ph-bold ph-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge"><i class="ph-fill ph-sparkle"></i> A sua melhor versão começa no seu sorriso</div>
+                <h1>Odontologia de alta performance para o seu bem-estar</h1>
+                <p class="hero-subtitle">Combinamos tecnologia de ponta, estética refinada e atendimento humanizado para criar sorrisos que transformam vidas.</p>
+                
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="ph-bold ph-shield-check"></i></span>
+                        <span>Ambiente Seguro e Confortável</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="ph-bold ph-certificate"></i></span>
+                        <span>Especialistas de Referência</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="ph-bold ph-cpu"></i></span>
+                        <span>Tecnologia 3D Computadorizada</span>
+                    </div>
+                </div>
+
+                <div class="hero-ctas">
+                    <a href="#agendamento" class="btn btn-primary btn-lg">Agendar Consulta</a>
+                    <a href="#servicos" class="btn btn-secondary btn-lg">Ver Tratamentos</a>
+                </div>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <div class="hero-image-bg-blur"></div>
+                <div class="hero-image-card">
+                    <img src="assets/hero_dentist.jpg" alt="Equipe de especialistas Sorriso Elevado" class="hero-img">
+                    <div class="experience-card">
+                        <span class="exp-number">15+</span>
+                        <span class="exp-text">Anos de Experiência</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container stats-container">
+            <div class="stat-box">
+                <div class="stat-number">12k+</div>
+                <div class="stat-label">Sorrisos Transformados</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">99.8%</div>
+                <div class="stat-label">Satisfação de Pacientes</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Anos de Excelência</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Tecnologia Digital</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nossos Tratamentos</span>
+                <h2>Especialidades em Destaque</h2>
+                <p>Oferecemos o que há de mais moderno na odontologia mundial, com foco em resultados naturais e duradouros.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Card 1 (Invisalign) -->
+                <div class="service-card featured-service">
+                    <div class="service-card-image">
+                        <img src="assets/treatment_invisalign.jpg" alt="Alinhador Invisível Invisalign">
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-icon"><i class="ph-bold ph-sparkles"></i></div>
+                        <h3>Invisalign® Estético</h3>
+                        <p>O alinhador invisível líder mundial. Confortável, removível e praticamente imperceptível para corrigir seu sorriso com rapidez.</p>
+                        <a href="#agendamento" class="service-link">Saber mais <i class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Lentes de Contato) -->
+                <div class="service-card">
+                    <div class="service-card-content">
+                        <div class="service-icon"><i class="ph-bold ph-shield-star"></i></div>
+                        <h3>Lentes de Contato Dental</h3>
+                        <p>Lâminas ultrafinas de porcelana personalizadas para corrigir cor, formato, tamanho e espaçamento dos dentes de forma harmônica.</p>
+                        <a href="#agendamento" class="service-link">Saber mais <i class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Implantes) -->
+                <div class="service-card">
+                    <div class="service-card-content">
+                        <div class="service-icon"><i class="ph-bold ph-tooth"></i></div>
+                        <h3>Implantes Guiados por Computador</h3>
+                        <p>Recuperação segura e precisa de dentes perdidos com cirurgia guiada por 3D, reduzindo o tempo de recuperação e o desconforto.</p>
+                        <a href="#agendamento" class="service-link">Saber mais <i class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 (Clareamento) -->
+                <div class="service-card">
+                    <div class="service-card-content">
+                        <div class="service-icon"><i class="ph-bold ph-sun-dim"></i></div>
+                        <h3>Clareamento a Laser Premium</h3>
+                        <p>Dentes visivelmente mais brancos em poucas sessões. Um tratamento seguro, monitorado e com resultados brilhantes e duradouros.</p>
+                        <a href="#agendamento" class="service-link">Saber mais <i class="ph-bold ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Antes e Depois Slider Section -->
+    <section id="antes-depois" class="comparison-section">
+        <div class="container comparison-container">
+            <div class="comparison-info">
+                <span class="section-tag">Resultados Reais</span>
+                <h2>Sinta a Transformação em Cada Detalhe</h2>
+                <p>Veja com seus próprios olhos o poder de uma restauração estética completa. Arraste o marcador central para comparar o resultado antes e depois.</p>
+                <div class="comparison-benefits">
+                    <div class="benefit-row">
+                        <span class="check-icon"><i class="ph-bold ph-check"></i></span>
+                        <div>
+                            <h4>Harmonia Facial</h4>
+                            <p>Sorrisos planejados de acordo com as linhas naturais do seu rosto.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-row">
+                        <span class="check-icon"><i class="ph-bold ph-check"></i></span>
+                        <div>
+                            <h4>Durabilidade</h4>
+                            <p>Utilização das cerâmicas e resinas mais resistentes do mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-slider-wrapper">
+                <div class="image-comparison-container" id="imageComparison">
+                    <!-- Before Image (Overlaid, will be clipped) -->
+                    <div class="img-container before-image">
+                        <img src="assets/before_after_smile.jpg" alt="Sorriso Antes do Tratamento">
+                        <span class="badge-comparison badge-before">Antes</span>
+                    </div>
+                    <!-- After Image (Background) -->
+                    <div class="img-container after-image">
+                        <img src="assets/before_after_smile.jpg" alt="Sorriso Depois do Tratamento">
+                        <span class="badge-comparison badge-after">Depois</span>
+                    </div>
+                    <!-- Drag Handle -->
+                    <div class="slider-handle" id="sliderHandle">
+                        <div class="handle-line"></div>
+                        <div class="handle-button">
+                            <i class="ph-bold ph-caret-left-right"></i>
+                        </div>
+                        <div class="handle-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Clínica e Corpo Clínico -->
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-clinic-info">
+                    <span class="section-tag">Sobre Nós</span>
+                    <h2>Excelência em cada detalhe de sua jornada</h2>
+                    <p>Fundada com o propósito de redefinir a experiência de ir ao dentista, a Sorriso Elevado alia conforto máximo a protocolos de saúde bucal de ponta. Nosso espaço foi projetado para transmitir tranquilidade e bem-estar.</p>
+                    <p>Cada plano de tratamento é exclusivo, desenhado por profissionais que entendem que cada sorriso é único e merece ser tratado como uma obra de arte.</p>
+                    
+                    <div class="clinic-perks">
+                        <div class="perk-card">
+                            <i class="ph-bold ph-coffee"></i>
+                            <div>
+                                <h5>Espaço Lounge & Café</h5>
+                                <p>Ambiente relaxante para sua espera.</p>
+                            </div>
+                        </div>
+                        <div class="perk-card">
+                            <i class="ph-bold ph-first-aid-kit"></i>
+                            <div>
+                                <h5>Biossegurança Avançada</h5>
+                                <p>Padrões hospitalares de esterilização.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-team">
+                    <div class="team-header">
+                        <h3>Nossos Especialistas</h3>
+                        <p>Corpo clínico composto por mestres e doutores com constante atualização internacional.</p>
+                    </div>
+                    
+                    <div class="team-cards">
+                        <div class="team-card">
+                            <div class="team-card-info">
+                                <h4>Dr. Henrique Costa</h4>
+                                <span class="specialty">Mestre em Implantodontia & Reabilitação Oral</span>
+                                <p>Mais de 12 anos dedicados a devolver a função e autoestima de pacientes com implantes guiados de alta precisão.</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-card-info">
+                                <h4>Dra. Carolina Mello</h4>
+                                <span class="specialty">Especialista em Dentística Estética & Harmonização</span>
+                                <p>Apaixonada pela arte de criar facetas e lentes de porcelana personalizadas que trazem naturalidade e luz ao sorriso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologia Section -->
+    <section id="tecnologia" class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tecnologia Digital</span>
+                <h2>Precisão que Encurta Prazos</h2>
+                <p>Nossa infraestrutura digital permite tratamentos mais confortáveis, previsíveis e até 3x mais rápidos do que os métodos convencionais.</p>
+            </div>
+            
+            <div class="tech-tabs-container">
+                <div class="tech-tabs-nav">
+                    <button class="tech-tab-btn active" data-tab="scanner">
+                        <i class="ph-bold ph-scan"></i> Scanner Intraoral 3D
+                    </button>
+                    <button class="tech-tab-btn" data-tab="laser">
+                        <i class="ph-bold ph-lightning"></i> Laserterapia Odontológica
+                    </button>
+                    <button class="tech-tab-btn" data-tab="sedacao">
+                        <i class="ph-bold ph-wind"></i> Sedação Consciente (Óxido Nitroso)
+                    </button>
+                </div>
+                
+                <div class="tech-tabs-content">
+                    <!-- Tab 1 (Scanner) -->
+                    <div class="tech-tab-pane active" id="scanner">
+                        <div class="tech-pane-grid">
+                            <div class="tech-pane-text">
+                                <h3>Adeus às massas de moldagem desconfortáveis</h3>
+                                <p>Com o escaneamento intraoral, capturamos um modelo digital tridimensional exato da sua boca em segundos. Esse processo serve para planejar alinhadores invisíveis e próteses com precisão milimétrica.</p>
+                                <ul>
+                                    <li><i class="ph-bold ph-check-circle"></i> Mais conforto sem ânsias de vômito</li>
+                                    <li><i class="ph-bold ph-check-circle"></i> Resultados de tratamentos previstos em tela</li>
+                                    <li><i class="ph-bold ph-check-circle"></i> Envio imediato para confecção digital</li>
+                                </ul>
+                            </div>
+                            <div class="tech-pane-badge">
+                                <div class="badge-icon-large"><i class="ph-fill ph-scan"></i></div>
+                                <span>Modelo Digital 3D</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 2 (Laser) -->
+                    <div class="tech-tab-pane" id="laser">
+                        <div class="tech-pane-grid">
+                            <div class="tech-pane-text">
+                                <h3>Cura acelerada e bioestimulação</h3>
+                                <p>O laser terapêutico de baixa intensidade é utilizado para acelerar a cicatrização pós-cirúrgica, reduzir inchaços e tratar sensibilidade dentária de forma rápida e completamente indolor.</p>
+                                <ul>
+                                    <li><i class="ph-bold ph-check-circle"></i> Alívio imediato da dor e sensibilidade</li>
+                                    <li><i class="ph-bold ph-check-circle"></i> Pós-operatório muito mais rápido e confortável</li>
+                                    <li><i class="ph-bold ph-check-circle"></i> Ação anti-inflamatória natural e sem remédios</li>
+                                </ul>
+                            </div>
+                            <div class="tech-pane-badge">
+                                <div class="badge-icon-large"><i class="ph-fill ph-lightning"></i></div>
+                                <span>Laser de Alta Performance</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 3 (Sedacao) -->
+                    <div class="tech-tab-pane" id="sedacao">
+                        <div class="tech-pane-grid">
+                            <div class="tech-pane-text">
+                                <h3>Tratamentos com zero ansiedade</h3>
+                                <p>Indicada para pacientes com medo ou ansiedade (odontofobia), a sedação consciente por inalação de óxido nitroso induz um estado de profundo relaxamento e serenidade, mantendo você acordado e comunicativo.</p>
+                                <ul>
+                                    <li><i class="ph-bold ph-check-circle"></i> Sensação agradável de calma e leveza</li>
+                                    <li><i class="ph-bold ph-check-circle"></i> Efeito passa logo após a interrupção da inalação</li>
+                                    <li><i class="ph-bold ph-check-circle"></i> Totalmente seguro para crianças e adultos</li>
+                                </ul>
+                            </div>
+                            <div class="tech-pane-badge">
+                                <div class="badge-icon-large"><i class="ph-fill ph-wind"></i></div>
+                                <span>Conforto Absoluto</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Depoimentos</span>
+                <h2>O que dizem os nossos pacientes</h2>
+                <p>Nossa maior recompensa é ver a transformação na vida e na confiança de quem confia em nosso trabalho.</p>
+            </div>
+            
+            <div class="testimonials-slider-container">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">"O tratamento com o Invisalign superou todas as minhas expectativas. Além de ser super rápido, o atendimento na clínica é maravilhoso, você se sente em um hotel 5 estrelas."</p>
+                        <div class="testimonial-user">
+                            <div class="user-avatar"><i class="ph-bold ph-user"></i></div>
+                            <div>
+                                <h5 class="user-name">Mariana Vasconcellos</h5>
+                                <span class="user-role">Tratamento Invisalign</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Sempre tive pânico de agulha e dentista. A sedação com óxido nitroso salvou meu tratamento. Fiz meus implantes de forma super tranquila e indolor. Recomendo muito!"</p>
+                        <div class="testimonial-user">
+                            <div class="user-avatar"><i class="ph-bold ph-user"></i></div>
+                            <div>
+                                <h5 class="user-name">Roberto Magalhães</h5>
+                                <span class="user-role">Reabilitação Oral & Implantes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Minhas lentes de porcelana mudaram a minha autoestima de forma inacreditável. O planejamento digital me deixou super segura do resultado final. Excelente equipe."</p>
+                        <div class="testimonial-user">
+                            <div class="user-avatar"><i class="ph-bold ph-user"></i></div>
+                            <div>
+                                <h5 class="user-name">Carla Dias</h5>
+                                <span class="user-role">Lentes de Contato Dental</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn" id="prevTestimonial" aria-label="Depoimento Anterior">
+                        <i class="ph-bold ph-caret-left"></i>
+                    </button>
+                    <div class="slider-dots" id="sliderDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-btn next-btn" id="nextTestimonial" aria-label="Próximo Depoimento">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendamento Section (Booking) -->
+    <section id="agendamento" class="booking-section">
+        <div class="container booking-container">
+            <div class="booking-details">
+                <span class="section-tag">Agende uma Consulta</span>
+                <h2>Dê o primeiro passo para o seu novo sorriso</h2>
+                <p>Escolha o dia, horário e o tratamento desejado abaixo. Nossa equipe entrará em contato via WhatsApp para confirmar a sua reserva.</p>
+                
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <span class="info-icon"><i class="ph-bold ph-whatsapp-logo"></i></span>
+                        <div>
+                            <h5>Fale pelo WhatsApp</h5>
+                            <p>(11) 98765-4321</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="info-icon"><i class="ph-bold ph-map-pin"></i></span>
+                        <div>
+                            <h5>Nosso Endereço</h5>
+                            <p>Av. Paulista, 1000 - Cj. 1202 - Bela Vista, São Paulo/SP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-card">
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="treatment">Qual tratamento você busca?</label>
+                        <select id="treatment" name="treatment" required>
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Invisalign">Invisalign (Alinhador Estético)</option>
+                            <option value="Lentes">Lentes de Contato de Porcelana</option>
+                            <option value="Implantes">Implantes Dentários</option>
+                            <option value="Clareamento">Clareamento Dental Premium</option>
+                            <option value="Geral">Consulta de Rotina / Check-up Geral</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookingDate">Escolha o dia:</label>
+                            <input type="date" id="bookingDate" name="bookingDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Escolha o período preferencial:</label>
+                        <div class="time-slots-grid">
+                            <div class="time-slot" data-time="Manhã (08h às 12h)">
+                                <i class="ph-bold ph-sun"></i>
+                                <span>Manhã</span>
+                                <small>08h - 12h</small>
+                            </div>
+                            <div class="time-slot" data-time="Tarde (12h às 18h)">
+                                <i class="ph-bold ph-sun-horizon"></i>
+                                <span>Tarde</span>
+                                <small>12h - 18h</small>
+                            </div>
+                            <div class="time-slot" data-time="Noite (18h às 20h)">
+                                <i class="ph-bold ph-moon"></i>
+                                <span>Noite</span>
+                                <small>18h - 20h</small>
+                            </div>
+                        </div>
+                        <input type="hidden" id="selectedTime" name="selectedTime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientName">Seu Nome Completo:</label>
+                        <input type="text" id="clientName" name="clientName" placeholder="Ex: Julia Silva" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientPhone">Seu WhatsApp:</label>
+                        <input type="tel" id="clientPhone" name="clientPhone" placeholder="Ex: (11) 99999-9999" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-booking">
+                        <span>Confirmar Solicitação de Agendamento</span>
+                        <i class="ph-bold ph-calendar-check"></i>
+                    </button>
+                </form>
+                
+                <!-- Success Message -->
+                <div class="booking-success" id="bookingSuccess">
+                    <div class="success-icon"><i class="ph-fill ph-check-circle"></i></div>
+                    <h3>Solicitação Recebida com Sucesso!</h3>
+                    <p>Olá, <strong id="successName">Julia</strong>. Reservamos uma pré-agenda para o dia <span id="successDate">--/--/----</span> no período da <span id="successTime">--</span> para o tratamento de <strong id="successTreatment">--</strong>.</p>
+                    <p class="success-note">Nossa equipe entrará em contato via WhatsApp nas próximas 2 horas para finalizar e confirmar o horário exato da sua consulta.</p>
+                    <button class="btn btn-primary" id="btnResetBooking">Agendar Outro Horário</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container faq-container">
+            <div class="faq-info">
+                <span class="section-tag">Dúvidas Frequentes</span>
+                <h2>Perguntas Comuns sobre Nossos Tratamentos</h2>
+                <p>Ficou com alguma dúvida? Separamos as perguntas mais recorrentes de nossos pacientes para te ajudar. Caso queira falar com um especialista, clique no botão de atendimento.</p>
+                <a href="#agendamento" class="btn btn-secondary">Ainda tenho dúvidas <i class="ph-bold ph-arrow-right"></i></a>
+            </div>
+            
+            <div class="faq-accordions">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como funciona o tratamento com o Invisalign?</span>
+                        <span class="faq-icon-arrow"><i class="ph-bold ph-caret-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>O Invisalign consiste no uso de uma sequência de alinhadores plásticos transparentes e removíveis feitos sob medida para sua boca por meio de planejamento 3D computadorizado. Cada alinhador deve ser usado por cerca de 7 a 14 dias antes de ser substituído pelo próximo, movimentando gradualmente seus dentes para a posição desejada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>As lentes de contato de porcelana podem manchar com o tempo?</span>
+                        <span class="faq-icon-arrow"><i class="ph-bold ph-caret-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Não. A porcelana odontológica de alta qualidade utilizada em nossas lentes é um material não-poroso altamente resistente a manchas. Diferentemente do esmalte natural do dente ou das resinas, ela não mancha com o consumo de café, vinho tinto, açaí ou tabaco, mantendo o brilho e a cor inicial por muitos anos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>A cirurgia de implante dentário é muito dolorosa?</span>
+                        <span class="faq-icon-arrow"><i class="ph-bold ph-caret-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Não. A cirurgia de implante é realizada sob anestesia local eficaz e, se o paciente desejar, com nossa sedação consciente com óxido nitroso, tornando o procedimento totalmente indolor. Além disso, a tecnologia de Cirurgia Guiada 3D nos permite realizar cortes minúsculos sem pontos de sutura na maioria dos casos, o que resulta em um pós-operatório muito mais rápido, sem inchaço significativo ou dor.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quais convênios odontológicos a clínica aceita?</span>
+                        <span class="faq-icon-arrow"><i class="ph-bold ph-caret-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Trabalhamos exclusivamente no modelo de atendimento particular para garantir o tempo adequado e a qualidade de ponta em cada consulta. No entanto, fornecemos toda a documentação necessária, relatórios clínicos e recibos para que você possa solicitar o reembolso integral ou parcial junto ao seu plano de saúde (como Bradesco, SulAmérica, Amil, Care Plus, etc.).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><i class="ph-bold ph-activity"></i></span>
+                    <span class="logo-text">Sorriso<span>Elevado</span></span>
+                </a>
+                <p>Referência em reabilitação oral, estética e tecnologia avançada para a saúde do seu sorriso.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph-bold ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ph-bold ph-facebook-logo"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="ph-bold ph-youtube-logo"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">A Clínica</a></li>
+                    <li><a href="#servicos">Tratamentos</a></li>
+                    <li><a href="#antes-depois">Casos Reais</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contato</h4>
+                <ul>
+                    <li><i class="ph-bold ph-phone"></i> (11) 3254-0099</li>
+                    <li><i class="ph-bold ph-whatsapp-logo"></i> (11) 98765-4321</li>
+                    <li><i class="ph-bold ph-envelope"></i> contato@sorrisoelevado.com.br</li>
+                    <li><i class="ph-bold ph-clock"></i> Seg a Sex: 08h às 20h | Sáb: 08h às 13h</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Sorriso Elevado - Todos os direitos reservados. Responsável Técnico: Dr. Henrique Costa - CRO/SP 123456.</p>
+                <p>Desenvolvido com sofisticação.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

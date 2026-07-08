@@ -8,6 +8,7 @@ export default function AdvocaciaPage() {
       description="Presença séria, objetiva e preparada para gerar contato qualificado."
       image="/images/case-law-desktop.png"
       imageAlt="Landing page Mendes Advocacia"
+      liveUrl="/sites/advocacia/index.html"
       accent="green"
     />
   )

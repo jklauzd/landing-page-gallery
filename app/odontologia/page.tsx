@@ -8,6 +8,7 @@ export default function OdontologiaPage() {
       description="Uma página clara e premium para transformar a primeira impressão em agendamento."
       image="/images/case-dental.png"
       imageAlt="Landing page Sorriso Elevado"
+      liveUrl="/sites/odontologia/index.html"
       accent="gold"
     />
   )

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETLUXE | Boutique & Pet E-Commerce Premium</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="navigateToSection('home')">
+                <i data-lucide="paw-print"></i>
+                PET<span>LUXE</span>
+            </a>
+            
+            <nav class="nav-menu-wrapper">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active" onclick="navigateToSection('home')">Início</a></li>
+                    <li><a href="#quiz" class="nav-link" onclick="navigateToSection('quiz')">Box Personalizada</a></li>
+                    <li><a href="#catalog" class="nav-link" onclick="navigateToSection('catalog')">Produtos</a></li>
+                    <li><a href="#services" class="nav-link" onclick="navigateToSection('services')">Serviços</a></li>
+                    <li><a href="#dashboard" class="nav-link" onclick="navigateToSection('dashboard')">Meu Painel</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle-btn" aria-label="Alternar Tema">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                </button>
+                <button class="icon-btn" id="dashboard-btn" aria-label="Minha Conta" onclick="navigateToSection('dashboard')">
+                    <i data-lucide="user"></i>
+                </button>
+                <button class="icon-btn cart-toggle-btn" id="cart-toggle-btn" aria-label="Carrinho">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-badge" id="cart-counter">0</span>
+                </button>
+                <button class="icon-btn menu-toggle" id="menu-toggle-btn" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main style="padding-top: 80px;">
+
+        <!-- Dynamic Page Sections -->
+        
+        <!-- SECTION 1: Home View (Hero + Categories + Quick Offers) -->
+        <div id="home-view" class="page-view active">
+            <!-- Hero Slider -->
+            <section class="hero">
+                <div class="hero-slider">
+                    <!-- Slide 1 -->
+                    <div class="hero-slide active" style="background-image: url('assets/hero-pet.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container" style="height: 100%; display: flex; align-items: center;">
+                            <div class="hero-content-wrapper">
+                                <span class="hero-tag">Exclusividade Pet</span>
+                                <h1 class="hero-title">O Cuidado e Estilo que Seu Pet Merece</h1>
+                                <p class="hero-desc">Boutique premium com seleção de produtos de altíssima qualidade, serviços personalizados e a melhor experiência para quem você ama.</p>
+                                <div class="hero-actions">
+                                    <a href="#catalog" class="btn btn-primary" onclick="navigateToSection('catalog')">Ver Coleção</a>
+                                    <a href="#quiz" class="btn btn-secondary" style="color: white; border-color: white;" onclick="navigateToSection('quiz')">Criar Box</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="section container">
+                <div class="section-header">
+                    <span class="section-subtitle">Navegue por Categoria</span>
+                    <h2 class="section-title">Compre por Animal</h2>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="filterByCategory('cão')">
+                        <div class="category-icon-wrapper">
+                            <i data-lucide="dog" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <h3 class="category-title">Cães</h3>
+                        <p class="category-count">Brinquedos, Ração & Acessórios</p>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('gato')">
+                        <div class="category-icon-wrapper">
+                            <i data-lucide="cat" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <h3 class="category-title">Gatos</h3>
+                        <p class="category-count">Arranhadores, Camas & Ração</p>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('saude')">
+                        <div class="category-icon-wrapper">
+                            <i data-lucide="activity" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <h3 class="category-title">Bem-estar</h3>
+                        <p class="category-count">Shampoos & Higiene</p>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('acessorios')">
+                        <div class="category-icon-wrapper">
+                            <i data-lucide="sparkles" style="width: 32px; height: 32px;"></i>
+                        </div>
+                        <h3 class="category-title">Boutique</h3>
+                        <p class="category-count">Coleiras & Moda Premium</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION 2: Quiz Configurator View -->
+        <div id="quiz-view" class="page-view">
+            <section class="section container">
+                <div class="config-section">
+                    <div class="config-container">
+                        <div class="config-info">
+                            <span class="section-subtitle">Assinatura Mensal</span>
+                            <h2>O Clube PETLUXE Box</h2>
+                            <p>Crie uma caixa de assinatura sob medida para as necessidades e gostos específicos do seu parceiro. Receba petiscos orgânicos, brinquedos educativos e itens de luxo selecionados mensalmente.</p>
+                            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 24px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary);"></i>
+                                    <span>Produtos 100% livres de toxinas</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary);"></i>
+                                    <span>Cancele ou altere a qualquer momento</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <i data-lucide="check-circle" style="color: var(--primary);"></i>
+                                    <span>Frete Grátis em todas as entregas</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-card" id="quiz-card">
+                            <!-- Progress Bar -->
+                            <div class="quiz-progress">
+                                <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                                <div class="progress-node active" data-step="1">1</div>
+                                <div class="progress-node" data-step="2">2</div>
+                                <div class="progress-node" data-step="3">3</div>
+                                <div class="progress-node" data-step="4">4</div>
+                                <div class="progress-node" data-step="5">5</div>
+                            </div>
+
+                            <!-- Step 1: Pet Type -->
+                            <div class="quiz-step active" id="quiz-step-1">
+                                <h3>Que tipo de pet você tem?</h3>
+                                <div class="quiz-options">
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-type', 'dog', this)">
+                                        <i data-lucide="dog"></i>
+                                        Cachorro
+                                    </button>
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-type', 'cat', this)">
+                                        <i data-lucide="cat"></i>
+                                        Gato
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Size -->
+                            <div class="quiz-step" id="quiz-step-2">
+                                <h3>Qual o porte do seu pet?</h3>
+                                <div class="quiz-options">
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-size', 'small', this)">
+                                        Pequeno (Até 10kg)
+                                    </button>
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-size', 'medium', this)">
+                                        Médio (10kg a 25kg)
+                                    </button>
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-size', 'large', this)">
+                                        Grande (Acima de 25kg)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Interests -->
+                            <div class="quiz-step" id="quiz-step-3">
+                                <h3>O que ele mais ama?</h3>
+                                <div class="quiz-options">
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-interest', 'toys', this)">
+                                        Brinquedos & Diversão
+                                    </button>
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-interest', 'snacks', this)">
+                                        Petiscos & Ração
+                                    </button>
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-interest', 'fashion', this)">
+                                        Estilo & Bem-Estar
+                                    </button>
+                                    <button class="quiz-opt-btn" onclick="selectQuizOption('pet-interest', 'mix', this)">
+                                        Mix Completo (Tudo!)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Name -->
+                            <div class="quiz-step" id="quiz-step-4">
+                                <h3>Como se chama seu companheiro?</h3>
+                                <div class="quiz-input-group">
+                                    <label for="quiz-pet-name">Nome do Pet</label>
+                                    <input type="text" id="quiz-pet-name" placeholder="Ex: Bob, Mel, Luna..." oninput="checkQuizNameInput()">
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Result Recommendation -->
+                            <div class="quiz-step" id="quiz-step-5">
+                                <div class="recommendation-result" id="recommendation-result">
+                                    <!-- Dynamic content generated by JS -->
+                                </div>
+                            </div>
+
+                            <!-- Footer / Buttons -->
+                            <div class="quiz-footer">
+                                <button class="btn btn-secondary" id="quiz-prev-btn" onclick="prevQuizStep()" style="display: none;">Voltar</button>
+                                <button class="btn btn-primary" id="quiz-next-btn" onclick="nextQuizStep()" disabled>Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION 3: Product Catalog View -->
+        <div id="catalog-view" class="page-view">
+            <section class="section container">
+                <div class="section-header">
+                    <span class="section-subtitle">Nossos Produtos</span>
+                    <h2 class="section-title">Coleção Exclusiva</h2>
+                </div>
+                
+                <div class="catalog-layout">
+                    <!-- Sidebar Filtros -->
+                    <aside class="catalog-sidebar">
+                        <div class="search-wrapper">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="catalog-search" placeholder="Buscar no e-commerce..." oninput="filterProducts()">
+                        </div>
+
+                        <!-- Categorias de Filtro -->
+                        <div class="filter-group">
+                            <h3 class="filter-title">Categorias</h3>
+                            <ul class="filter-list">
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="category-filter" value="alimentacao" onchange="filterProducts()">
+                                        Alimentação Natural
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="category-filter" value="conforto" onchange="filterProducts()">
+                                        Conforto & Camas
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="category-filter" value="brinquedos" onchange="filterProducts()">
+                                        Brinquedos Educativos
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="category-filter" value="acessorios" onchange="filterProducts()">
+                                        Acessórios Boutique
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="category-filter" value="higiene" onchange="filterProducts()">
+                                        Higiene & Estética
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Filtro de Destinado para -->
+                        <div class="filter-group">
+                            <h3 class="filter-title">Destinado a</h3>
+                            <ul class="filter-list">
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="pet-type-filter" value="cão" onchange="filterProducts()">
+                                        Cães
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="checkbox" class="pet-type-filter" value="gato" onchange="filterProducts()">
+                                        Gatos
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Filtro de Preço -->
+                        <div class="filter-group">
+                            <h3 class="filter-title">Faixa de Preço</h3>
+                            <ul class="filter-list">
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="radio" name="price-filter" value="all" checked onchange="filterProducts()">
+                                        Todos os valores
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="radio" name="price-filter" value="0-100" onchange="filterProducts()">
+                                        Até R$ 100
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="radio" name="price-filter" value="100-250" onchange="filterProducts()">
+                                        R$ 100 a R$ 250
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label>
+                                        <input type="radio" name="price-filter" value="250+" onchange="filterProducts()">
+                                        Acima de R$ 250
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+
+                    <!-- Main Grid de Produtos -->
+                    <div class="catalog-main">
+                        <div class="catalog-toolbar">
+                            <div id="catalog-count-text">Exibindo 6 produtos</div>
+                            <div class="catalog-sort">
+                                <label for="sort-select">Ordenar por:</label>
+                                <select id="sort-select" onchange="filterProducts()">
+                                    <option value="default">Recomendados</option>
+                                    <option value="price-asc">Menor Preço</option>
+                                    <option value="price-desc">Maior Preço</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Listagem Dinâmica -->
+                        <div class="products-grid" id="products-grid">
+                            <!-- Dynamic Content in app.js -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION 4: Pet Services Booking View -->
+        <div id="services-view" class="page-view">
+            <section class="section container">
+                <div class="section-header">
+                    <span class="section-subtitle">Estética & Saúde</span>
+                    <h2 class="section-title">Agendamento de Spa & Cuidados</h2>
+                </div>
+                
+                <div class="services-container">
+                    <!-- Form Agendamento -->
+                    <div class="booking-form-wrapper">
+                        <h3>1. Escolha o Serviço</h3>
+                        <div class="services-list" style="margin-top: 16px;">
+                            <div class="service-card selected" onclick="selectService('banho', 80)">
+                                <input type="radio" name="booking-service-radio" checked id="serv-banho">
+                                <div class="service-details">
+                                    <h4>Banho Terapêutico</h4>
+                                    <p>Shampoos hipoalergênicos importados e secagem cuidadosa.</p>
+                                    <div class="service-price">R$ 80,00</div>
+                                </div>
+                            </div>
+                            <div class="service-card" onclick="selectService('completo', 150)">
+                                <input type="radio" name="booking-service-radio" id="serv-completo">
+                                <div class="service-details">
+                                    <h4>Spa Completo (Banho + Tosa)</h4>
+                                    <p>Tosa higiênica ou da raça, corte de unhas e limpeza auricular.</p>
+                                    <div class="service-price">R$ 150,00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>2. Detalhes e Data</h3>
+                        <div class="booking-grid" style="margin-top: 16px;">
+                            <div class="booking-group">
+                                <label for="booking-pet-name">Nome do Pet</label>
+                                <input type="text" id="booking-pet-name" placeholder="Nome do seu pet">
+                            </div>
+                            <div class="booking-group">
+                                <label for="booking-pet-type">Tipo de Pet</label>
+                                <select id="booking-pet-type">
+                                    <option value="Cachorro">Cachorro</option>
+                                    <option value="Gato">Gato</option>
+                                </select>
+                            </div>
+                            <div class="booking-group">
+                                <label for="booking-date">Data Desejada</label>
+                                <input type="date" id="booking-date" onchange="generateTimeSlots()">
+                            </div>
+                            <div class="booking-group">
+                                <label for="booking-stylist">Profissional / Esteticista</label>
+                                <select id="booking-stylist">
+                                    <option value="Carla Mendes">Carla Mendes (Especialista Cães)</option>
+                                    <option value="Ricardo Ramos">Ricardo Ramos (Especialista Felinos)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3>3. Horário</h3>
+                        <div class="booking-slots" id="booking-slots-container">
+                            <!-- Slots dinâmicos por JS -->
+                        </div>
+
+                        <div style="margin-top: 40px; display: flex; justify-content: flex-end;">
+                            <button class="btn btn-primary" onclick="confirmAppointment()">Confirmar Agendamento</button>
+                        </div>
+                    </div>
+
+                    <!-- Panel Info Adicional -->
+                    <div class="services-info-panel">
+                        <div class="info-box">
+                            <div class="info-box-title">
+                                <i data-lucide="shield-check"></i>
+                                Protocolo Pet-Safe
+                            </div>
+                            <p>Utilizamos equipamentos silenciosos de última geração para evitar o estresse do animal. Nossa equipe conta com treinamento em psicologia canina/felina para garantir uma experiência confortável e segura.</p>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-title">
+                                <i data-lucide="clock"></i>
+                                Horário de Funcionamento
+                            </div>
+                            <p><strong>Segunda a Sábado:</strong> 08:00 às 18:00<br><strong>Domingo e Feriados:</strong> 09:00 às 14:00 (Apenas agendamentos especiais)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION 5: User Dashboard View -->
+        <div id="dashboard-view" class="page-view">
+            <section class="section container">
+                <div class="section-header">
+                    <span class="section-subtitle">Minha Área</span>
+                    <h2 class="section-title">Meu Painel de Cliente</h2>
+                </div>
+                
+                <div class="dashboard-layout">
+                    <!-- Sidebar Dashboard -->
+                    <aside class="dashboard-sidebar">
+                        <ul class="dashboard-menu">
+                            <li class="dashboard-menu-item active" onclick="switchDashboardTab('orders', this)">
+                                <i data-lucide="package"></i> Meus Pedidos
+                            </li>
+                            <li class="dashboard-menu-item" onclick="switchDashboardTab('pets', this)">
+                                <i data-lucide="heart"></i> Meus Pets
+                            </li>
+                            <li class="dashboard-menu-item" onclick="switchDashboardTab('apts', this)">
+                                <i data-lucide="calendar"></i> Agendamentos
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <!-- Main Dashboard Content Panel -->
+                    <div class="dashboard-content">
+                        <!-- Panel: Meus Pedidos -->
+                        <div class="dashboard-content-panel active" id="db-panel-orders">
+                            <div class="dashboard-card">
+                                <div id="dashboard-orders-container">
+                                    <!-- Dynamic order history list -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Meus Pets -->
+                        <div class="dashboard-content-panel" id="db-panel-pets">
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-title">
+                                    Meus Pets Cadastrados
+                                    <button class="btn btn-primary" onclick="openAddPetModal()" style="padding: 6px 12px; font-size: 0.8rem;">+ Novo Pet</button>
+                                </div>
+                                <div id="dashboard-pets-container">
+                                    <!-- Dynamic pet list -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Agendamentos -->
+                        <div class="dashboard-content-panel" id="db-panel-apts">
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-title">Serviços Agendados</div>
+                                <div id="dashboard-apts-container">
+                                    <!-- Dynamic appointments list -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Shopping Cart Slide Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button class="icon-btn" id="cart-close-btn" aria-label="Fechar Carrinho">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items-container" id="cart-items-list">
+            <!-- Dynamic Cart Items by JS -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">R$ 0,00</span>
+            </div>
+            <div class="cart-summary-row">
+                <span>Frete (Envio Premium)</span>
+                <span id="cart-shipping">R$ 0,00</span>
+            </div>
+            <div class="cart-summary-row total">
+                <span>Total</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" id="checkout-start-btn" onclick="openCheckout()">Ir para o Checkout</button>
+        </div>
+    </div>
+
+    <!-- Product Detail View Modal -->
+    <div class="modal-overlay" id="detail-modal">
+        <div class="modal-container">
+            <button class="icon-btn modal-close-btn" onclick="closeModal('detail-modal')">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="product-detail-grid" id="detail-modal-content">
+                <!-- Dynamic product details loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Pet Modal -->
+    <div class="modal-overlay" id="add-pet-modal">
+        <div class="modal-container" style="max-width: 500px; padding: 30px;">
+            <button class="icon-btn modal-close-btn" onclick="closeModal('add-pet-modal')">
+                <i data-lucide="x"></i>
+            </button>
+            <h3>Adicionar Novo Pet</h3>
+            <div class="booking-grid" style="grid-template-columns: 1fr; margin-top: 20px;">
+                <div class="booking-group">
+                    <label for="new-pet-name">Nome do Pet</label>
+                    <input type="text" id="new-pet-name" placeholder="Ex: Fred">
+                </div>
+                <div class="booking-group">
+                    <label for="new-pet-breed">Raça / Tipo</label>
+                    <input type="text" id="new-pet-breed" placeholder="Ex: Golden, Persa...">
+                </div>
+                <div class="booking-group">
+                    <label for="new-pet-age">Idade (anos)</label>
+                    <input type="number" id="new-pet-age" placeholder="Ex: 3">
+                </div>
+            </div>
+            <div style="margin-top: 30px; display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn btn-secondary" onclick="closeModal('add-pet-modal')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveNewPet()">Salvar Pet</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal Step Wizard -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-container checkout-modal">
+            <button class="icon-btn modal-close-btn" onclick="closeModal('checkout-modal')">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="checkout-layout">
+                <!-- Left: Form Steps -->
+                <div class="checkout-steps-wrapper">
+                    <!-- Progress Stepper indicator -->
+                    <div class="checkout-step-indicator">
+                        <div class="step-indicator-item active" id="chk-ind-1">
+                            <span>1. Entrega</span>
+                        </div>
+                        <div class="step-indicator-item" id="chk-ind-2">
+                            <span>2. Pagamento</span>
+                        </div>
+                        <div class="step-indicator-item" id="chk-ind-3">
+                            <span>3. Sucesso</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Delivery Details -->
+                    <div class="checkout-step-content active" id="chk-step-1">
+                        <h3>Detalhes de Envio</h3>
+                        <form id="checkout-delivery-form" style="margin-top: 20px;" onsubmit="goToPaymentStep(event)">
+                            <div class="checkout-form-grid">
+                                <div class="booking-group" style="grid-column: span 2;">
+                                    <label for="chk-name">Nome Completo</label>
+                                    <input type="text" id="chk-name" required placeholder="Digite seu nome">
+                                </div>
+                                <div class="booking-group">
+                                    <label for="chk-zip">CEP</label>
+                                    <input type="text" id="chk-zip" required placeholder="00000-000" onblur="simulateShippingCalculation()">
+                                </div>
+                                <div class="booking-group" style="grid-column: span 2;">
+                                    <label for="chk-address">Endereço</label>
+                                    <input type="text" id="chk-address" required placeholder="Rua, Avenida...">
+                                </div>
+                                <div class="booking-group">
+                                    <label for="chk-number">Número</label>
+                                    <input type="text" id="chk-number" required placeholder="123">
+                                </div>
+                                <div class="booking-group">
+                                    <label for="chk-city">Cidade</label>
+                                    <input type="text" id="chk-city" required placeholder="São Paulo">
+                                </div>
+                                <div class="booking-group">
+                                    <label for="chk-state">Estado</label>
+                                    <select id="chk-state" required>
+                                        <option value="SP">São Paulo (SP)</option>
+                                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                                        <option value="MG">Minas Gerais (MG)</option>
+                                        <option value="PR">Paraná (PR)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; display: flex; justify-content: flex-end;">
+                                <button type="submit" class="btn btn-primary">Ir para Pagamento</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Payment Simulator -->
+                    <div class="checkout-step-content" id="chk-step-2">
+                        <h3>Escolha a Forma de Pagamento</h3>
+                        <div style="margin-top: 20px;">
+                            <div class="payment-method-selector">
+                                <button class="pay-method-btn selected" onclick="selectPaymentMethod('card', this)">
+                                    <i data-lucide="credit-card"></i>
+                                    Cartão
+                                </button>
+                                <button class="pay-method-btn" onclick="selectPaymentMethod('pix', this)">
+                                    <i data-lucide="qr-code"></i>
+                                    Pix
+                                </button>
+                                <button class="pay-method-btn" onclick="selectPaymentMethod('boleto', this)">
+                                    <i data-lucide="file-text"></i>
+                                    Boleto
+                                </button>
+                            </div>
+
+                            <!-- CARD METHOD VIEW -->
+                            <div id="payment-card-fields">
+                                <!-- Card Animation wrapper -->
+                                <div class="card-wrapper" id="card-animation-wrapper">
+                                    <div class="credit-card-mock">
+                                        <div class="card-front">
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <div class="card-chip"></div>
+                                                <i data-lucide="paw-print"></i>
+                                            </div>
+                                            <div class="card-number-display" id="mock-card-number">•••• •••• •••• ••••</div>
+                                            <div class="card-holder-info">
+                                                <div>
+                                                    <div class="card-holder-label">Titular</div>
+                                                    <div class="card-holder-value" id="mock-card-name">NOME SOBRENOME</div>
+                                                </div>
+                                                <div>
+                                                    <div class="card-holder-label">Validade</div>
+                                                    <div class="card-holder-value" id="mock-card-expiry">MM/AA</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-back">
+                                            <div class="card-magnetic-strip"></div>
+                                            <div class="card-signature-cvv">
+                                                <div class="card-signature-strip"></div>
+                                                <div class="card-cvv-display" id="mock-card-cvv">•••</div>
+                                            </div>
+                                            <div style="text-align: right; font-size: 0.6rem; color: #a8a29e;">PETLUXE PREMIUM</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form id="card-payment-form" onsubmit="processPurchase(event)">
+                                    <div class="checkout-form-grid">
+                                        <div class="booking-group" style="grid-column: span 2;">
+                                            <label for="pay-card-number">Número do Cartão</label>
+                                            <input type="text" id="pay-card-number" required placeholder="0000 0000 0000 0000" maxlength="19" oninput="updateCardDetails('number', this)" onfocus="flipCardBack(false)">
+                                        </div>
+                                        <div class="booking-group" style="grid-column: span 2;">
+                                            <label for="pay-card-name">Nome Impresso no Cartão</label>
+                                            <input type="text" id="pay-card-name" required placeholder="Ex: JOÃO A SILVA" oninput="updateCardDetails('name', this)" onfocus="flipCardBack(false)">
+                                        </div>
+                                        <div class="booking-group">
+                                            <label for="pay-card-expiry">Validade</label>
+                                            <input type="text" id="pay-card-expiry" required placeholder="MM/AA" maxlength="5" oninput="updateCardDetails('expiry', this)" onfocus="flipCardBack(false)">
+                                        </div>
+                                        <div class="booking-group">
+                                            <label for="pay-card-cvv">CVV</label>
+                                            <input type="text" id="pay-card-cvv" required placeholder="123" maxlength="4" oninput="updateCardDetails('cvv', this)" onfocus="flipCardBack(true)" onblur="flipCardBack(false)">
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                                        <button type="button" class="btn btn-secondary" onclick="backToDeliveryStep()">Voltar</button>
+                                        <button type="submit" class="btn btn-primary">Pagar e Finalizar</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- PIX METHOD VIEW -->
+                            <div id="payment-pix-fields" style="display: none;">
+                                <div class="pix-simulator">
+                                    <div class="qr-code-placeholder">
+                                        <i data-lucide="qr-code" style="width: 100px; height: 100px; color: var(--text-main);"></i>
+                                    </div>
+                                    <p style="font-size: 0.9rem; margin-bottom: 12px;">Escaneie o código Pix acima ou copie a chave abaixo para efetuar o pagamento.</p>
+                                    <div class="pix-key-box">
+                                        <div class="pix-key-text" id="pix-key-string">00020101021226870014br.gov.bcb.pix2565petluxepagamentocodigoexclusivo128492048</div>
+                                        <button class="pix-copy-btn" onclick="copyPixKey()">Copiar</button>
+                                    </div>
+                                    <p id="pix-copy-feedback" style="font-size: 0.8rem; color: var(--accent); font-weight: 600; display: none;">Chave copiada com sucesso!</p>
+                                </div>
+                                <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                                    <button type="button" class="btn btn-secondary" onclick="backToDeliveryStep()">Voltar</button>
+                                    <button type="button" class="btn btn-primary" onclick="processPurchaseDirectly('Pix')">Confirmar Pagamento Pix</button>
+                                </div>
+                            </div>
+
+                            <!-- BOLETO METHOD VIEW -->
+                            <div id="payment-boleto-fields" style="display: none;">
+                                <div class="boleto-simulator">
+                                    <i data-lucide="file-text" style="font-size: 48px; color: var(--primary); margin-bottom: 16px;"></i>
+                                    <p style="font-size: 0.9rem;">O boleto será enviado para o seu e-mail. Você também pode copiar o código de barras abaixo para efetuar o pagamento em seu banco.</p>
+                                    <div class="pix-key-box" style="margin-top: 16px;">
+                                        <div class="pix-key-text">34191.79001 01043.513184 91020.150008 7 97620000028900</div>
+                                        <button class="pix-copy-btn" onclick="navigator.clipboard.writeText('34191.79001 01043.513184 91020.150008 7 97620000028900')">Copiar</button>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                                    <button type="button" class="btn btn-secondary" onclick="backToDeliveryStep()">Voltar</button>
+                                    <button type="button" class="btn btn-primary" onclick="processPurchaseDirectly('Boleto')">Finalizar e Gerar Boleto</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Success Screen -->
+                    <div class="checkout-step-content" id="chk-step-3">
+                        <div class="success-screen">
+                            <div class="success-icon-wrapper">
+                                <i data-lucide="check"></i>
+                            </div>
+                            <h2>Compra Realizada com Sucesso!</h2>
+                            <p style="margin-top: 12px; color: var(--text-muted);">Agradecemos sua confiança. O número do seu pedido é <strong id="chk-order-number">#PX-12345</strong>.</p>
+                            <p style="color: var(--text-muted);">Você pode acompanhar o status da entrega a qualquer momento no seu Painel de Cliente.</p>
+                            <button class="btn btn-primary" style="margin-top: 30px;" onclick="finishCheckoutFlow()">Ir para Meu Painel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Summary Sidebar -->
+                <aside class="checkout-summary-sidebar">
+                    <h3>Resumo da Compra</h3>
+                    <div class="order-items-list" id="checkout-summary-items" style="border: none; margin-top: 16px;">
+                        <!-- Dynamic items -->
+                    </div>
+                    <div style="border-top: 1px dashed var(--border-color); margin-top: 20px; padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span>Subtotal</span>
+                            <span id="chk-subtotal">R$ 0,00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span>Frete</span>
+                            <span id="chk-shipping">R$ 0,00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.15rem; border-top: 1px solid var(--border-color); padding-top: 12px;">
+                            <span>Total</span>
+                            <span id="chk-total">R$ 0,00</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Success Confirmation Modal -->
+    <div class="modal-overlay" id="booking-success-modal">
+        <div class="modal-container" style="max-width: 500px; padding: 40px; text-align: center;">
+            <div class="success-icon-wrapper">
+                <i data-lucide="calendar"></i>
+            </div>
+            <h2>Agendamento Realizado!</h2>
+            <p style="margin-top: 16px; color: var(--text-muted);" id="booking-confirm-details">Seu agendamento foi salvo. Você pode visualizá-lo e gerenciá-lo na aba de agendamentos no seu painel.</p>
+            <button class="btn btn-primary" style="margin-top: 24px; width: 100%;" onclick="closeModal('booking-success-modal'); navigateToSection('dashboard'); switchDashboardTab('apts', document.querySelector('[onclick*=\"switchDashboardTab(\\'apts\\\"\"]'))">Ver Agendamentos</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo" style="margin-bottom: 20px;">
+                    <i data-lucide="paw-print"></i>
+                    PET<span>LUXE</span>
+                </a>
+                <p>O primeiro pet shop de luxo focado 100% no bem-estar animal, com curadoria exclusiva e respeito pela natureza.</p>
+                <div class="social-links">
+                    <button class="icon-btn"><i data-lucide="instagram"></i></button>
+                    <button class="icon-btn"><i data-lucide="facebook"></i></button>
+                    <button class="icon-btn"><i data-lucide="twitter"></i></button>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Navegação</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="#home" onclick="navigateToSection('home')">Início</a></li>
+                    <li class="footer-link-item"><a href="#quiz" onclick="navigateToSection('quiz')">Box Mensal</a></li>
+                    <li class="footer-link-item"><a href="#catalog" onclick="navigateToSection('catalog')">Nossos Produtos</a></li>
+                    <li class="footer-link-item"><a href="#services" onclick="navigateToSection('services')">Agendamentos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Atendimento</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item"><a href="#">Fale Conosco</a></li>
+                    <li class="footer-link-item"><a href="#">Políticas de Envio</a></li>
+                    <li class="footer-link-item"><a href="#">Dúvidas Frequentes</a></li>
+                    <li class="footer-link-item"><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Cadastre seu e-mail para receber cupons exclusivos e dicas dos nossos veterinários especialistas.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" id="newsletter-email">
+                    <button class="btn btn-primary" onclick="subscribeNewsletter()">Assinar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <div>&copy; 2026 PETLUXE Premium Boutique. Todos os direitos reservados.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#">Privacidade</a>
+                <a href="#">Termos</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

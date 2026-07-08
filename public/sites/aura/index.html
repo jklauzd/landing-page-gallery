@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>AURA | E-Commerce Premium Minimalista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AURA</a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="index.html#curated" class="nav-link">Coleção</a>
+                <a href="product.html?id=camisa-masc" class="nav-link">Camisas</a>
+                <a href="product.html?id=sapato-derby" class="nav-link">Sapatos</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn" aria-label="Buscar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="icon-btn" aria-label="Favoritos">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+                <button class="icon-btn cart-toggle-btn" aria-label="Carrinho">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Carrossel -->
+    <section id="hero" class="hero-slider">
+        <div class="slider-wrapper">
+            <div class="slide active" style="background-image: url('assets/banner-1.jpg');" data-mobile="assets/banner-mobile-1.jpg"></div>
+            <div class="slide" style="background-image: url('assets/banner-2.jpg');" data-mobile="assets/banner-mobile-2.jpg"></div>
+        </div>
+        <button class="slider-arrow prev" aria-label="Anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-arrow next" aria-label="Próximo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+        </div>
+    </section>
+
+    <!-- Curated Collection Section (Grid 4x) -->
+    <section id="curated" class="section-container curated-section">
+        <div class="section-header">
+            <span class="section-subtitle">Peças Premium Curadas</span>
+            <h2 class="section-title">Nossa Coleção</h2>
+            <div class="section-divider"></div>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Produto 1 -->
+            <a href="product.html?id=camisa-masc" class="product-card">
+                <div class="product-card-media">
+                    <img src="assets/camisa-masc-2.jpg" alt="Camisa de Linho Slim" class="product-card-img primary" loading="lazy">
+                    <img src="assets/camisa-masc-1.jpg" alt="Camisa de Linho Slim" class="product-card-img secondary" loading="lazy">
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-header">
+                        <h4 class="product-card-title">Camisa de Linho Slim</h4>
+                        <span class="product-card-price">R$ 289,00</span>
+                    </div>
+                    <p class="product-card-desc">Linho 100% orgânico amaciado</p>
+                    <div class="card-color-dots">
+                        <span class="color-dot" style="background-color: #D8CDBC;"></span>
+                        <span class="color-dot" style="background-color: #1A1A1A;"></span>
+                        <span class="color-dot" style="background-color: #5B758E;"></span>
+                        <span class="color-dot" style="background-color: #667E6B;"></span>
+                        <span class="color-dot" style="background-color: #ECECEC;"></span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Produto 2 -->
+            <a href="product.html?id=bolsa-sacola" class="product-card">
+                <div class="product-card-media">
+                    <img src="assets/bolsa-1.jpg" alt="Bolsa Sacola Premium" class="product-card-img primary" loading="lazy">
+                    <img src="assets/bolsa-2.jpg" alt="Bolsa Sacola Premium" class="product-card-img secondary" loading="lazy">
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-header">
+                        <h4 class="product-card-title">Bolsa Sacola Premium</h4>
+                        <span class="product-card-price">R$ 429,00</span>
+                    </div>
+                    <p class="product-card-desc">Couro integral texturizado</p>
+                    <div class="card-color-dots">
+                        <span class="color-dot" style="background-color: #a1683a;"></span>
+                        <span class="color-dot" style="background-color: #111111;"></span>
+                        <span class="color-dot" style="background-color: #e5dfd9;"></span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Produto 3 -->
+            <a href="product.html?id=sapato-derby" class="product-card">
+                <div class="product-card-media">
+                    <img src="assets/sapato-masc-1.jpg" alt="Sapato Derby Casual" class="product-card-img primary" loading="lazy">
+                    <img src="assets/sapato-masc-2.jpg" alt="Sapato Derby Casual" class="product-card-img secondary" loading="lazy">
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-header">
+                        <h4 class="product-card-title">Sapato Derby Casual</h4>
+                        <span class="product-card-price">R$ 389,00</span>
+                    </div>
+                    <p class="product-card-desc">Camurça com sola vulcanizada</p>
+                    <div class="card-color-dots">
+                        <span class="color-dot" style="background-color: #1c1c1c;"></span>
+                        <span class="color-dot" style="background-color: #5a3a22;"></span>
+                        <span class="color-dot" style="background-color: #cfbeaa;"></span>
+                        <span class="color-dot" style="background-color: #8c8e90;"></span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Produto 4 -->
+            <a href="product.html?id=camisa-fem" class="product-card">
+                <div class="product-card-media">
+                    <img src="assets/camisa-fem-1.jpg" alt="Camisa Linho Oversized" class="product-card-img primary" loading="lazy">
+                    <img src="assets/camisa-fem-2.jpg" alt="Camisa Linho Oversized" class="product-card-img secondary" loading="lazy">
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-header">
+                        <h4 class="product-card-title">Camisa Linho Oversized</h4>
+                        <span class="product-card-price">R$ 289,00</span>
+                    </div>
+                    <p class="product-card-desc">Corte descontraído e elegante</p>
+                    <div class="card-color-dots">
+                        <span class="color-dot" style="background-color: #ECECEC;"></span>
+                        <span class="color-dot" style="background-color: #ebd8c8;"></span>
+                        <span class="color-dot" style="background-color: #818e7e;"></span>
+                        <span class="color-dot" style="background-color: #7c93ab;"></span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Produto 5 -->
+            <a href="product.html?id=sapato-mocassim" class="product-card">
+                <div class="product-card-media">
+                    <img src="assets/sapato-fem-1.jpg" alt="Mocassim Elegance" class="product-card-img primary" loading="lazy">
+                    <img src="assets/sapato-fem-2.jpg" alt="Mocassim Elegance" class="product-card-img secondary" loading="lazy">
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-header">
+                        <h4 class="product-card-title">Mocassim Elegance</h4>
+                        <span class="product-card-price">R$ 349,00</span>
+                    </div>
+                    <p class="product-card-desc">Palmilha confortável acolchoada</p>
+                    <div class="card-color-dots">
+                        <span class="color-dot" style="background-color: #181818;"></span>
+                        <span class="color-dot" style="background-color: #eddcc6;"></span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Produto 6 -->
+            <a href="product.html?id=camisetas-marca" class="product-card">
+                <div class="product-card-media">
+                    <img src="assets/camisetas-marca-1.jpg" alt="Camiseta Classic Aura" class="product-card-img primary" loading="lazy">
+                    <img src="assets/camisetas-marca-2.jpg" alt="Camiseta Classic Aura" class="product-card-img secondary" loading="lazy">
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-header">
+                        <h4 class="product-card-title">Camiseta Classic Aura</h4>
+                        <span class="product-card-price">R$ 199,00</span>
+                    </div>
+                    <p class="product-card-desc">Algodão egípcio penteado</p>
+                    <div class="card-color-dots">
+                        <span class="color-dot" style="background-color: #dbd8d0;"></span>
+                        <span class="color-dot" style="background-color: #ECECEC;"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand">
+                <a href="#" class="logo">AURA</a>
+                <p>O luxo redefinido através da simplicidade, sustentabilidade e designs atemporais criados para durar.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Coleções</h5>
+                <a href="#">Novos Lançamentos</a>
+                <a href="#">Camisas Especiais</a>
+                <a href="#">Acessórios de Couro</a>
+                <a href="#">Sapatos Artesanais</a>
+            </div>
+            <div class="footer-col">
+                <h5>Ajuda & Suporte</h5>
+                <a href="#">Rastrear Pedido</a>
+                <a href="#">Política de Envios</a>
+                <a href="#">Trocas & Devoluções</a>
+                <a href="#">Fale Conosco</a>
+            </div>
+            <div class="footer-col newsletter">
+                <h5>Inscreva-se</h5>
+                <p>Receba lançamentos exclusivos e insights de curadoria de moda minimalista.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Inscrição realizada com sucesso!');">
+                    <input type="email" placeholder="Seu e-mail profissional" required>
+                    <button type="submit" class="newsletter-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AURA Inc. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer-overlay"></div>
+    <div class="cart-drawer">
+        <div class="cart-drawer-header">
+            <h3>Sua Sacola (<span class="cart-total-qty">0</span>)</h3>
+            <button class="cart-close-btn" aria-label="Fechar carrinho">&times;</button>
+        </div>
+        <div class="cart-drawer-body">
+            <div class="empty-cart-message">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="empty-cart-icon"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <p>Sua sacola está vazia.</p>
+                <button class="btn btn-dark close-cart-to-shop">Explorar Coleção</button>
+            </div>
+            <div class="cart-items-container"></div>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-subtotal-row">
+                <span>Subtotal</span>
+                <span class="cart-subtotal-val">R$ 0,00</span>
+            </div>
+            <p class="cart-footer-info">Frete grátis para compras acima de R$ 400.</p>
+            <button class="btn btn-dark checkout-btn" onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script src="app.js?v=4"></script>
+</body>
+</html>

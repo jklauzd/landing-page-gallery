@@ -8,6 +8,7 @@ export default function AuraPage() {
       description="Loja premium com vitrine limpa, foco no produto e caminho direto para compra."
       image="/images/aura-products.png"
       imageAlt="Produtos do ecommerce AURA"
+      liveUrl="/sites/aura/index.html"
       accent="blue"
     />
   )

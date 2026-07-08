@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether Nexus // Dashboard & Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background glow elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <div class="logo-circle">
+                        <span class="logo-inner"></span>
+                    </div>
+                </div>
+                <div class="brand-name">
+                    <h2>Aether Nexus</h2>
+                    <span>Creative Tech Studio</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-tab="overview">
+                        <a href="#overview">
+                            <i data-lucide="layout-dashboard"></i>
+                            <span>Visão Geral</span>
+                        </a>
+                    </li>
+                    <li data-tab="portfolio">
+                        <a href="#portfolio">
+                            <i data-lucide="briefcase"></i>
+                            <span>Portfólio</span>
+                        </a>
+                    </li>
+                    <li data-tab="analytics">
+                        <a href="#analytics">
+                            <i data-lucide="line-chart"></i>
+                            <span>Métricas</span>
+                        </a>
+                    </li>
+                    <li data-tab="team">
+                        <a href="#team">
+                            <i data-lucide="users"></i>
+                            <span>Equipe</span>
+                        </a>
+                    </li>
+                    <li data-tab="settings">
+                        <a href="#settings">
+                            <i data-lucide="settings"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="connection-status">
+                    <span class="status-indicator online pulsing"></span>
+                    <span>Simulação Ativa</span>
+                </div>
+                <div class="user-profile-sm">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar do Usuário" id="sidebar-avatar" class="avatar">
+                    <div class="user-info">
+                        <h4 id="sidebar-name">Ana Clara</h4>
+                        <span id="sidebar-role">Diretora Criativa</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Pesquisar projetos, métricas, equipe..." id="global-search">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Live Clock Widget -->
+                    <div class="live-clock">
+                        <i data-lucide="clock"></i>
+                        <span id="current-time">00:00:00</span>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-toggle-btn" title="Alternar Tema">
+                        <i data-lucide="sun" class="sun-icon"></i>
+                        <i data-lucide="moon" class="moon-icon"></i>
+                    </button>
+
+                    <!-- Notifications Dropdown -->
+                    <div class="notification-wrapper">
+                        <button class="icon-button notification-btn" id="notification-trigger">
+                            <i data-lucide="bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notification-menu">
+                            <div class="notification-header">
+                                <h3>Notificações</h3>
+                                <button class="clear-all-btn" id="clear-notif-btn">Limpar tudo</button>
+                            </div>
+                            <div class="notification-list" id="notification-list-container">
+                                <div class="notification-item unread">
+                                    <div class="notif-icon success"><i data-lucide="check-circle-2"></i></div>
+                                    <div class="notif-content">
+                                        <p>Projeto <strong>AeroFlow App</strong> finalizado e enviado para revisão do cliente.</p>
+                                        <span>Há 5 minutos</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notif-icon info"><i data-lucide="refresh-cw"></i></div>
+                                    <div class="notif-content">
+                                        <p>O fluxo de receita mensal subiu <strong>+12.5%</strong> após integração de novos pipelines.</p>
+                                        <span>Há 2 horas</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notif-icon warning"><i data-lucide="alert-triangle"></i></div>
+                                    <div class="notif-content">
+                                        <p>Capacidade de infraestrutura atingiu <strong>82%</strong> de alocação de recursos.</p>
+                                        <span>Ontem</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Actions -->
+                    <div class="quick-user">
+                        <span class="user-greeting">Olá, <strong id="greeting-name">Ana</strong></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Container -->
+            <main class="content-container">
+
+                <!-- TAB: OVERVIEW -->
+                <section class="tab-pane active" id="overview-pane">
+                    <!-- Dashboard Greeting -->
+                    <div class="dashboard-welcome">
+                        <div>
+                            <h1>Painel Executivo</h1>
+                            <p>Bem-vindo ao centro de controle da Aether Nexus. Aqui está o resumo do seu estúdio hoje.</p>
+                        </div>
+                        <div class="quick-action-buttons">
+                            <button class="btn btn-secondary" id="simulate-event-btn">
+                                <i data-lucide="sparkles"></i> Simular Evento
+                            </button>
+                            <button class="btn btn-primary" id="btn-goto-projects">
+                                <i data-lucide="plus"></i> Novo Projeto
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- KPI Cards Grid -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card" data-trend="up">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Faturamento Mensal</span>
+                                <div class="kpi-icon accent-green">
+                                    <i data-lucide="dollar-sign"></i>
+                                </div>
+                            </div>
+                            <div class="kpi-value-wrapper">
+                                <h2 class="kpi-value" id="kpi-revenue">R$ 142.850</h2>
+                                <span class="kpi-trend up" id="kpi-revenue-trend">
+                                    <i data-lucide="trending-up"></i> +12.5%
+                                </span>
+                            </div>
+                            <div class="kpi-footer">
+                                <span>Meta de R$ 150k ativa</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card" data-trend="stable">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Projetos Ativos</span>
+                                <div class="kpi-icon accent-indigo">
+                                    <i data-lucide="kanban-square"></i>
+                                </div>
+                            </div>
+                            <div class="kpi-value-wrapper">
+                                <h2 class="kpi-value" id="kpi-projects">18 / 24</h2>
+                                <span class="kpi-trend stable" id="kpi-projects-trend">
+                                    <i data-lucide="minus"></i> 75% cap.
+                                </span>
+                            </div>
+                            <div class="kpi-footer">
+                                <span>4 projetos em homologação</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card" data-trend="up">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Satisfação do Cliente</span>
+                                <div class="kpi-icon accent-purple">
+                                    <i data-lucide="smile"></i>
+                                </div>
+                            </div>
+                            <div class="kpi-value-wrapper">
+                                <h2 class="kpi-value" id="kpi-csat">4.9 / 5.0</h2>
+                                <span class="kpi-trend up" id="kpi-csat-trend">
+                                    <i data-lucide="trending-up"></i> +2.3%
+                                </span>
+                            </div>
+                            <div class="kpi-footer">
+                                <span>Avaliação média do NPS</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card" data-trend="up">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Eficiência Operacional</span>
+                                <div class="kpi-icon accent-cyan">
+                                    <i data-lucide="activity"></i>
+                                </div>
+                            </div>
+                            <div class="kpi-value-wrapper">
+                                <h2 class="kpi-value" id="kpi-efficiency">94.2%</h2>
+                                <span class="kpi-trend up" id="kpi-efficiency-trend">
+                                    <i data-lucide="arrow-up-right"></i> +3.1%
+                                </span>
+                            </div>
+                            <div class="kpi-footer">
+                                <span>Sprint atual em alta</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts & Insights Row -->
+                    <div class="dashboard-grid-row">
+                        <!-- Main Performance Chart -->
+                        <div class="dashboard-card main-chart-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3>Performance Financeira e Entregas</h3>
+                                    <p>Comparativo de Receita Mensal Real vs. Custos e Entregas Concluídas</p>
+                                </div>
+                                <div class="card-actions">
+                                    <select class="select-dropdown" id="chart-timeframe">
+                                        <option value="6m">Últimos 6 Meses</option>
+                                        <option value="12m">Últimos 12 Meses</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body chart-container">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Status Breakdown Chart -->
+                        <div class="dashboard-card pie-chart-card">
+                            <div class="card-header">
+                                <h3>Status dos Projetos</h3>
+                                <p>Distribuição atual de demandas</p>
+                            </div>
+                            <div class="card-body chart-container doughnut-wrap">
+                                <canvas id="projectStatusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Details Row -->
+                    <div class="dashboard-grid-row thirds">
+                        <!-- Recent Activity -->
+                        <div class="dashboard-card span-2">
+                            <div class="card-header">
+                                <h3>Atividades Recentes</h3>
+                                <p>Atualizações em tempo real do estúdio</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-timeline" id="recent-activities-list">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Health / Alerts -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Saúde dos Contratos</h3>
+                                <p>Análise de riscos e prazos</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="health-checks-list" id="health-checks-container">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: PORTFOLIO / PROJECTS -->
+                <section class="tab-pane" id="portfolio-pane">
+                    <div class="tab-header-flex">
+                        <div>
+                            <h1>Portfólio & Projetos</h1>
+                            <p>Projetos desenvolvidos pela Aether Nexus. Explore métricas detalhadas e progresso de cada um.</p>
+                        </div>
+                        <div class="portfolio-controls">
+                            <!-- Filters -->
+                            <div class="filter-buttons" id="portfolio-category-filters">
+                                <button class="filter-btn active" data-filter="all">Todos</button>
+                                <button class="filter-btn" data-filter="web">Web</button>
+                                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                                <button class="filter-btn" data-filter="design">Design / Branding</button>
+                                <button class="filter-btn" data-filter="ai">AI / Web3</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Grid -->
+                    <div class="projects-grid" id="projects-grid-container">
+                        <!-- Populated dynamic project cards via JS -->
+                    </div>
+                </section>
+
+                <!-- TAB: ANALYTICS -->
+                <section class="tab-pane" id="analytics-pane">
+                    <div class="tab-header-flex">
+                        <div>
+                            <h1>Métricas & Analytics</h1>
+                            <p>Estatísticas aprofundadas sobre tráfego, engajamento dos produtos e satisfação geral.</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-charts-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Fontes de Tráfego e Captação</h3>
+                                <p>Distribuição de leads e clientes</p>
+                            </div>
+                            <div class="card-body chart-container-medium">
+                                <canvas id="trafficSourcesChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Funil de Conversão (Leads a Contrato)</h3>
+                                <p>Taxa de retenção e sucesso por etapa</p>
+                            </div>
+                            <div class="card-body chart-container-medium">
+                                <canvas id="conversionFunnelChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card span-2-cols">
+                            <div class="card-header">
+                                <h3>Evolução da Satisfação do Cliente (NPS)</h3>
+                                <p>Avaliações coletadas mensalmente</p>
+                            </div>
+                            <div class="card-body chart-container-medium">
+                                <canvas id="customerSatisfactionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card table-card">
+                        <div class="card-header">
+                            <h3>Feedback Recente de Clientes</h3>
+                            <p>Últimos comentários recebidos após encerramento de sprints</p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Projeto</th>
+                                        <th>Avaliação</th>
+                                        <th>Comentário</th>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="feedbacks-table-body">
+                                    <!-- Dynamically filled -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: TEAM -->
+                <section class="tab-pane" id="team-pane">
+                    <div class="tab-header-flex">
+                        <div>
+                            <h1>Nossa Equipe</h1>
+                            <p>Conheça os talentos por trás da Aether Nexus. Alocação de recursos e status de produtividade.</p>
+                        </div>
+                        <div class="team-actions">
+                            <div class="search-bar team-search">
+                                <i data-lucide="search"></i>
+                                <input type="text" placeholder="Filtrar por nome ou skill..." id="team-search-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Grid -->
+                    <div class="team-grid" id="team-cards-container">
+                        <!-- Filled dynamically -->
+                    </div>
+                </section>
+
+                <!-- TAB: SETTINGS -->
+                <section class="tab-pane" id="settings-pane">
+                    <div class="tab-header-flex">
+                        <div>
+                            <h1>Configurações do Dashboard</h1>
+                            <p>Gerencie as configurações visuais, modifique as cores de destaque e ajuste as simulações em tempo real.</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-grid">
+                        <!-- Appearance Settings -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i data-lucide="palette"></i> Personalização de Cores</h3>
+                                <p>Escolha a cor principal do dashboard</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="color-picker-group" id="accent-color-picker">
+                                    <button class="color-swatch active" data-color="indigo" style="background-color: #5046e5;"></button>
+                                    <button class="color-swatch" data-color="purple" style="background-color: #9333ea;"></button>
+                                    <button class="color-swatch" data-color="cyan" style="background-color: #06b6d4;"></button>
+                                    <button class="color-swatch" data-color="emerald" style="background-color: #10b981;"></button>
+                                    <button class="color-swatch" data-color="rose" style="background-color: #f43f5e;"></button>
+                                </div>
+                                <div class="settings-control">
+                                    <label class="switch-container">
+                                        <input type="checkbox" id="glassmorphism-toggle" checked>
+                                        <span class="switch-slider"></span>
+                                        <span class="switch-label">Efeito de Blur (Glassmorphism)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Simulation Settings -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i data-lucide="cpu"></i> Simulação de Dados Ativa</h3>
+                                <p>Controla a geração de eventos fictícios no painel</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="settings-control">
+                                    <label class="switch-container">
+                                        <input type="checkbox" id="realtime-toggle" checked>
+                                        <span class="switch-slider"></span>
+                                        <span class="switch-label">Simular atualizações a cada 10s</span>
+                                    </label>
+                                </div>
+                                <div class="settings-control range-control">
+                                    <label for="simulation-speed">Volatilidade dos dados (Simulado):</label>
+                                    <input type="range" id="simulation-speed" min="1" max="10" value="5">
+                                    <div class="range-labels">
+                                        <span>Baixa</span>
+                                        <span>Média</span>
+                                        <span>Alta</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Manager Simulation -->
+                        <div class="dashboard-card span-2-cols">
+                            <div class="card-header">
+                                <h3><i data-lucide="user"></i> Dados de Demonstração (Perfil)</h3>
+                                <p>Alterar as informações básicas do perfil administrativo demonstrado</p>
+                            </div>
+                            <div class="card-body">
+                                <form id="settings-profile-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="user-name-input">Nome Completo</label>
+                                            <input type="text" id="user-name-input" value="Ana Clara">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="user-role-input">Cargo / Função</label>
+                                            <input type="text" id="user-role-input" value="Diretora Criativa">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="user-avatar-input">URL do Avatar</label>
+                                            <input type="text" id="user-avatar-input" value="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Salvar Perfil</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div class="modal-backdrop" id="project-detail-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close-btn">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-header">
+                <span class="project-tag" id="modal-project-category">Web Development</span>
+                <h2 id="modal-project-title">AeroFlow Mobile App</h2>
+                <p id="modal-project-description">Redesign completo da interface de controle aeroespacial da AeroFlow, com foco em usabilidade e performance em tempo real.</p>
+            </div>
+            <div class="modal-body-grid">
+                <div class="modal-main-content">
+                    <div class="modal-section">
+                        <h3>Status das Tarefas</h3>
+                        <div class="modal-checklist" id="modal-project-tasks">
+                            <!-- Populated on click -->
+                        </div>
+                    </div>
+                    <div class="modal-section">
+                        <h3>Equipe do Projeto</h3>
+                        <div class="modal-project-team" id="modal-project-team-list">
+                            <!-- Avatars will be populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-sidebar-info">
+                    <div class="metric-widget-card">
+                        <span class="widget-label">Orçamento Alocado</span>
+                        <h3 class="widget-value" id="modal-project-budget">R$ 48.000</h3>
+                    </div>
+                    <div class="metric-widget-card">
+                        <span class="widget-label">Progresso Geral</span>
+                        <div class="widget-flex">
+                            <h3 class="widget-value" id="modal-project-completion">85%</h3>
+                            <div class="circular-progress-wrapper">
+                                <svg width="50" height="50">
+                                    <circle class="bg" cx="25" cy="25" r="20"></circle>
+                                    <circle class="fg" id="modal-progress-circle" cx="25" cy="25" r="20" stroke-dasharray="125.6" stroke-dashoffset="30"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metric-widget-card">
+                        <span class="widget-label">Prazo de Entrega</span>
+                        <p class="widget-sub" id="modal-project-deadline">15 de Setembro de 2026</p>
+                    </div>
+                    <div class="metric-widget-card">
+                        <span class="widget-label">Tecnologias Utilizadas</span>
+                        <div class="tech-tag-container" id="modal-project-tech">
+                            <!-- Populated on click -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Application -->
+    <script src="app.js"></script>
+</body>
+</html>

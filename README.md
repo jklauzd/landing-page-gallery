@@ -34,6 +34,14 @@ The portfolio lives at `/` and the demo pages are prepared as internal routes:
 - `/dashboard`
 - `/petluxe`
 
+The original static projects are bundled under `public/sites/<slug>`:
+
+- `public/sites/aura`
+- `public/sites/odontologia`
+- `public/sites/advocacia`
+- `public/sites/dashboard`
+- `public/sites/petluxe`
+
 `middleware.ts` also rewrites matching subdomains to those routes, so a deployment can later point:
 
 - `aura.zcompany.com.br` -> `/aura`

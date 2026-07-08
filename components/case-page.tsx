@@ -9,6 +9,7 @@ type CasePageProps = {
   description: string
   image: string
   imageAlt: string
+  liveUrl: string
   accent?: 'green' | 'blue' | 'gold'
 }
 
@@ -18,6 +19,7 @@ export function CasePage({
   description,
   image,
   imageAlt,
+  liveUrl,
   accent = 'green',
 }: CasePageProps) {
   return (
@@ -40,12 +42,17 @@ export function CasePage({
           </Link>
         </div>
 
-        <a className="zco-case-page-browser" href={image} target="_blank" rel="noreferrer">
+        <a className="zco-case-page-back zco-case-page-live" href={liveUrl} target="_blank" rel="noreferrer">
+          Abrir página completa
+          <LinkExternalIcon size={18} />
+        </a>
+        <a className="zco-case-page-browser" href={liveUrl} target="_blank" rel="noreferrer">
           <div className="zco-browser-top">
             <span />
             <span />
             <span />
           </div>
+          <iframe src={liveUrl} title={imageAlt} loading="eager" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={image} alt={imageAlt} />
           <i aria-hidden="true">

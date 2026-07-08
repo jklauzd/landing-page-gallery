@@ -8,6 +8,7 @@ export default function PetluxePage() {
       description="Catálogo local no ar, bonito, simples de navegar e fácil de comprar."
       image="/images/petluxe-products.png"
       imageAlt="Produtos da loja PETLUXE"
+      liveUrl="/sites/petluxe/index.html"
       accent="gold"
     />
   )

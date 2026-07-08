@@ -1313,6 +1313,11 @@ select {
   font-weight: 700;
 }
 
+.zco-case-page-live {
+  border-color: rgba(143, 214, 148, 0.34);
+  background: rgba(143, 214, 148, 0.1);
+}
+
 .zco-case-page-browser {
   position: relative;
   display: block;
@@ -1332,8 +1337,16 @@ select {
   border-color: rgba(143, 214, 148, 0.42);
 }
 
-.zco-case-page-browser img {
+.zco-case-page-browser iframe {
   display: block;
+  width: 100%;
+  height: calc(100% - 38px);
+  border: 0;
+  background: #fff;
+}
+
+.zco-case-page-browser img {
+  display: none;
   width: 100%;
   height: calc(100% - 38px);
   object-fit: cover;
