@@ -2,7 +2,7 @@
 
 import { ArrowRightIcon } from '@primer/octicons-react'
 
-const PETSHOP_URL = '/petluxe'
+const PETSHOP_URL = '/sites/petluxe/index.html'
 
 export function KineticSlide() {
   return (

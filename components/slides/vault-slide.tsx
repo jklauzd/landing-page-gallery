@@ -2,7 +2,7 @@
 
 import { ArrowRightIcon } from '@primer/octicons-react'
 
-const DASHBOARD_URL = '/dashboard'
+const DASHBOARD_URL = '/sites/dashboard/index.html'
 
 export function VaultSlide() {
   return (

@@ -2,8 +2,8 @@
 
 import { ArrowRightIcon } from '@primer/octicons-react'
 
-const DENTAL_URL = '/odontologia'
-const LAW_URL = '/advocacia'
+const DENTAL_URL = '/sites/odontologia/index.html'
+const LAW_URL = '/sites/advocacia/index.html'
 
 export function AuroraSlide({ active }: { active: boolean }) {
   return (

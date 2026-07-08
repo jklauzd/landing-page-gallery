@@ -26,29 +26,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## ZCompany pages
 
-The portfolio lives at `/` and the demo pages are prepared as internal routes:
+The portfolio lives at `/`. Demo sites open directly from the gallery, without an intermediate case page.
 
-- `/aura`
-- `/odontologia`
-- `/advocacia`
-- `/dashboard`
-- `/petluxe`
+The original static projects are bundled under `public/sites/<slug>` and are available at:
 
-The original static projects are bundled under `public/sites/<slug>`:
+- `/sites/aura/index.html`
+- `/sites/odontologia/index.html`
+- `/sites/advocacia/index.html`
+- `/sites/dashboard/index.html`
+- `/sites/petluxe/index.html`
 
-- `public/sites/aura`
-- `public/sites/odontologia`
-- `public/sites/advocacia`
-- `public/sites/dashboard`
-- `public/sites/petluxe`
+`middleware.ts` also rewrites matching subdomains directly to those full static sites:
 
-`middleware.ts` also rewrites matching subdomains to those routes, so a deployment can later point:
-
-- `aura.zcompany.com.br` -> `/aura`
-- `odontologia.zcompany.com.br` -> `/odontologia`
-- `advocacia.zcompany.com.br` -> `/advocacia`
-- `dashboard.zcompany.com.br` -> `/dashboard`
-- `petluxe.zcompany.com.br` -> `/petluxe`
+- `aura.zcompany.com.br` -> `public/sites/aura`
+- `odontologia.zcompany.com.br` -> `public/sites/odontologia`
+- `advocacia.zcompany.com.br` -> `public/sites/advocacia`
+- `dashboard.zcompany.com.br` -> `public/sites/dashboard`
+- `petluxe.zcompany.com.br` -> `public/sites/petluxe`
 
 ## Learn More
 

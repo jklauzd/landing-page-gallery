@@ -2,7 +2,7 @@
 
 import { ArrowRightIcon } from '@primer/octicons-react'
 
-const AURA_URL = '/aura'
+const AURA_URL = '/sites/aura/index.html'
 
 export function MeridianSlide() {
   return (
