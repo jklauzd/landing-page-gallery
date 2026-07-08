@@ -1399,6 +1399,17 @@ select {
     justify-self: center;
   }
 
+  .zco-case-cta {
+    border-color: rgba(80, 150, 255, 0.72);
+    background: #2f81f7;
+    color: #fff;
+  }
+
+  .zco-case-cta:hover {
+    border-color: rgba(110, 170, 255, 0.9);
+    background: #388bfd;
+  }
+
   .zco-aura-stage,
   .zco-dashboard-stage,
   .zco-petshop-stage {
@@ -1459,7 +1470,10 @@ select {
     order: 3;
     position: relative;
     z-index: 5;
-    margin-bottom: -18px;
+    flex-direction: column;
+    align-items: stretch;
+    width: min(220px, 100%);
+    margin-bottom: 0;
   }
 
   .zco-aura-browser {
@@ -1587,19 +1601,21 @@ select {
   }
 
   .zco-case {
-    gap: 14px;
+    gap: 16px;
+    align-content: start;
   }
 
   .zco-case h2 {
+    margin-top: 18px;
     max-width: none;
     font-size: clamp(2.28rem, 9.8vw, 3rem);
     line-height: 0.94;
   }
 
   .zco-case p {
-    max-width: 27ch;
-    font-size: 13.5px;
-    line-height: 1.38;
+    max-width: 29ch;
+    font-size: 15px;
+    line-height: 1.42;
   }
 
   .zco-case-services h2 {
@@ -1612,9 +1628,18 @@ select {
   }
 
   .zco-case-cta {
-    min-height: 36px;
-    padding-inline: 13px;
-    font-size: 10.5px;
+    min-height: 40px;
+    padding-inline: 16px;
+    border-color: rgba(80, 150, 255, 0.72);
+    background: #2f81f7;
+    color: #fff;
+    font-size: 11px;
+    box-shadow: 0 12px 34px rgba(47, 129, 247, 0.2);
+  }
+
+  .zco-case-cta:hover {
+    border-color: rgba(110, 170, 255, 0.9);
+    background: #388bfd;
   }
 
   .zco-petshop-browser {
@@ -1652,14 +1677,19 @@ select {
   }
 
   .zco-case-services .zco-actions {
+    flex-direction: column;
+    align-items: stretch;
     gap: 8px;
-    margin-bottom: -14px;
+    width: min(210px, 100%);
+    margin-top: 2px;
+    margin-bottom: 0;
   }
 
   .zco-case-services .zco-case-cta {
-    min-height: 32px;
-    padding-inline: 10px;
-    font-size: 9.5px;
+    justify-content: center;
+    min-height: 38px;
+    padding-inline: 12px;
+    font-size: 10.5px;
   }
 
   .zco-dashboard-stage {
