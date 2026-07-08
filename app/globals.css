@@ -1375,7 +1375,38 @@ select {
   }
 
   .zco-case-copy {
-    gap: 12px;
+    display: contents;
+  }
+
+  .zco-case h2 {
+    order: 1;
+    justify-self: center;
+    max-width: min(100%, 12ch);
+    text-align: center;
+    font-size: clamp(2.55rem, 10.8vw, 3.55rem);
+  }
+
+  .zco-case p {
+    order: 2;
+    justify-self: center;
+    max-width: 30ch;
+    text-align: center;
+  }
+
+  .zco-case .zco-actions {
+    order: 4;
+    justify-content: center;
+    justify-self: center;
+  }
+
+  .zco-aura-stage,
+  .zco-dashboard-stage,
+  .zco-petshop-stage {
+    order: 3;
+  }
+
+  .zco-service-showcase {
+    order: 4;
   }
 
   .zco-hero-reel,
@@ -1400,7 +1431,7 @@ select {
   }
 
   .zco-service-showcase {
-    min-height: 430px;
+    min-height: 406px;
   }
 
   .zco-service-browser {
@@ -1422,6 +1453,13 @@ select {
     height: 274px;
     padding: 7px;
     border-radius: 22px;
+  }
+
+  .zco-case-services .zco-actions {
+    order: 3;
+    position: relative;
+    z-index: 5;
+    margin-bottom: -18px;
   }
 
   .zco-aura-browser {
@@ -1545,35 +1583,38 @@ select {
   }
 
   .zco-slide {
-    padding: 76px 24px 58px;
+    padding: 76px 24px 48px;
   }
 
-  .zco-case-kinetic {
-    gap: 12px;
+  .zco-case {
+    gap: 14px;
   }
 
-  .zco-case-kinetic .zco-case-copy {
-    gap: 10px;
+  .zco-case h2 {
+    max-width: none;
+    font-size: clamp(2.28rem, 9.8vw, 3rem);
+    line-height: 0.94;
   }
 
-  .zco-case-kinetic h2 {
-    font-size: clamp(2.35rem, 11vw, 3.15rem);
-  }
-
-  .zco-case-services h2 {
-    font-size: clamp(2.55rem, 11vw, 3.35rem);
-  }
-
-  .zco-case-kinetic p,
-  .zco-case-services p {
-    font-size: 14px;
+  .zco-case p {
+    max-width: 27ch;
+    font-size: 13.5px;
     line-height: 1.38;
   }
 
+  .zco-case-services h2 {
+    font-size: clamp(2.05rem, 8.8vw, 2.65rem);
+    white-space: nowrap;
+  }
+
+  .zco-case-services p {
+    max-width: 28ch;
+  }
+
   .zco-case-cta {
-    min-height: 40px;
-    padding-inline: 14px;
-    font-size: 14px;
+    min-height: 36px;
+    padding-inline: 13px;
+    font-size: 10.5px;
   }
 
   .zco-petshop-browser {
@@ -1589,11 +1630,11 @@ select {
   }
 
   .zco-service-showcase {
-    min-height: 338px;
+    min-height: 332px;
   }
 
   .zco-service-browser {
-    height: 236px;
+    height: 228px;
   }
 
   .zco-service-browser .zco-browser-top {
@@ -1608,6 +1649,40 @@ select {
     width: 108px;
     height: 224px;
     border-radius: 18px;
+  }
+
+  .zco-case-services .zco-actions {
+    gap: 8px;
+    margin-bottom: -14px;
+  }
+
+  .zco-case-services .zco-case-cta {
+    min-height: 32px;
+    padding-inline: 10px;
+    font-size: 9.5px;
+  }
+
+  .zco-dashboard-stage {
+    margin-top: 4px;
+  }
+
+  .zco-dashboard-browser {
+    height: 210px;
+  }
+
+  .zco-dashboard-browser .zco-browser-top {
+    height: 24px;
+  }
+
+  .zco-dashboard-browser img {
+    height: calc(100% - 24px);
+    object-fit: contain;
+    object-position: top center;
+    background: #07111d;
+  }
+
+  .zco-aura-browser {
+    height: 282px;
   }
 
   .zco-service-phone img {

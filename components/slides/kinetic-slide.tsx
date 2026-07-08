@@ -14,7 +14,7 @@ export function KineticSlide() {
         <p data-reveal>Seu catálogo no ar, bonito e fácil de comprar.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={PETSHOP_URL} target="_blank" rel="noreferrer">
-            Ver loja
+            Ver demonstração
             <ArrowRightIcon size={18} />
           </a>
         </div>
