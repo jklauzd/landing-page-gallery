@@ -1,217 +1,43 @@
 'use client'
 
-import { useState } from 'react'
-import {
-  Stack,
-  Text,
-  Button,
-  FormControl,
-  TextInput,
-  Textarea,
-  Select,
-  Flash,
-} from '@primer/react'
-import { PaperAirplaneIcon, MailIcon } from '@primer/octicons-react'
+import { MailIcon } from '@primer/octicons-react'
+
+const EMAIL_LABEL = 'zcompany.com.br'
+const EMAIL = 'contato@zcompany.com.br'
+const WHATSAPP_LABEL = '0123456789'
+const WHATSAPP_MESSAGE = 'Olá, vim do site da ZCompany e gostaria de um orçamento.'
+const WHATSAPP_URL = `https://wa.me/550123456789?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
 export function ContactSlide() {
-  const [submitted, setSubmitted] = useState(false)
-
   return (
-    <Stack
-      direction="vertical"
-      justify="center"
-      style={{
-        position: 'relative',
-        height: '100%',
-        overflow: 'hidden',
-        backgroundColor: 'var(--bgColor-default)',
-      }}
-    >
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'radial-gradient(ellipse 45% 40% at 25% 80%, var(--bgColor-accent-muted), transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+    <section className="zco-slide zco-contact">
+      <div className="zco-ambient zco-ambient-a" aria-hidden="true" />
 
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: 'var(--base-size-48, 48px)',
-          alignItems: 'center',
-        }}
-      >
-        {/* Massive prompt */}
-        <Stack direction="vertical" gap="normal" align="start">
-          <div data-reveal>
-            <Text
-              size="small"
-              style={{
-                fontFamily: 'var(--fontStack-monospace)',
-                color: 'var(--fgColor-muted)',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-              }}
-            >
-              06 — Start something
-            </Text>
-          </div>
-
-          <div data-reveal>
-            <h2
-              className="text-balance"
-              style={{
-                fontFamily: 'var(--fontStack-sansSerifDisplay)',
-                fontSize: 'clamp(3rem, 7vw, 6rem)',
-                lineHeight: 1.02,
-                letterSpacing: '-0.02em',
-                fontWeight: 600,
-                color: 'var(--fgColor-default)',
-                maxWidth: '12ch',
-                textWrap: 'balance',
-              }}
-            >
-              Have a project in mind?
-            </h2>
-          </div>
-
-          <div data-reveal>
-            <a
-              href="mailto:hello@zcompany.com"
-              className="zco-cta-underline"
-              style={{ textDecoration: 'none' }}
-            >
-              <MailIcon size={20} fill="var(--fgColor-default)" />
-              <Text size="large" weight="semibold">
-                hello@zcompany.com
-              </Text>
-            </a>
-          </div>
-
-          <div data-reveal>
-            <Text size="small" style={{ color: 'var(--fgColor-muted)' }}>
-              We take on four projects per quarter. Tell us about yours.
-            </Text>
-          </div>
-        </Stack>
-
-        {/* Minimal form */}
-        <div data-reveal>
-          {submitted ? (
-            <Flash variant="success">
-              Thank you — we&apos;ll reply within two business days.
-            </Flash>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault()
-                setSubmitted(true)
-              }}
-            >
-              <Stack direction="vertical" gap="normal">
-                <Stack direction="horizontal" gap="normal" wrap="wrap">
-                  <Stack.Item grow>
-                    <FormControl required>
-                      <FormControl.Label>Name</FormControl.Label>
-                      <TextInput block placeholder="Ada Lovelace" />
-                    </FormControl>
-                  </Stack.Item>
-                  <Stack.Item grow>
-                    <FormControl required>
-                      <FormControl.Label>Email</FormControl.Label>
-                      <TextInput
-                        block
-                        type="email"
-                        placeholder="ada@company.com"
-                      />
-                    </FormControl>
-                  </Stack.Item>
-                </Stack>
-
-                <FormControl>
-                  <FormControl.Label>Budget</FormControl.Label>
-                  <Select block defaultValue="25-50">
-                    <Select.Option value="10-25">$10k — $25k</Select.Option>
-                    <Select.Option value="25-50">$25k — $50k</Select.Option>
-                    <Select.Option value="50-100">$50k — $100k</Select.Option>
-                    <Select.Option value="100+">$100k+</Select.Option>
-                  </Select>
-                </FormControl>
-
-                <FormControl required>
-                  <FormControl.Label>Message</FormControl.Label>
-                  <Textarea
-                    block
-                    rows={4}
-                    resize="vertical"
-                    placeholder="What are we building together?"
-                  />
-                  <FormControl.Caption>
-                    A few sentences is plenty — we&apos;ll dig in on a call.
-                  </FormControl.Caption>
-                </FormControl>
-
-                <Stack direction="horizontal" justify="end">
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="large"
-                    trailingVisual={PaperAirplaneIcon}
-                  >
-                    Send inquiry
-                  </Button>
-                </Stack>
-              </Stack>
-            </form>
-          )}
-        </div>
+      <div className="zco-contact-copy">
+        <h2 data-reveal>Vamos conversar.</h2>
+        <p data-reveal>Entre em contato para um orçamento</p>
       </div>
 
-      {/* Footer strip */}
-      <Stack
-        direction="horizontal"
-        justify="space-between"
-        align="center"
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-          paddingBottom: 'var(--base-size-24)',
-        }}
-      >
-        <Text
-          size="small"
-          style={{
-            fontFamily: 'var(--fontStack-monospace)',
-            color: 'var(--fgColor-muted)',
-          }}
-        >
-          © 2026 ZCOMPANY
-        </Text>
-        <Text
-          size="small"
-          style={{
-            fontFamily: 'var(--fontStack-monospace)',
-            color: 'var(--fgColor-muted)',
-          }}
-        >
-          06 / 06
-        </Text>
-      </Stack>
-    </Stack>
+      <div data-reveal className="zco-contact-panel">
+        <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="zco-contact-option">
+          <span className="zco-whatsapp-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" focusable="false">
+              <path
+                fill="currentColor"
+                d="M16.1 4C9.5 4 4.2 9.3 4.2 15.8c0 2.2.6 4.2 1.7 6L4 28l6.4-1.8c1.7.9 3.6 1.4 5.7 1.4 6.5 0 11.8-5.3 11.8-11.8S22.6 4 16.1 4Zm0 21.6c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.6-.2-.4c-1-1.5-1.5-3.3-1.5-5.1 0-5.4 4.4-9.8 9.9-9.8 5.4 0 9.8 4.4 9.8 9.8 0 5.3-4.4 9.7-9.8 9.7Zm5.4-7.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4Z"
+              />
+            </svg>
+          </span>
+          <strong>{WHATSAPP_LABEL}</strong>
+        </a>
+
+        <a href={`mailto:${EMAIL}`} className="zco-contact-option">
+          <span aria-hidden="true">
+            <MailIcon size={24} />
+          </span>
+          <strong>{EMAIL_LABEL}</strong>
+        </a>
+      </div>
+    </section>
   )
 }

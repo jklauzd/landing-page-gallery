@@ -3,12 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { GalleryNav } from './nav'
-import { GalleryProgress } from './progress'
 import { HeroSlide } from '@/components/slides/hero-slide'
 import { MeridianSlide } from '@/components/slides/meridian-slide'
 import { AuroraSlide } from '@/components/slides/aurora-slide'
 import { VaultSlide } from '@/components/slides/vault-slide'
 import { KineticSlide } from '@/components/slides/kinetic-slide'
+import { HandoffSlide } from '@/components/slides/handoff-slide'
 import { ContactSlide } from '@/components/slides/contact-slide'
 
 const SLIDE_LABELS = [
@@ -17,7 +17,8 @@ const SLIDE_LABELS = [
   'Aurora',
   'Vault',
   'Kinetic',
-  'Contact',
+  'Entrega',
+  'Contato',
 ]
 
 const TRANSITION = 1.0 // seconds
@@ -27,6 +28,7 @@ const TOUCH_THRESHOLD = 50
 export function Gallery() {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
+  const [ready, setReady] = useState(false)
   const activeRef = useRef(0)
   const lockRef = useRef(false)
   const wheelAccum = useRef(0)
@@ -56,7 +58,9 @@ export function Gallery() {
     ).matches
     const duration = prefersReduced ? 0 : TRANSITION
 
-    gsap.set(inEl, { yPercent: 100 * dir, autoAlpha: 1, scale: 1, zIndex: 2 })
+    const offscreenY = window.innerHeight * dir
+
+    gsap.set(inEl, { y: offscreenY, yPercent: 0, autoAlpha: 1, scale: 1, zIndex: 2 })
     gsap.set(outEl, { zIndex: 1 })
 
     const reveals = inEl.querySelectorAll('[data-reveal]')
@@ -66,7 +70,8 @@ export function Gallery() {
       .timeline({
         defaults: { ease: 'power3.inOut' },
         onComplete: () => {
-          gsap.set(outEl, { autoAlpha: 0, scale: 1, yPercent: 100 })
+          gsap.set(inEl, { y: 0, yPercent: 0, autoAlpha: 1, scale: 1 })
+          gsap.set(outEl, { autoAlpha: 0, scale: 1, y: window.innerHeight, yPercent: 0 })
           // brief cooldown so trackpad momentum doesn't chain slides
           window.setTimeout(() => {
             lockRef.current = false
@@ -74,8 +79,8 @@ export function Gallery() {
           wheelAccum.current = 0
         },
       })
-      .to(outEl, { yPercent: -35 * dir, scale: 0.96, autoAlpha: 0, duration }, 0)
-      .to(inEl, { yPercent: 0, duration }, 0)
+      .to(outEl, { y: -window.innerHeight * 0.35 * dir, scale: 0.96, autoAlpha: 0, duration }, 0)
+      .to(inEl, { y: 0, duration }, 0)
       .to(
         reveals,
         {
@@ -98,7 +103,7 @@ export function Gallery() {
   useEffect(() => {
     slideRefs.current.forEach((el, i) => {
       if (!el) return
-      gsap.set(el, i === 0 ? { yPercent: 0, autoAlpha: 1 } : { yPercent: 100, autoAlpha: 0 })
+      gsap.set(el, i === 0 ? { y: 0, yPercent: 0, autoAlpha: 1 } : { y: window.innerHeight, yPercent: 0, autoAlpha: 0 })
     })
     const first = slideRefs.current[0]
     if (first) {
@@ -109,6 +114,7 @@ export function Gallery() {
         { y: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: 'power3.out', delay: 0.2 },
       )
     }
+    setReady(true)
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = ''
@@ -183,7 +189,8 @@ export function Gallery() {
 
   return (
     <main
-      aria-label="ZCompany — gallery of living landing pages"
+      className={`zco-gallery-shell${ready ? ' is-ready' : ''}`}
+      aria-label="Galeria de landing pages da ZCompany"
       style={{
         position: 'fixed',
         inset: 0,
@@ -192,12 +199,6 @@ export function Gallery() {
       }}
     >
       <GalleryNav activeIndex={activeIndex} onNavigate={goTo} />
-      <GalleryProgress
-        labels={SLIDE_LABELS}
-        activeIndex={activeIndex}
-        onNavigate={goTo}
-      />
-
       <section ref={setSlideRef(0)} style={slideStyle} aria-hidden={activeIndex !== 0}>
         <HeroSlide onExplore={() => goTo(1)} />
       </section>
@@ -214,6 +215,9 @@ export function Gallery() {
         <KineticSlide />
       </section>
       <section ref={setSlideRef(5)} style={slideStyle} aria-hidden={activeIndex !== 5}>
+        <HandoffSlide />
+      </section>
+      <section ref={setSlideRef(6)} style={slideStyle} aria-hidden={activeIndex !== 6}>
         <ContactSlide />
       </section>
     </main>

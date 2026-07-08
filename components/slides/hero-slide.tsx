@@ -1,144 +1,53 @@
 'use client'
 
-import { Stack, Text, Button } from '@primer/react'
-import { ArrowDownIcon, SparkleFillIcon } from '@primer/octicons-react'
+import { Button } from '@primer/react'
+import { ArrowDownIcon } from '@primer/octicons-react'
 
 export function HeroSlide({ onExplore }: { onExplore: () => void }) {
   return (
-    <Stack
-      direction="vertical"
-      justify="space-between"
-      style={{
-        position: 'relative',
-        height: '100%',
-        overflow: 'hidden',
-        backgroundColor: 'var(--bgColor-default)',
-      }}
-    >
-      {/* Ambient token-colored mesh */}
-      <div
-        aria-hidden="true"
-        className="zco-mesh"
-        style={{
-          position: 'absolute',
-          inset: '-20%',
-          background:
-            'radial-gradient(ellipse 40% 35% at 30% 40%, var(--bgColor-accent-muted), transparent 70%), radial-gradient(ellipse 35% 30% at 70% 65%, var(--bgColor-done-muted), transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+    <section className="zco-slide zco-hero">
+      <div className="zco-ambient zco-ambient-a" aria-hidden="true" />
 
-      <div />
-
-      <Stack
-        direction="vertical"
-        gap="spacious"
-        align="start"
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-        }}
-      >
-        <div data-reveal>
-          <Stack direction="horizontal" gap="condensed" align="center">
-            <SparkleFillIcon size={16} fill="var(--fgColor-accent)" />
-            <Text
-              size="small"
-              style={{
-                fontFamily: 'var(--fontStack-monospace)',
-                color: 'var(--fgColor-muted)',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-              }}
-            >
-              ZCompany — Digital Atelier
-            </Text>
-          </Stack>
+      <div className="zco-hero-copy">
+        <div data-reveal className="zco-kicker">
+          ZCompany
         </div>
-
-        <h1
-          data-reveal
-          className="text-balance"
-          style={{
-            fontFamily: 'var(--fontStack-sansSerifDisplay)',
-            fontSize: 'clamp(3rem, 8vw, 7.5rem)',
-            lineHeight: 1.02,
-            letterSpacing: '-0.02em',
-            fontWeight: 600,
-            color: 'var(--fgColor-default)',
-            maxWidth: '14ch',
-            textWrap: 'balance',
-          }}
-        >
-          Digital experiences that define brands
-        </h1>
-
-        <div data-reveal>
-          <Text
-            as="p"
-            size="large"
-            style={{ color: 'var(--fgColor-muted)', maxWidth: '44ch' }}
-          >
-            We craft landing pages as living artifacts. Scroll down — every
-            screen you pass through is a real case, built end to end by our
-            studio.
-          </Text>
+        <h1 data-reveal>Páginas que vendem.</h1>
+        <div data-reveal className="zco-actions">
+          <Button variant="primary" size="large" trailingVisual={ArrowDownIcon} onClick={onExplore}>
+            Ver projetos
+          </Button>
         </div>
+      </div>
 
-        <div data-reveal>
-          <Stack direction="horizontal" gap="normal" align="center">
-            <Button
-              variant="primary"
-              size="large"
-              trailingVisual={ArrowDownIcon}
-              onClick={onExplore}
-            >
-              Explore Our Work
-            </Button>
-            <Text
-              size="small"
-              style={{
-                fontFamily: 'var(--fontStack-monospace)',
-                color: 'var(--fgColor-muted)',
-              }}
-            >
-              4 live cases
-            </Text>
-          </Stack>
+      <div data-reveal className="zco-hero-reel" aria-label="Prévia animada das landing pages da ZCompany">
+        <div className="zco-browser-mock zco-reel-main">
+          <div className="zco-browser-top">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="zco-shot-grid">
+            <div className="zco-shot zco-shot-product">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/meridian-headphones.png" alt="" />
+            </div>
+            <div className="zco-shot zco-shot-dashboard">
+              <div className="zco-chart-line" />
+              <div className="zco-chart-bars">
+                <i />
+                <i />
+                <i />
+                <i />
+              </div>
+            </div>
+            <div className="zco-shot zco-shot-brand">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/kinetic-sneaker.png" alt="" />
+            </div>
+          </div>
         </div>
-      </Stack>
-
-      <Stack
-        direction="horizontal"
-        justify="space-between"
-        align="center"
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-          paddingBottom: 'var(--base-size-32)',
-        }}
-      >
-        <div data-reveal>
-          <Text
-            size="small"
-            style={{
-              fontFamily: 'var(--fontStack-monospace)',
-              color: 'var(--fgColor-muted)',
-            }}
-          >
-            01 / 06
-          </Text>
-        </div>
-        <div data-reveal className="zco-scroll-hint" aria-hidden="true">
-          <ArrowDownIcon size={16} fill="var(--fgColor-muted)" />
-        </div>
-      </Stack>
-    </Stack>
+      </div>
+    </section>
   )
 }

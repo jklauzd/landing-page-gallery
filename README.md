@@ -24,6 +24,24 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## ZCompany pages
+
+The portfolio lives at `/` and the demo pages are prepared as internal routes:
+
+- `/aura`
+- `/odontologia`
+- `/advocacia`
+- `/dashboard`
+- `/petluxe`
+
+`middleware.ts` also rewrites matching subdomains to those routes, so a deployment can later point:
+
+- `aura.zcompany.com.br` -> `/aura`
+- `odontologia.zcompany.com.br` -> `/odontologia`
+- `advocacia.zcompany.com.br` -> `/advocacia`
+- `dashboard.zcompany.com.br` -> `/dashboard`
+- `petluxe.zcompany.com.br` -> `/petluxe`
+
 ## Learn More
 
 To learn more, take a look at the following resources:

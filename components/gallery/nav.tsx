@@ -1,13 +1,6 @@
 'use client'
 
-import { Stack, Text, Button } from '@primer/react'
-
-const LINKS = [
-  { label: 'Work', slide: 1 },
-  { label: 'Approach', slide: 2 },
-  { label: 'Services', slide: 3 },
-  { label: 'Contact', slide: 5 },
-]
+import { Stack } from '@primer/react'
 
 export function GalleryNav({
   activeIndex,
@@ -26,7 +19,9 @@ export function GalleryNav({
         left: 0,
         right: 0,
         zIndex: 40,
-        backgroundColor: scrolled ? 'var(--overlay-bgColor, var(--bgColor-default))' : 'transparent',
+        backgroundColor: scrolled
+          ? 'rgba(10, 12, 16, 0.72)'
+          : 'rgba(10, 12, 16, 0.24)',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled
@@ -37,8 +32,9 @@ export function GalleryNav({
       }}
     >
       <Stack
+        className="zco-nav-inner"
         direction="horizontal"
-        justify="space-between"
+        justify="center"
         align="center"
         style={{
           maxWidth: 'var(--breakpoint-xlarge, 1280px)',
@@ -46,10 +42,11 @@ export function GalleryNav({
           paddingInline: 'var(--base-size-24)',
           paddingBlock: 'var(--base-size-16)',
         }}
-      >
-        <button
-          type="button"
-          onClick={() => onNavigate(0)}
+        >
+          <button
+            type="button"
+            onClick={() => onNavigate(0)}
+          className="zco-logo-button"
           aria-label="ZCompany home"
           style={{
             background: 'none',
@@ -58,38 +55,9 @@ export function GalleryNav({
             padding: 0,
           }}
         >
-          <Text
-            weight="semibold"
-            style={{
-              fontFamily: 'var(--fontStack-monospace)',
-              fontSize: 'var(--text-body-size-large)',
-              letterSpacing: '0.06em',
-              color: 'var(--fgColor-default)',
-            }}
-          >
-            ZCO
-          </Text>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="zco-logo" src="/images/zco-logo.png" alt="ZCompany" />
         </button>
-
-        <nav aria-label="Gallery sections">
-          <Stack direction="horizontal" gap="spacious" align="center">
-            {LINKS.map((link) => (
-              <button
-                key={link.label}
-                type="button"
-                className="zco-link"
-                data-active={activeIndex === link.slide}
-                onClick={() => onNavigate(link.slide)}
-              >
-                {link.label}
-              </button>
-            ))}
-          </Stack>
-        </nav>
-
-        <Button variant="primary" onClick={() => onNavigate(5)}>
-          Start a Project
-        </Button>
       </Stack>
     </header>
   )

@@ -3,9 +3,11 @@ import './globals.css'
 import { Providers } from '@/components/providers'
 
 export const metadata: Metadata = {
-  title: 'ZCompany — Digital Atelier',
-  description:
-    'A gallery of living landing pages. Scroll through complete, interactive cases crafted by the ZCompany studio.',
+  title: 'ZCompany - Landing Pages',
+  description: 'Portfolio de landing pages com produto, movimento e direcao visual.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
@@ -15,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       data-color-mode="dark"
       data-light-theme="light"
       data-dark-theme="dark"
