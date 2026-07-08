@@ -14,7 +14,7 @@ export function MeridianSlide() {
         <p data-reveal>Uma loja bonita, clara e pronta para vender sem enrolação.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={AURA_URL} target="_blank" rel="noreferrer">
-            Abrir AURA
+            Ver site
             <ArrowRightIcon size={18} />
           </a>
         </div>

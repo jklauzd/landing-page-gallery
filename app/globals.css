@@ -272,28 +272,29 @@ select {
   align-items: center;
   gap: 10px;
   min-height: 46px;
-  padding: 0 18px;
-  border: 1px solid rgba(143, 214, 148, 0.34);
+  padding: 0 17px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
-  background: rgba(143, 214, 148, 0.1);
+  background: rgba(255, 255, 255, 0.045);
   color: var(--zco-text);
   text-decoration: none;
-  font-family: var(--fontStack-system);
-  font-size: 15px;
+  font-family: var(--fontStack-monospace);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
 .zco-case-cta:hover {
   transform: translateY(-2px);
-  border-color: rgba(143, 214, 148, 0.64);
-  background: rgba(143, 214, 148, 0.16);
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .zco-case-cta-muted {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .zco-case-cta-muted:hover {
@@ -1670,7 +1671,7 @@ select {
   .zco-contact-option {
     min-width: 0;
     width: 100%;
-    max-width: 280px;
+    max-width: 330px;
     height: 54px;
     padding-inline: 16px;
   }

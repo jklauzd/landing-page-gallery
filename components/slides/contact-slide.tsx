@@ -2,11 +2,11 @@
 
 import { MailIcon } from '@primer/octicons-react'
 
-const EMAIL_LABEL = 'zcompany.com.br'
-const EMAIL = 'contato@zcompany.com.br'
-const WHATSAPP_LABEL = '0123456789'
+const EMAIL_LABEL = 'zcompany.digital@gmail.com'
+const EMAIL = 'zcompany.digital@gmail.com'
+const WHATSAPP_LABEL = '(62) 99182-5525'
 const WHATSAPP_MESSAGE = 'Olá, vim do site da ZCompany e gostaria de um orçamento.'
-const WHATSAPP_URL = `https://wa.me/550123456789?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
+const WHATSAPP_URL = `https://wa.me/5562991825525?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
 export function ContactSlide() {
   return (

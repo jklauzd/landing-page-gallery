@@ -14,7 +14,7 @@ export function VaultSlide() {
         <p data-reveal>Dados organizados para acompanhar vendas, projetos e operação em uma visão só.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={DASHBOARD_URL} target="_blank" rel="noreferrer">
-            Abrir dashboard
+            Ver dashboard
             <ArrowRightIcon size={18} />
           </a>
         </div>
