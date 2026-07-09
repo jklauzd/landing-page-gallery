@@ -11,7 +11,7 @@ export function KineticSlide() {
 
       <div className="zco-case-copy">
         <h2 data-reveal>LOJA ONLINE</h2>
-        <p data-reveal>Catálogo organizado, produtos em destaque e compra sem atrito.</p>
+        <p data-reveal>Colocamos seu catálogo na web para mostrar os produtos com clareza e facilitar o pedido do cliente.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={PETSHOP_URL} target="_blank" rel="noreferrer">
             Ver demonstração

@@ -11,7 +11,7 @@ export function VaultSlide() {
 
       <div className="zco-case-copy zco-case-copy-light">
         <h2 data-reveal>DASHBOARD</h2>
-        <p data-reveal>Indicadores e operação reunidos em uma visão clara do negócio.</p>
+        <p data-reveal>Montamos um painel para você acompanhar vendas, pedidos e resultados do negócio em um só lugar.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={DASHBOARD_URL} target="_blank" rel="noreferrer">
             Ver demonstração

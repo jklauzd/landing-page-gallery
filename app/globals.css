@@ -329,16 +329,16 @@ select {
   font-size: clamp(3.25rem, 6vw, 6.25rem);
 }
 
-/* Subtitles under case titles — more premium, clearer hierarchy */
+/* Subtitles under case titles — presentation copy, readable for laypeople */
 .zco-case p,
 .zco-handoff-copy p {
-  max-width: 32ch;
-  color: rgba(244, 246, 248, 0.68);
+  max-width: 38ch;
+  color: rgba(244, 246, 248, 0.72);
   font-family: var(--font-zco-sans), system-ui, sans-serif;
-  font-size: clamp(16px, 1.35vw, 19px);
+  font-size: clamp(16px, 1.4vw, 19px);
   font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.45;
+  letter-spacing: 0.005em;
+  line-height: 1.5;
 }
 
 [data-reveal] {
