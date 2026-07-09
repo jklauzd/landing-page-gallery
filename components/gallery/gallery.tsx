@@ -13,10 +13,10 @@ import { ContactSlide } from '@/components/slides/contact-slide'
 
 const SLIDE_LABELS = [
   'ZCompany',
-  'Meridian',
-  'Aurora',
-  'Vault',
-  'Kinetic',
+  'E-commerce',
+  'Landing',
+  'Dashboard',
+  'Loja',
   'Entrega',
   'Contato',
 ]
@@ -64,7 +64,12 @@ export function Gallery() {
     gsap.set(outEl, { zIndex: 1 })
 
     const reveals = inEl.querySelectorAll('[data-reveal]')
-    gsap.set(reveals, { y: 48, opacity: 0 })
+    gsap.set(reveals, {
+      y: 56,
+      opacity: 0,
+      filter: prefersReduced ? 'none' : 'blur(10px)',
+      scale: prefersReduced ? 1 : 0.97,
+    })
 
     gsap
       .timeline({
@@ -72,6 +77,7 @@ export function Gallery() {
         onComplete: () => {
           gsap.set(inEl, { y: 0, yPercent: 0, autoAlpha: 1, scale: 1 })
           gsap.set(outEl, { autoAlpha: 0, scale: 1, y: window.innerHeight, yPercent: 0 })
+          gsap.set(reveals, { clearProps: 'filter' })
           // brief cooldown so trackpad momentum doesn't chain slides
           window.setTimeout(() => {
             lockRef.current = false
@@ -86,11 +92,13 @@ export function Gallery() {
         {
           y: 0,
           opacity: 1,
-          duration: prefersReduced ? 0 : 0.7,
-          stagger: prefersReduced ? 0 : 0.07,
-          ease: 'power3.out',
+          filter: 'blur(0px)',
+          scale: 1,
+          duration: prefersReduced ? 0 : 0.85,
+          stagger: prefersReduced ? 0 : 0.09,
+          ease: 'power4.out',
         },
-        duration * 0.45,
+        duration * 0.42,
       )
   }, [])
 
@@ -108,10 +116,26 @@ export function Gallery() {
     const first = slideRefs.current[0]
     if (first) {
       const reveals = first.querySelectorAll('[data-reveal]')
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       gsap.fromTo(
         reveals,
-        { y: 48, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: 'power3.out', delay: 0.2 },
+        {
+          y: 56,
+          opacity: 0,
+          filter: prefersReduced ? 'none' : 'blur(12px)',
+          scale: prefersReduced ? 1 : 0.97,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+          scale: 1,
+          duration: prefersReduced ? 0 : 1.05,
+          stagger: prefersReduced ? 0 : 0.1,
+          ease: 'power4.out',
+          delay: prefersReduced ? 0 : 0.18,
+          onComplete: () => gsap.set(reveals, { clearProps: 'filter' }),
+        },
       )
     }
     setReady(true)

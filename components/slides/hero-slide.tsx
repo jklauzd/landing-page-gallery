@@ -9,7 +9,9 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
       <div className="zco-ambient zco-ambient-a" aria-hidden="true" />
 
       <div className="zco-hero-copy">
-        <h1 data-reveal>Páginas que vendem.</h1>
+        <h1 data-reveal>
+          Páginas que <em>vendem</em>.
+        </h1>
         <div data-reveal className="zco-actions">
           <Button variant="primary" size="large" trailingVisual={ArrowDownIcon} onClick={onExplore}>
             Ver projetos
