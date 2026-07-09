@@ -8,7 +8,7 @@ export function HandoffSlide() {
       <div className="zco-handoff-copy">
         <h2 data-reveal>SEM DOR DE CABEÇA</h2>
         <p data-reveal>
-          Além do visual, cuidamos de colocar o site no ar: domínio, hospedagem, ajustes e publicação.
+          Além do visual, colocamos o site no ar: domínio, hospedagem, ajustes finais e publicação.
         </p>
       </div>
 
