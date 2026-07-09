@@ -167,32 +167,31 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
         aria-label="Prévia animada das landing pages da ZCompany"
         style={{ perspective: '1400px' }}
       >
-        <div className="zco-browser-mock zco-reel-main">
-          <div className="zco-browser-top">
-            <span />
-            <span />
-            <span />
+        <a
+          className="zco-hero-featured"
+          href="/sites/faro/index.html"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Abrir landing page Faro"
+        >
+          <div className="zco-hero-featured-index">
+            <span>Projeto em destaque</span>
+            <b>01</b>
           </div>
-          <div className="zco-shot-grid">
-            <div className="zco-shot zco-shot-product">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/meridian-headphones.png" alt="" />
-            </div>
-            <div className="zco-shot zco-shot-dashboard">
-              <div className="zco-chart-line" />
-              <div className="zco-chart-bars">
-                <i />
-                <i />
-                <i />
-                <i />
-              </div>
-            </div>
-            <div className="zco-shot zco-shot-brand">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/kinetic-sneaker.png" alt="" />
+          <div className="zco-hero-featured-stack" aria-hidden="true" />
+          <div className="zco-hero-featured-board">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/faro-social-card.png" alt="Interface da landing page Faro" />
+            <div className="zco-hero-featured-caption">
+              <span><b>Faro</b><small>SaaS · Estratégia · Motion</small></span>
+              <i>↗</i>
             </div>
           </div>
-        </div>
+          <div className="zco-hero-featured-spine" aria-hidden="true">
+            <span>zco / case 01</span>
+            <b>CLAREZA EM MOVIMENTO</b>
+          </div>
+        </a>
       </div>
 
       <button

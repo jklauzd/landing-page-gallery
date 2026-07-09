@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState, type CSSProperties } from 're
 import gsap from 'gsap'
 import { GalleryNav } from './nav'
 import { HeroSlide } from '@/components/slides/hero-slide'
-import { FaroSlide } from '@/components/slides/faro-slide'
 import { MeridianSlide } from '@/components/slides/meridian-slide'
 import { AuroraSlide } from '@/components/slides/aurora-slide'
 import { VaultSlide } from '@/components/slides/vault-slide'
@@ -14,7 +13,6 @@ import { ContactSlide } from '@/components/slides/contact-slide'
 
 const SLIDE_LABELS = [
   'ZCompany',
-  'Faro',
   'E-commerce',
   'Landing',
   'Dashboard',
@@ -66,12 +64,19 @@ export function Gallery() {
     gsap.set(outEl, { zIndex: 1 })
 
     const reveals = inEl.querySelectorAll('[data-reveal]')
+    const titles = inEl.querySelectorAll<HTMLElement>('h2[data-reveal]')
     gsap.set(reveals, {
       y: 56,
       opacity: 0,
       filter: prefersReduced ? 'none' : 'blur(10px)',
       scale: prefersReduced ? 1 : 0.97,
     })
+    if (!prefersReduced) {
+      gsap.set(titles, {
+        clipPath: 'inset(0 0 100% 0)',
+        letterSpacing: '0.01em',
+      })
+    }
 
     gsap
       .timeline({
@@ -80,6 +85,7 @@ export function Gallery() {
           gsap.set(inEl, { y: 0, yPercent: 0, autoAlpha: 1, scale: 1 })
           gsap.set(outEl, { autoAlpha: 0, scale: 1, y: window.innerHeight, yPercent: 0 })
           gsap.set(reveals, { clearProps: 'filter' })
+          gsap.set(titles, { clearProps: 'clipPath,letterSpacing' })
           // brief cooldown so trackpad momentum doesn't chain slides
           window.setTimeout(() => {
             lockRef.current = false
@@ -101,6 +107,16 @@ export function Gallery() {
           ease: 'power4.out',
         },
         duration * 0.42,
+      )
+      .to(
+        titles,
+        {
+          clipPath: 'inset(0 0 0% 0)',
+          letterSpacing: '-0.065em',
+          duration: prefersReduced ? 0 : 0.8,
+          ease: 'power4.out',
+        },
+        duration * 0.38,
       )
   }, [])
 
@@ -233,24 +249,21 @@ export function Gallery() {
         <HeroSlide onExplore={() => goTo(1)} />
       </section>
       <section ref={setSlideRef(1)} style={slideStyle} aria-hidden={activeIndex !== 1}>
-        <FaroSlide />
-      </section>
-      <section ref={setSlideRef(2)} style={slideStyle} aria-hidden={activeIndex !== 2}>
         <MeridianSlide />
       </section>
-      <section ref={setSlideRef(3)} style={slideStyle} aria-hidden={activeIndex !== 3}>
+      <section ref={setSlideRef(2)} style={slideStyle} aria-hidden={activeIndex !== 2}>
         <AuroraSlide />
       </section>
-      <section ref={setSlideRef(4)} style={slideStyle} aria-hidden={activeIndex !== 4}>
+      <section ref={setSlideRef(3)} style={slideStyle} aria-hidden={activeIndex !== 3}>
         <VaultSlide />
       </section>
-      <section ref={setSlideRef(5)} style={slideStyle} aria-hidden={activeIndex !== 5}>
+      <section ref={setSlideRef(4)} style={slideStyle} aria-hidden={activeIndex !== 4}>
         <KineticSlide />
       </section>
-      <section ref={setSlideRef(6)} style={slideStyle} aria-hidden={activeIndex !== 6}>
+      <section ref={setSlideRef(5)} style={slideStyle} aria-hidden={activeIndex !== 5}>
         <HandoffSlide />
       </section>
-      <section ref={setSlideRef(7)} style={slideStyle} aria-hidden={activeIndex !== 7}>
+      <section ref={setSlideRef(6)} style={slideStyle} aria-hidden={activeIndex !== 6}>
         <ContactSlide />
       </section>
     </main>
