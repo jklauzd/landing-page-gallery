@@ -7,7 +7,11 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
 
       <div className="zco-hero-copy">
         <h1 data-reveal>
-          Páginas que <em>vendem</em>.
+          Criamos páginas
+          <br />
+          para o seu negócio
+          <br />
+          <em>vender</em>.
         </h1>
       </div>
 

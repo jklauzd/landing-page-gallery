@@ -294,9 +294,9 @@ select {
   font-family: var(--font-zco-display), Georgia, 'Times New Roman', serif;
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 0.94;
-  max-width: 11ch;
-  font-size: clamp(4rem, 9vw, 8.5rem);
+  line-height: 1.02;
+  max-width: 14ch;
+  font-size: clamp(2.55rem, 5.4vw, 4.75rem);
 }
 
 .zco-hero h1 em {
@@ -1393,7 +1393,11 @@ select {
     overflow: hidden;
   }
 
-  .zco-hero h1,
+  .zco-hero h1 {
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 8.5vw, 3.1rem);
+  }
+
   .zco-case h2 {
     max-width: 9.5ch;
     font-size: clamp(3rem, 14vw, 4.25rem);
