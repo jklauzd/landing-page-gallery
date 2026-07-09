@@ -15,7 +15,7 @@ export function ContactSlide() {
 
       <div className="zco-contact-copy">
         <h2 data-reveal>Vamos conversar.</h2>
-        <p data-reveal>Entre em contato para um orçamento</p>
+        <p data-reveal>Manda um oi — a gente responde com o próximo passo.</p>
       </div>
 
       <div data-reveal className="zco-contact-panel">
