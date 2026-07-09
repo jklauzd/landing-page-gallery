@@ -113,30 +113,34 @@ export function Gallery() {
       if (!el) return
       gsap.set(el, i === 0 ? { y: 0, yPercent: 0, autoAlpha: 1 } : { y: window.innerHeight, yPercent: 0, autoAlpha: 0 })
     })
+    // Hero runs its own presentation intro; skip generic reveal on first slide
     const first = slideRefs.current[0]
     if (first) {
+      const isHero = !!first.querySelector('.zco-hero')
       const reveals = first.querySelectorAll('[data-reveal]')
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      gsap.fromTo(
-        reveals,
-        {
-          y: 56,
-          opacity: 0,
-          filter: prefersReduced ? 'none' : 'blur(12px)',
-          scale: prefersReduced ? 1 : 0.97,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          filter: 'blur(0px)',
-          scale: 1,
-          duration: prefersReduced ? 0 : 1.05,
-          stagger: prefersReduced ? 0 : 0.1,
-          ease: 'power4.out',
-          delay: prefersReduced ? 0 : 0.18,
-          onComplete: () => gsap.set(reveals, { clearProps: 'filter' }),
-        },
-      )
+      if (!isHero && reveals.length) {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        gsap.fromTo(
+          reveals,
+          {
+            y: 56,
+            opacity: 0,
+            filter: prefersReduced ? 'none' : 'blur(12px)',
+            scale: prefersReduced ? 1 : 0.97,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            filter: 'blur(0px)',
+            scale: 1,
+            duration: prefersReduced ? 0 : 1.05,
+            stagger: prefersReduced ? 0 : 0.1,
+            ease: 'power4.out',
+            delay: prefersReduced ? 0 : 0.18,
+            onComplete: () => gsap.set(reveals, { clearProps: 'filter' }),
+          },
+        )
+      }
     }
     setReady(true)
     document.body.style.overflow = 'hidden'

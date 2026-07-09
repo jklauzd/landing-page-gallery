@@ -146,7 +146,7 @@ select {
 }
 
 .zco-hero {
-  grid-template-columns: minmax(320px, 0.82fr) minmax(520px, 1.18fr);
+  grid-template-columns: minmax(380px, 1fr) minmax(440px, 1.05fr);
   padding-bottom: 96px;
 }
 
@@ -280,6 +280,11 @@ select {
   max-width: 520px;
 }
 
+.zco-hero-copy {
+  max-width: none;
+  width: 100%;
+}
+
 .zco-kicker {
   color: rgba(244, 246, 248, 0.72);
   font-family: var(--font-zco-sans);
@@ -289,14 +294,61 @@ select {
   text-transform: uppercase;
 }
 
-.zco-hero h1 {
+.zco-hero h1,
+.zco-hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.06em;
   color: var(--zco-text);
   font-family: var(--font-zco-display), Georgia, 'Times New Roman', serif;
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.02;
-  max-width: 14ch;
-  font-size: clamp(2.55rem, 5.4vw, 4.75rem);
+  line-height: 1.05;
+  max-width: none;
+  font-size: clamp(2.85rem, 5.8vw, 5.6rem);
+}
+
+/* Force exactly 2 lines — no accidental wrap inside each line */
+.zco-hero-line {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.zco-hero-char {
+  display: inline-block;
+  will-change: opacity, transform;
+}
+
+.zco-hero-char.is-space {
+  width: 0.28em;
+}
+
+.zco-hero-char.is-emph {
+  font-style: italic;
+  color: color-mix(in srgb, var(--zco-green) 72%, var(--zco-text));
+}
+
+.zco-hero-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.82em;
+  margin-left: 0.06em;
+  vertical-align: -0.05em;
+  background: color-mix(in srgb, var(--zco-green) 85%, #fff);
+  border-radius: 1px;
+  animation: zco-caret-blink 0.9s steps(1) infinite;
+}
+
+@keyframes zco-caret-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.zco-hero-reel {
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
 }
 
 .zco-hero h1 em {
@@ -1393,9 +1445,17 @@ select {
     overflow: hidden;
   }
 
+  .zco-hero {
+    grid-template-columns: 1fr;
+  }
+
   .zco-hero h1 {
-    max-width: 12ch;
-    font-size: clamp(2.2rem, 8.5vw, 3.1rem);
+    max-width: none;
+    font-size: clamp(1.85rem, 7.2vw, 2.85rem);
+  }
+
+  .zco-hero-line {
+    white-space: nowrap;
   }
 
   .zco-case h2 {
