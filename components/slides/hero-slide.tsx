@@ -1,8 +1,5 @@
 'use client'
 
-import { Button } from '@primer/react'
-import { ArrowDownIcon } from '@primer/octicons-react'
-
 export function HeroSlide({ onExplore }: { onExplore: () => void }) {
   return (
     <section className="zco-slide zco-hero">
@@ -12,11 +9,6 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
         <h1 data-reveal>
           Páginas que <em>vendem</em>.
         </h1>
-        <div data-reveal className="zco-actions">
-          <Button variant="primary" size="large" trailingVisual={ArrowDownIcon} onClick={onExplore}>
-            Ver projetos
-          </Button>
-        </div>
       </div>
 
       <div data-reveal className="zco-hero-reel" aria-label="Prévia animada das landing pages da ZCompany">
@@ -47,6 +39,28 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
           </div>
         </div>
       </div>
+
+      <button
+        type="button"
+        data-reveal
+        className="zco-scroll-cue"
+        onClick={onExplore}
+        aria-label="Rolar para ver os projetos"
+      >
+        <span className="zco-scroll-cue-label">Ver projetos</span>
+        <span className="zco-scroll-cue-line" aria-hidden="true" />
+        <span className="zco-scroll-cue-chevron" aria-hidden="true">
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none">
+            <path
+              d="M1 1.5L9 8.5L17 1.5"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </button>
     </section>
   )
 }

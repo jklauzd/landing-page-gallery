@@ -147,6 +147,66 @@ select {
 
 .zco-hero {
   grid-template-columns: minmax(320px, 0.82fr) minmax(520px, 1.18fr);
+  padding-bottom: 96px;
+}
+
+/* Bottom-center scroll invitation — not a primary CTA button */
+.zco-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(22px, 4vh, 40px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 12px 20px;
+  border: 0;
+  background: none;
+  color: rgba(244, 246, 248, 0.78);
+  cursor: pointer;
+  transform: translateX(-50%);
+  transition: color 220ms ease;
+}
+
+.zco-scroll-cue:hover,
+.zco-scroll-cue:focus-visible {
+  color: var(--zco-text);
+  outline: none;
+}
+
+.zco-scroll-cue-label {
+  font-family: var(--font-zco-sans), system-ui, sans-serif;
+  font-size: clamp(15px, 1.35vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.zco-scroll-cue-line {
+  display: block;
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(143, 214, 148, 0.85), rgba(143, 214, 148, 0.05));
+  animation: zco-scroll-line 2s ease-in-out infinite;
+}
+
+.zco-scroll-cue-chevron {
+  display: grid;
+  place-items: center;
+  color: var(--zco-green);
+  animation: zco-scroll-chevron 1.8s ease-in-out infinite;
+}
+
+@keyframes zco-scroll-line {
+  0%, 100% { transform: scaleY(0.65); opacity: 0.45; transform-origin: top; }
+  50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
+}
+
+@keyframes zco-scroll-chevron {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(5px); opacity: 1; }
 }
 
 .zco-case-vault {
@@ -1015,9 +1075,14 @@ select {
   gap: 18px;
 }
 
+/* Two lines: "SEM DOR DE" / "CABEÇA" — same type as case titles */
 .zco-handoff-copy h2 {
-  max-width: 13ch;
-  font-size: clamp(3.25rem, 7vw, 7rem);
+  max-width: 10.5ch;
+  font-family: var(--font-zco-sans), system-ui, sans-serif;
+  font-size: clamp(2.55rem, 5vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.96;
 }
 
 .zco-handoff-copy p {
@@ -1356,7 +1421,17 @@ select {
   }
 
   .zco-handoff-copy h2 {
-    font-size: clamp(3rem, 13vw, 4.6rem);
+    max-width: 10.5ch;
+    font-size: clamp(2.35rem, 9.5vw, 3.4rem);
+  }
+
+  .zco-scroll-cue {
+    bottom: 18px;
+  }
+
+  .zco-scroll-cue-label {
+    letter-spacing: 0.18em;
+    font-size: 14px;
   }
 
   .zco-handoff-copy p {
@@ -1767,7 +1842,8 @@ select {
   }
 
   .zco-handoff-copy h2 {
-    font-size: clamp(2.45rem, 11vw, 3.45rem);
+    max-width: 10.5ch;
+    font-size: clamp(2.2rem, 9vw, 2.9rem);
   }
 
   .zco-handoff-list {
