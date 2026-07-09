@@ -3,22 +3,20 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 
-const LINE_1 = 'Criamos páginas para'
-const LINE_2_PRE = 'o seu negócio '
-const LINE_2_EMPH = 'vender'
-const LINE_2_END = '.'
+const LINE_1 = 'criamos páginas'
+const LINE_2 = 'para o seu negócio'
+const LINE_3_EMPH = 'vender'
+const LINE_3_END = '.'
 
 function CharLine({
   text,
-  className,
   emphasize,
 }: {
   text: string
-  className?: string
   emphasize?: boolean
 }) {
   return (
-    <span className={className}>
+    <span>
       {text.split('').map((char, i) => (
         <span
           key={`${char}-${i}`}
@@ -33,52 +31,45 @@ function CharLine({
 }
 
 export function HeroSlide({ onExplore }: { onExplore: () => void }) {
-  const rootRef = useRef<HTMLElement | null>(null)
   const mockRef = useRef<HTMLDivElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const cueRef = useRef<HTMLButtonElement | null>(null)
-  const caretRef = useRef<HTMLSpanElement | null>(null)
 
-  useEffect(() => {
-    const root = rootRef.current
+  useLayoutEffect(() => {
     const mock = mockRef.current
     const title = titleRef.current
     const cue = cueRef.current
-    const caret = caretRef.current
-    if (!root || !mock || !title || !cue) return
+    if (!mock || !title || !cue) return
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const chars = title.querySelectorAll<HTMLElement>('.zco-hero-char')
 
     if (prefersReduced) {
-      gsap.set([mock, title, cue, chars], { clearProps: 'all', opacity: 1, y: 0, x: 0, scale: 1, rotateX: 0 })
-      if (caret) gsap.set(caret, { opacity: 0 })
+      gsap.set([mock, cue, chars], { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: 'none' })
       return
     }
 
     gsap.set(mock, {
-      y: 120,
+      y: 130,
       opacity: 0,
       scale: 0.92,
-      rotateX: 14,
+      rotateX: 16,
       transformOrigin: '50% 100%',
-      filter: 'blur(12px)',
+      filter: 'blur(14px)',
     })
-    gsap.set(chars, { opacity: 0, y: 10, display: 0.96 })
-    gsap.set(title, { opacity: 1 })
-    gsap.set(cue, { opacity: 0, y: 16 })
-    if (caret) gsap.set(caret, { opacity: 0 })
+    gsap.set(chars, { opacity: 0, y: 12, scale: 0.97 })
+    gsap.set(cue, { opacity: 0, y: 18 })
 
-    const line1Count = LINE_1.length
-    const line1Chars = Array.from(chars).slice(0, line1Count)
-    const line2Chars = Array.from(chars).slice(line1Count)
+    const line1Chars = Array.from(chars).slice(0, LINE_1.length)
+    const line2Chars = Array.from(chars).slice(LINE_1.length, LINE_1.length + LINE_2.length)
+    const line3Chars = Array.from(chars).slice(LINE_1.length + LINE_2.length)
 
     const tl = gsap.timeline({
       defaults: { ease: 'power3.out' },
-      delay: 0.15,
+      delay: 0.12,
     })
 
-    // Mockup rises from below into place
+    // Mockup rises from below
     tl.to(
       mock,
       {
@@ -87,75 +78,61 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
         scale: 1,
         rotateX: 0,
         filter: 'blur(0px)',
-        duration: 1.35,
+        duration: 1.4,
         ease: 'power4.out',
       },
       0,
     )
 
-    // Caret appears as typing starts (slightly after mockup begins)
-    if (caret) {
-      tl.to(caret, { opacity: 1, duration: 0.2 }, 0.55)
-    }
-
-    // Type line 1
+    // Letters appear in sequence (no caret)
     tl.to(
       line1Chars,
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.04,
-        stagger: 0.028,
+        duration: 0.035,
+        stagger: 0.024,
         ease: 'none',
-        onUpdate: function () {
-          // keep caret after last visible char of current wave via CSS position on title
-        },
       },
-      0.6,
+      0.55,
     )
 
-    // Type line 2
     tl.to(
       line2Chars,
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.04,
+        duration: 0.035,
+        stagger: 0.024,
+        ease: 'none',
+      },
+      '+=0.08',
+    )
+
+    tl.to(
+      line3Chars,
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.035,
         stagger: 0.03,
         ease: 'none',
       },
-      '+=0.12',
+      '+=0.08',
     )
 
-    // Soft settle on emphasis word
-    const emph = title.querySelectorAll<HTMLElement>('.zco-hero-char.is-emph')
-    tl.fromTo(
-      emph,
-      { color: 'rgba(244,246,248,0.9)' },
-      {
-        color: '',
-        duration: 0.55,
-        ease: 'power2.out',
-        stagger: 0.02,
-      },
-      '-=0.25',
-    )
-
-    // Hide caret, show scroll cue
-    if (caret) {
-      tl.to(caret, { opacity: 0, duration: 0.25 }, '+=0.15')
-    }
     tl.to(
       cue,
       {
         opacity: 1,
         y: 0,
-        duration: 0.7,
+        duration: 0.75,
         ease: 'power3.out',
       },
-      '-=0.05',
+      '+=0.12',
     )
 
     return () => {
@@ -163,10 +140,10 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
     }
   }, [])
 
-  const fullLabel = `${LINE_1} ${LINE_2_PRE}${LINE_2_EMPH}${LINE_2_END}`
+  const fullLabel = `${LINE_1} ${LINE_2} ${LINE_3_EMPH}${LINE_3_END}`
 
   return (
-    <section ref={rootRef} className="zco-slide zco-hero">
+    <section className="zco-slide zco-hero">
       <div className="zco-ambient zco-ambient-a" aria-hidden="true" />
 
       <div className="zco-hero-copy">
@@ -175,10 +152,11 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
             <CharLine text={LINE_1} />
           </span>
           <span className="zco-hero-line">
-            <CharLine text={LINE_2_PRE} />
-            <CharLine text={LINE_2_EMPH} emphasize />
-            <CharLine text={LINE_2_END} />
-            <span ref={caretRef} className="zco-hero-caret" aria-hidden="true" />
+            <CharLine text={LINE_2} />
+          </span>
+          <span className="zco-hero-line">
+            <CharLine text={LINE_3_EMPH} emphasize />
+            <CharLine text={LINE_3_END} />
           </span>
         </h1>
       </div>

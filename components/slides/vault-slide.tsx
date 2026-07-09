@@ -9,7 +9,7 @@ export function VaultSlide() {
     <section className="zco-slide zco-case zco-case-vault zco-case-dashboard">
       <div className="zco-ambient zco-ambient-green" aria-hidden="true" />
 
-      <div className="zco-case-copy zco-case-copy-light">
+      <div className="zco-case-copy">
         <h2 data-reveal>DASHBOARD</h2>
         <p data-reveal>Montamos um painel para você acompanhar vendas, pedidos e resultados do negócio em um único lugar.</p>
         <div data-reveal className="zco-actions">

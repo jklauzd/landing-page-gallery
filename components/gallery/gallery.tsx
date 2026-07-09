@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import gsap from 'gsap'
 import { GalleryNav } from './nav'
 import { HeroSlide } from '@/components/slides/hero-slide'
@@ -209,7 +209,7 @@ export function Gallery() {
     slideRefs.current[i] = el
   }
 
-  const slideStyle: React.CSSProperties = {
+  const slideStyle: CSSProperties = {
     position: 'absolute',
     inset: 0,
     willChange: 'transform',
@@ -234,7 +234,7 @@ export function Gallery() {
         <MeridianSlide />
       </section>
       <section ref={setSlideRef(2)} style={slideStyle} aria-hidden={activeIndex !== 2}>
-        <AuroraSlide active={activeIndex === 2} />
+        <AuroraSlide />
       </section>
       <section ref={setSlideRef(3)} style={slideStyle} aria-hidden={activeIndex !== 3}>
         <VaultSlide />

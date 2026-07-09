@@ -1,15 +1,7 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Instrument_Serif } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/providers'
-
-const display = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  variable: '--font-zco-display',
-  display: 'swap',
-})
 
 const sans = DM_Sans({
   subsets: ['latin'],
@@ -19,9 +11,9 @@ const sans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'ZCompany — Páginas que vendem',
+  title: 'ZCompany — Criamos páginas para o seu negócio vender',
   description:
-    'Landing pages, lojas e dashboards com visual premium. Domínio, hospedagem e publicação inclusos. Orçamento via WhatsApp.',
+    'Criamos a loja, a landing e o painel do seu negócio, e cuidamos de domínio, hospedagem e publicação. Orçamento via WhatsApp.',
   icons: {
     icon: '/favicon.svg',
   },
@@ -38,7 +30,7 @@ export default function RootLayout({
       data-color-mode="dark"
       data-light-theme="light"
       data-dark-theme="dark"
-      className={`${display.variable} ${sans.variable}`}
+      className={sans.variable}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>

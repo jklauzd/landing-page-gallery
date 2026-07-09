@@ -6,7 +6,7 @@ const AURA_URL = '/sites/aura/index.html'
 
 export function MeridianSlide() {
   return (
-    <section className="zco-slide zco-case zco-case-meridian zco-case-aura">
+    <section className="zco-slide zco-case zco-case-aura">
       <div className="zco-ambient zco-ambient-blue" aria-hidden="true" />
 
       <div className="zco-case-copy">
