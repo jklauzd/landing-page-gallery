@@ -8,7 +8,7 @@ export function HandoffSlide() {
       <div className="zco-handoff-copy">
         <h2 data-reveal>SEM DOR DE CABEÇA</h2>
         <p data-reveal>
-          Você foca no negócio. A gente deixa o site no ar — domínio, hospedagem e publicação.
+          Você não vira técnico. A gente sobe o site, liga o domínio e deixa no ar.
         </p>
       </div>
 

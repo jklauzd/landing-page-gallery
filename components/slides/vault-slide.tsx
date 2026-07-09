@@ -11,7 +11,7 @@ export function VaultSlide() {
 
       <div className="zco-case-copy zco-case-copy-light">
         <h2 data-reveal>DASHBOARD</h2>
-        <p data-reveal>Vendas e operação num só lugar — sem planilha perdida no WhatsApp.</p>
+        <p data-reveal>O que vendeu, o que falta e o que importa — numa tela só.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={DASHBOARD_URL} target="_blank" rel="noreferrer">
             Ver demonstração

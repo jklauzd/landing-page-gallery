@@ -11,7 +11,7 @@ export function MeridianSlide() {
 
       <div className="zco-case-copy">
         <h2 data-reveal>ECOMMERCE</h2>
-        <p data-reveal>Sua loja com cara de marca — o cliente entende e compra.</p>
+        <p data-reveal>Parece marca grande. O cliente acha o produto e fecha sem se perder.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={AURA_URL} target="_blank" rel="noreferrer">
             Ver demonstração
