@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans } from 'next/font/google'
+import { DM_Mono, DM_Sans, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/providers'
 
@@ -7,6 +7,20 @@ const sans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-zco-sans',
+  display: 'swap',
+})
+
+const display = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-zco-display',
+  display: 'swap',
+})
+
+const mono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-zco-mono',
   display: 'swap',
 })
 
@@ -30,7 +44,7 @@ export default function RootLayout({
       data-color-mode="dark"
       data-light-theme="light"
       data-dark-theme="dark"
-      className={sans.variable}
+      className={`${sans.variable} ${display.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>

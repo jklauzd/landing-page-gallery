@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, type CSSProperties } from 're
 import gsap from 'gsap'
 import { GalleryNav } from './nav'
 import { HeroSlide } from '@/components/slides/hero-slide'
+import { FaroSlide } from '@/components/slides/faro-slide'
 import { MeridianSlide } from '@/components/slides/meridian-slide'
 import { AuroraSlide } from '@/components/slides/aurora-slide'
 import { VaultSlide } from '@/components/slides/vault-slide'
@@ -13,6 +14,7 @@ import { ContactSlide } from '@/components/slides/contact-slide'
 
 const SLIDE_LABELS = [
   'ZCompany',
+  'Faro',
   'E-commerce',
   'Landing',
   'Dashboard',
@@ -231,21 +233,24 @@ export function Gallery() {
         <HeroSlide onExplore={() => goTo(1)} />
       </section>
       <section ref={setSlideRef(1)} style={slideStyle} aria-hidden={activeIndex !== 1}>
-        <MeridianSlide />
+        <FaroSlide />
       </section>
       <section ref={setSlideRef(2)} style={slideStyle} aria-hidden={activeIndex !== 2}>
-        <AuroraSlide />
+        <MeridianSlide />
       </section>
       <section ref={setSlideRef(3)} style={slideStyle} aria-hidden={activeIndex !== 3}>
-        <VaultSlide />
+        <AuroraSlide />
       </section>
       <section ref={setSlideRef(4)} style={slideStyle} aria-hidden={activeIndex !== 4}>
-        <KineticSlide />
+        <VaultSlide />
       </section>
       <section ref={setSlideRef(5)} style={slideStyle} aria-hidden={activeIndex !== 5}>
-        <HandoffSlide />
+        <KineticSlide />
       </section>
       <section ref={setSlideRef(6)} style={slideStyle} aria-hidden={activeIndex !== 6}>
+        <HandoffSlide />
+      </section>
+      <section ref={setSlideRef(7)} style={slideStyle} aria-hidden={activeIndex !== 7}>
         <ContactSlide />
       </section>
     </main>

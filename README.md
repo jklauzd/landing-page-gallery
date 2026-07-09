@@ -35,6 +35,7 @@ The original static projects are bundled under `public/sites/<slug>` and are ava
 - `/sites/advocacia/index.html`
 - `/sites/dashboard/index.html`
 - `/sites/petluxe/index.html`
+- `/sites/faro/index.html`
 
 `middleware.ts` also rewrites matching subdomains directly to those full static sites:
 
@@ -43,6 +44,7 @@ The original static projects are bundled under `public/sites/<slug>` and are ava
 - `advocacia.zcompany.com.br` -> `public/sites/advocacia`
 - `dashboard.zcompany.com.br` -> `public/sites/dashboard`
 - `petluxe.zcompany.com.br` -> `public/sites/petluxe`
+- `faro.zcompany.com.br` -> `public/sites/faro`
 
 ## Learn More
 
