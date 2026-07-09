@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRightIcon } from '@primer/octicons-react'
+import { ScrollHint } from './scroll-hint'
 
 const AURA_URL = '/sites/aura/index.html'
 
@@ -31,6 +32,8 @@ export function MeridianSlide() {
           <img src="/images/aura-products.png" alt="Produtos do e-commerce AURA" />
         </a>
       </div>
+
+      <ScrollHint />
     </section>
   )
 }

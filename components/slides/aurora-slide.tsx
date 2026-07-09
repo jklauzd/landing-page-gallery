@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRightIcon } from '@primer/octicons-react'
+import { ScrollHint } from './scroll-hint'
 
 const DENTAL_URL = '/sites/odontologia/index.html'
 const LAW_URL = '/sites/advocacia/index.html'
@@ -13,16 +14,6 @@ export function AuroraSlide() {
       <div className="zco-case-copy">
         <h2 data-reveal>LANDING PAGE</h2>
         <p data-reveal>Criamos a página do seu serviço para o cliente entender o que você faz e chamar direto no seu WhatsApp.</p>
-        <div data-reveal className="zco-actions">
-          <a className="zco-case-cta" href={DENTAL_URL} target="_blank" rel="noreferrer">
-            Ver odontologia
-            <ArrowRightIcon size={18} />
-          </a>
-          <a className="zco-case-cta zco-case-cta-muted" href={LAW_URL} target="_blank" rel="noreferrer">
-            Ver advocacia
-            <ArrowRightIcon size={18} />
-          </a>
-        </div>
       </div>
 
       <div data-reveal className="zco-service-showcase">
@@ -42,6 +33,19 @@ export function AuroraSlide() {
           <img src="/images/case-law-phone-focus.png" alt="Preview mobile da landing page Mendes Advocacia" />
         </a>
       </div>
+
+      <div data-reveal className="zco-actions zco-service-actions">
+        <a className="zco-case-cta" href={DENTAL_URL} target="_blank" rel="noreferrer">
+          Ver odontologia
+          <ArrowRightIcon size={18} />
+        </a>
+        <a className="zco-case-cta zco-case-cta-muted" href={LAW_URL} target="_blank" rel="noreferrer">
+          Ver advocacia
+          <ArrowRightIcon size={18} />
+        </a>
+      </div>
+
+      <ScrollHint />
     </section>
   )
 }

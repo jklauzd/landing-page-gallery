@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRightIcon } from '@primer/octicons-react'
+import { ScrollHint } from './scroll-hint'
 
 const DASHBOARD_URL = '/sites/dashboard/index.html'
 
@@ -31,6 +32,8 @@ export function VaultSlide() {
           <img src="/images/aether-dashboard.png" alt="Dashboard Aether Nexus" />
         </a>
       </div>
+
+      <ScrollHint />
     </section>
   )
 }

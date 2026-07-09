@@ -130,6 +130,10 @@ select {
   outline: none;
 }
 
+.zco-slide-scroll-cue {
+  pointer-events: none;
+}
+
 .zco-scroll-cue-label {
   font-family: var(--font-zco-sans), system-ui, sans-serif;
   font-size: clamp(15px, 1.35vw, 18px);
@@ -151,6 +155,11 @@ select {
   place-items: center;
   color: var(--zco-green);
   animation: zco-scroll-chevron 1.8s ease-in-out infinite;
+}
+
+.zco-slide-scroll-cue .zco-scroll-cue-label {
+  font-size: clamp(12px, 1vw, 14px);
+  opacity: 0.74;
 }
 
 @keyframes zco-scroll-line {
@@ -1163,7 +1172,7 @@ select {
   }
 
   .zco-service-showcase {
-    order: 4;
+    order: 3;
   }
 
   .zco-hero-reel,
@@ -1211,13 +1220,15 @@ select {
     border-radius: 22px;
   }
 
-  .zco-case-services .zco-actions {
-    order: 3;
+  .zco-service-actions {
+    order: 4;
     position: relative;
     z-index: 5;
     flex-direction: column;
     align-items: stretch;
+    justify-self: center;
     width: min(178px, 100%);
+    margin-top: -20px;
     margin-bottom: 0;
   }
 
@@ -1354,13 +1365,13 @@ select {
     border-radius: 18px;
   }
 
-  .zco-case-services .zco-actions {
+  .zco-service-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
     width: min(168px, 100%);
-    margin-top: 2px;
-    margin-bottom: 8px;
+    margin-top: -14px;
+    margin-bottom: 6px;
   }
 
   .zco-case-services .zco-case-cta {

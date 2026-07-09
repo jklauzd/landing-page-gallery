@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRightIcon } from '@primer/octicons-react'
+import { ScrollHint } from './scroll-hint'
 
 const PETSHOP_URL = '/sites/petluxe/index.html'
 
@@ -31,6 +32,8 @@ export function KineticSlide() {
           <img src="/images/petluxe-products.png" alt="Produtos da loja PETLUXE" />
         </a>
       </div>
+
+      <ScrollHint />
     </section>
   )
 }

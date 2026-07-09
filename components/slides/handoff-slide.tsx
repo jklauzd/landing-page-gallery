@@ -1,5 +1,7 @@
 'use client'
 
+import { ScrollHint } from './scroll-hint'
+
 export function HandoffSlide() {
   return (
     <section className="zco-slide zco-handoff">
@@ -46,6 +48,8 @@ export function HandoffSlide() {
           <span>Suporte inicial</span>
         </div>
       </div>
+
+      <ScrollHint />
     </section>
   )
 }
