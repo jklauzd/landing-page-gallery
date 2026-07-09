@@ -1147,6 +1147,8 @@ select {
     border-color: rgba(80, 150, 255, 0.72);
     background: #2f81f7;
     color: #fff;
+    min-width: 0;
+    max-width: 210px;
   }
 
   .zco-case-cta:hover {
@@ -1215,7 +1217,7 @@ select {
     z-index: 5;
     flex-direction: column;
     align-items: stretch;
-    width: min(220px, 100%);
+    width: min(178px, 100%);
     margin-bottom: 0;
   }
 
@@ -1276,21 +1278,22 @@ select {
   }
 
   .zco-case h2 {
-    margin-top: 18px;
-    max-width: none;
-    font-size: clamp(2.28rem, 9.8vw, 3rem);
-    line-height: 0.94;
+    margin-top: 12px;
+    max-width: 9.5ch;
+    font-size: clamp(2rem, 8.8vw, 2.65rem);
+    line-height: 0.96;
   }
 
   .zco-case p {
-    max-width: 29ch;
-    font-size: 15px;
+    max-width: 26ch;
+    font-size: 14px;
     line-height: 1.42;
   }
 
   .zco-case-services h2 {
-    font-size: clamp(2.05rem, 8.8vw, 2.65rem);
-    white-space: nowrap;
+    max-width: 8.5ch;
+    font-size: clamp(1.85rem, 7.9vw, 2.35rem);
+    white-space: normal;
   }
 
   .zco-case-services p {
@@ -1298,13 +1301,17 @@ select {
   }
 
   .zco-case-cta {
-    min-height: 40px;
-    padding-inline: 16px;
+    justify-content: center;
+    min-height: 34px;
+    max-width: 178px;
+    padding-inline: 12px;
     border-color: rgba(80, 150, 255, 0.72);
     background: #2f81f7;
     color: #fff;
-    font-size: 11px;
-    box-shadow: 0 12px 34px rgba(47, 129, 247, 0.2);
+    font-size: 9.5px;
+    line-height: 1.15;
+    text-align: center;
+    box-shadow: 0 10px 24px rgba(47, 129, 247, 0.16);
   }
 
   .zco-case-cta:hover {
@@ -1325,11 +1332,12 @@ select {
   }
 
   .zco-service-showcase {
-    min-height: 332px;
+    min-height: 320px;
+    margin-top: 2px;
   }
 
   .zco-service-browser {
-    height: 228px;
+    height: 218px;
   }
 
   .zco-service-browser .zco-browser-top {
@@ -1341,8 +1349,8 @@ select {
   }
 
   .zco-service-phone {
-    width: 108px;
-    height: 224px;
+    width: 102px;
+    height: 212px;
     border-radius: 18px;
   }
 
@@ -1350,16 +1358,16 @@ select {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-    width: min(210px, 100%);
+    width: min(168px, 100%);
     margin-top: 2px;
-    margin-bottom: 0;
+    margin-bottom: 8px;
   }
 
   .zco-case-services .zco-case-cta {
     justify-content: center;
-    min-height: 38px;
-    padding-inline: 12px;
-    font-size: 10.5px;
+    min-height: 32px;
+    padding-inline: 10px;
+    font-size: 9px;
   }
 
   .zco-dashboard-stage {
