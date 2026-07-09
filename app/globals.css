@@ -423,111 +423,57 @@ select {
 
 .zco-hero-featured {
   position: relative;
-  display: block;
+  display: grid;
+  place-items: center;
   width: min(760px, 100%);
-  min-height: 510px;
   color: #171816;
   transform-style: preserve-3d;
 }
 
-.zco-hero-featured-index {
-  position: absolute;
-  top: 0;
-  left: 5%;
-  z-index: 5;
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  color: rgba(244,246,248,.58);
-  font-family: var(--zco-mono);
-  font-size: 9px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.zco-hero-featured-index b {
-  color: var(--zco-green);
-  font-family: var(--zco-display);
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: -.08em;
-}
-
-.zco-hero-featured-stack {
-  position: absolute;
-  inset: 63px 48px 43px 14px;
-  border: 1px solid rgba(255,255,255,.1);
-  background: #12151a;
-  transform: perspective(1300px) rotateY(-10deg) translate3d(31px, 20px, -60px);
-  box-shadow: 0 34px 80px rgba(0,0,0,.38);
-}
-
 .zco-hero-featured-board {
-  position: absolute;
-  inset: 43px 74px 69px 0;
-  z-index: 3;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,.19);
+  border-radius: 12px;
   background: #f7f6f1;
-  box-shadow: 0 40px 90px rgba(0,0,0,.45);
-  transform: perspective(1350px) rotateY(-8deg) rotateX(2deg);
-  transition: transform 450ms cubic-bezier(.2,.8,.2,1), box-shadow 450ms ease;
+  box-shadow: 0 38px 82px rgba(0,0,0,.38), 0 10px 26px rgba(0,0,0,.22);
+  transform: perspective(1500px) rotateY(-4deg) rotateX(1deg);
+  transform-origin: 54% 50%;
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1), box-shadow 500ms ease, border-color 500ms ease;
+}
+
+.zco-hero-featured-board::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px rgba(255,255,255,.35);
+  content: '';
+  pointer-events: none;
 }
 
 .zco-hero-featured:hover .zco-hero-featured-board {
-  transform: perspective(1350px) rotateY(-3deg) rotateX(0deg) translateY(-7px);
-  box-shadow: 0 48px 105px rgba(0,0,0,.52);
+  border-color: rgba(255,255,255,.3);
+  transform: perspective(1500px) rotateY(-1deg) rotateX(0deg) translateY(-7px) scale(1.006);
+  box-shadow: 0 48px 104px rgba(0,0,0,.44), 0 14px 32px rgba(0,0,0,.26);
+}
+
+.zco-hero-featured:focus-visible {
+  outline: 2px solid var(--zco-green);
+  outline-offset: 8px;
 }
 
 .zco-hero-featured-board > img {
   display: block;
-  width: 100%;
-  height: calc(100% - 50px);
+  width: calc(100% + 4px);
+  height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top left;
   transition: transform 700ms cubic-bezier(.2,.8,.2,1);
 }
 
-.zco-hero-featured:hover .zco-hero-featured-board > img { transform: scale(1.018); }
-
-.zco-hero-featured-caption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-  padding: 0 18px;
-  border-top: 1px solid rgba(23,24,22,.1);
-  background: #f7f6f1;
-}
-
-.zco-hero-featured-caption > span { display: flex; align-items: baseline; gap: 12px; }
-.zco-hero-featured-caption b { font-family: var(--zco-display); font-size: 17px; font-weight: 650; letter-spacing: -.06em; }
-.zco-hero-featured-caption small { color: #757972; font-family: var(--zco-mono); font-size: 7px; letter-spacing: .08em; text-transform: uppercase; }
-.zco-hero-featured-caption > i { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #1b1e1a; color: #fff; font-size: 14px; font-style: normal; transition: transform 250ms ease; }
-.zco-hero-featured:hover .zco-hero-featured-caption > i { transform: rotate(45deg); }
-
-.zco-hero-featured-spine {
-  position: absolute;
-  top: 93px;
-  right: 1px;
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 74px;
-  height: 306px;
-  padding: 15px 0;
-  border: 1px solid rgba(255,255,255,.12);
-  background: linear-gradient(180deg,#1b1e22,#101216);
-  color: rgba(244,246,248,.65);
-  box-shadow: 14px 28px 55px rgba(0,0,0,.31);
-  transform: perspective(900px) rotateY(13deg);
-}
-
-.zco-hero-featured-spine span { font-family: var(--zco-mono); font-size: 7px; letter-spacing: .1em; text-transform: uppercase; }
-.zco-hero-featured-spine b { writing-mode: vertical-rl; transform: rotate(180deg); color: #d8f5dd; font-family: var(--zco-display); font-size: 11px; font-weight: 500; letter-spacing: .12em; }
+.zco-hero-featured:hover .zco-hero-featured-board > img { transform: scale(1.012); }
 
 .zco-aura-stage {
   position: relative;
@@ -1253,13 +1199,9 @@ select {
     transform: translateY(-3px);
   }
 
-  .zco-hero-featured { min-height: 390px; margin-inline: auto; }
-  .zco-hero-featured-index { left: 2%; }
-  .zco-hero-featured-stack { inset: 52px 40px 34px 21px; transform: translate3d(16px, 14px, -40px); }
-  .zco-hero-featured-board { inset: 37px 54px 54px 0; transform: none; }
+  .zco-hero-featured { margin-inline: auto; }
+  .zco-hero-featured-board { transform: none; }
   .zco-hero-featured:hover .zco-hero-featured-board { transform: translateY(-4px); }
-  .zco-hero-featured-spine { top: 75px; right: 0; width: 54px; height: 240px; transform: none; }
-  .zco-hero-featured-spine b { font-size: 9px; }
 
   .zco-contact-panel {
     justify-self: center;
@@ -1485,20 +1427,10 @@ select {
     gap: 12px;
   }
 
-  .zco-hero-featured { min-height: 286px; }
-  .zco-hero-featured-index { top: 0; gap: 8px; font-size: 6px; }
-  .zco-hero-featured-index b { font-size: 19px; }
-  .zco-hero-featured-stack { inset: 34px 28px 24px 15px; transform: translate3d(10px, 9px, -30px); }
-  .zco-hero-featured-board { inset: 27px 38px 37px 0; }
-  .zco-hero-featured-board > img { height: calc(100% - 36px); }
-  .zco-hero-featured-caption { height: 36px; padding-inline: 10px; }
-  .zco-hero-featured-caption > span { gap: 6px; }
-  .zco-hero-featured-caption b { font-size: 11px; }
-  .zco-hero-featured-caption small { font-size: 4.5px; }
-  .zco-hero-featured-caption > i { width: 19px; height: 19px; font-size: 10px; }
-  .zco-hero-featured-spine { top: 50px; width: 38px; height: 174px; padding-block: 9px; }
-  .zco-hero-featured-spine span { font-size: 4px; }
-  .zco-hero-featured-spine b { font-size: 6px; }
+  .zco-hero-featured-board {
+    border-radius: 8px;
+    box-shadow: 0 24px 52px rgba(0,0,0,.34), 0 8px 18px rgba(0,0,0,.18);
+  }
 
   .zco-contact-copy {
     gap: 14px;

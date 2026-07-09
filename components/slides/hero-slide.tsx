@@ -174,22 +174,9 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
           rel="noreferrer"
           aria-label="Abrir landing page Faro"
         >
-          <div className="zco-hero-featured-index">
-            <span>Projeto em destaque</span>
-            <b>01</b>
-          </div>
-          <div className="zco-hero-featured-stack" aria-hidden="true" />
           <div className="zco-hero-featured-board">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/faro-social-card.png" alt="Interface da landing page Faro" />
-            <div className="zco-hero-featured-caption">
-              <span><b>Faro</b><small>SaaS · Estratégia · Motion</small></span>
-              <i>↗</i>
-            </div>
-          </div>
-          <div className="zco-hero-featured-spine" aria-hidden="true">
-            <span>zco / case 01</span>
-            <b>CLAREZA EM MOVIMENTO</b>
+            <img src="/images/faro-home-print.png" alt="Captura da landing page Faro" />
           </div>
         </a>
       </div>
