@@ -12,7 +12,7 @@ export function AuroraSlide({ active }: { active: boolean }) {
 
       <div className="zco-case-copy">
         <h2 data-reveal>LANDING PAGE</h2>
-        <p data-reveal>Quem chega entende em segundos — e já sabe se deve te chamar.</p>
+        <p data-reveal>Apresenta o essencial com clareza e conduz o visitante ao contato.</p>
         <div data-reveal className="zco-actions">
           <a className="zco-case-cta" href={DENTAL_URL} target="_blank" rel="noreferrer">
             Ver odontologia
