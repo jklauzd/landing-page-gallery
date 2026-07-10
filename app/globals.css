@@ -421,59 +421,307 @@ select {
   background: rgba(255, 255, 255, 0.32);
 }
 
-.zco-hero-featured {
+.zco-turntable {
+  --zco-turntable-accent: var(--zco-green);
   position: relative;
-  display: grid;
-  place-items: center;
   width: min(760px, 100%);
-  color: #171816;
+  height: 520px;
+  margin-inline: auto;
+  isolation: isolate;
+  perspective: 1600px;
   transform-style: preserve-3d;
 }
 
-.zco-hero-featured-board {
-  position: relative;
-  width: 100%;
+.zco-turntable-screen {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 5;
+  width: 90%;
   aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.19);
-  border-radius: 12px;
-  background: #f7f6f1;
-  box-shadow: 0 38px 82px rgba(0,0,0,.38), 0 10px 26px rgba(0,0,0,.22);
-  transform: perspective(1500px) rotateY(-4deg) rotateX(1deg);
-  transform-origin: 54% 50%;
-  transition: transform 500ms cubic-bezier(.2,.8,.2,1), box-shadow 500ms ease, border-color 500ms ease;
+  transform: translateX(-50%);
+  transform-style: preserve-3d;
 }
 
-.zco-hero-featured-board::after {
+.zco-turntable-screen-motion {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.zco-turntable:hover .zco-turntable-face,
+.zco-turntable:focus-within .zco-turntable-face {
+  border-color: color-mix(in srgb, var(--zco-turntable-accent) 48%, rgba(255,255,255,.22));
+}
+
+.zco-turntable-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  color: inherit;
+  perspective: 1500px;
+  text-decoration: none;
+  transform-style: preserve-3d;
+}
+
+.zco-turntable-link:focus-visible {
+  outline: 2px solid var(--zco-turntable-accent);
+  outline-offset: 7px;
+}
+
+.zco-turntable.is-spinning .zco-turntable-link {
+  pointer-events: none;
+}
+
+.zco-turntable-rotor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.zco-turntable-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 14px;
+  background: #f7f6f1;
+  box-shadow: 0 38px 82px rgba(0,0,0,.42), 0 12px 30px rgba(0,0,0,.24);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: border-color 260ms ease;
+}
+
+.zco-turntable-face::after {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: inset 0 1px rgba(255,255,255,.35);
+  box-shadow: inset 0 1px rgba(255,255,255,.42), inset 0 -1px rgba(0,0,0,.08);
   content: '';
   pointer-events: none;
 }
 
-.zco-hero-featured:hover .zco-hero-featured-board {
-  border-color: rgba(255,255,255,.3);
-  transform: perspective(1500px) rotateY(-1deg) rotateX(0deg) translateY(-7px) scale(1.006);
-  box-shadow: 0 48px 104px rgba(0,0,0,.44), 0 14px 32px rgba(0,0,0,.26);
+.zco-turntable-face-back {
+  transform: rotateY(180deg);
 }
 
-.zco-hero-featured:focus-visible {
-  outline: 2px solid var(--zco-green);
-  outline-offset: 8px;
-}
-
-.zco-hero-featured-board > img {
+.zco-turntable-face > img {
   display: block;
   width: calc(100% + 4px);
   height: 100%;
   object-fit: cover;
   object-position: top left;
-  transition: transform 700ms cubic-bezier(.2,.8,.2,1);
 }
 
-.zco-hero-featured:hover .zco-hero-featured-board > img { transform: scale(1.012); }
+.zco-turntable-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  z-index: 1;
+  width: 72%;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.5);
+  filter: blur(22px);
+  opacity: .72;
+  transform: translateX(-50%);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.zco-turntable-plinth {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  z-index: 2;
+  width: 82%;
+  height: 142px;
+  transform: translateX(-50%);
+}
+
+.zco-turntable-plinth-side,
+.zco-turntable-plinth-top {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.zco-turntable-plinth-side {
+  bottom: 0;
+  height: 105px;
+  border: 1px solid rgba(255,255,255,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12), transparent 24%),
+    linear-gradient(180deg, #20252a 0%, #12161a 52%, #080a0d 100%);
+  box-shadow: 0 25px 54px rgba(0,0,0,.48), inset 0 -12px 24px rgba(0,0,0,.42);
+}
+
+.zco-turntable-plinth-top {
+  top: 0;
+  height: 98px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  background:
+    radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--zco-turntable-accent) 28%, transparent), transparent 30%),
+    radial-gradient(circle at 50% 50%, #252c30 0 23%, #181d21 24% 53%, #0d1114 54% 100%);
+  box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -12px 24px rgba(0,0,0,.34);
+}
+
+.zco-turntable-plinth-top::after {
+  position: absolute;
+  inset: 8px 4%;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+  content: '';
+}
+
+.zco-turntable-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 17%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--zco-turntable-accent) 56%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--zco-turntable-accent) 12%, #101417);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--zco-turntable-accent) 28%, transparent);
+  transform: translate(-50%, -50%) scaleY(.36);
+}
+
+.zco-turntable-orbit-plane {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 54%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scaleY(.31);
+  transform-origin: center;
+}
+
+.zco-turntable-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--zco-turntable-accent) 46%, rgba(255,255,255,.12));
+  border-radius: 50%;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--zco-turntable-accent) 17%, transparent);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.zco-turntable-orbit::after {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 18%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--zco-turntable-accent);
+  box-shadow: 0 0 16px var(--zco-turntable-accent);
+  content: '';
+  transform: translateX(-50%);
+}
+
+.zco-turntable-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(244,246,248,.72);
+  transform: translateX(-50%);
+}
+
+.zco-turntable-toggle,
+.zco-turntable-dots > button {
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.zco-turntable-toggle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.zco-turntable-toggle:hover,
+.zco-turntable-toggle:focus-visible {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  outline: none;
+}
+
+.zco-turntable-toggle:disabled {
+  cursor: default;
+  opacity: .32;
+}
+
+.zco-turntable-toggle-icon {
+  display: block;
+  width: 7px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+
+.zco-turntable-toggle-icon.is-play {
+  width: 0;
+  height: 0;
+  border: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+}
+
+.zco-turntable-dots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.zco-turntable-dots > button {
+  width: 22px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.zco-turntable-dots > button > span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(244,246,248,.34);
+  transition: width 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.zco-turntable-dots > button:hover > span,
+.zco-turntable-dots > button:focus-visible > span {
+  background: rgba(244,246,248,.78);
+}
+
+.zco-turntable-dots > button:focus-visible {
+  outline: 1px solid rgba(255,255,255,.35);
+  outline-offset: -4px;
+}
+
+.zco-turntable-dots > button[aria-current='true'] > span {
+  width: 14px;
+  background: var(--zco-turntable-accent);
+  box-shadow: 0 0 11px color-mix(in srgb, var(--zco-turntable-accent) 64%, transparent);
+}
 
 .zco-aura-stage {
   position: relative;
@@ -1199,9 +1447,38 @@ select {
     transform: translateY(-3px);
   }
 
-  .zco-hero-featured { margin-inline: auto; }
-  .zco-hero-featured-board { transform: none; }
-  .zco-hero-featured:hover .zco-hero-featured-board { transform: translateY(-4px); }
+  .zco-turntable {
+    width: min(620px, 100%);
+    height: clamp(280px, 46vh, 390px);
+  }
+
+  .zco-turntable-screen {
+    top: 0;
+    width: min(92%, max(320px, calc(73.6vh - 67px)));
+  }
+
+  .zco-turntable-plinth {
+    bottom: 6px;
+    width: 86%;
+    height: 112px;
+  }
+
+  .zco-turntable-plinth-side {
+    height: 82px;
+  }
+
+  .zco-turntable-plinth-top {
+    height: 76px;
+  }
+
+  .zco-turntable-shadow {
+    bottom: 36px;
+    height: 48px;
+  }
+
+  .zco-turntable-controls {
+    bottom: 11px;
+  }
 
   .zco-contact-panel {
     justify-self: center;
@@ -1427,13 +1704,108 @@ select {
     gap: 12px;
   }
 
-  .zco-hero-featured-board {
-    border-radius: 8px;
-    box-shadow: 0 24px 52px rgba(0,0,0,.34), 0 8px 18px rgba(0,0,0,.18);
+  .zco-turntable {
+    height: clamp(250px, 36vh, 292px);
+  }
+
+  .zco-turntable-screen {
+    width: 100%;
+  }
+
+  .zco-turntable-face,
+  .zco-turntable-link {
+    border-radius: 9px;
+  }
+
+  .zco-turntable-face {
+    box-shadow: 0 24px 52px rgba(0,0,0,.36), 0 8px 18px rgba(0,0,0,.2);
+  }
+
+  .zco-turntable-plinth {
+    bottom: 0;
+    width: 90%;
+    height: 82px;
+  }
+
+  .zco-turntable-plinth-side {
+    height: 59px;
+  }
+
+  .zco-turntable-plinth-top {
+    height: 54px;
+  }
+
+  .zco-turntable-shadow {
+    bottom: 24px;
+    height: 34px;
+    filter: blur(14px);
+  }
+
+  .zco-turntable-controls {
+    bottom: 0;
+    gap: 5px;
   }
 
   .zco-contact-copy {
     gap: 14px;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 560px) and (orientation: landscape) {
+  .zco-slide.zco-hero {
+    grid-template-columns: minmax(160px, .72fr) minmax(250px, 1.28fr);
+    align-content: center;
+    gap: 16px;
+    padding: 58px 24px 22px;
+  }
+
+  .zco-hero-copy {
+    max-width: 210px;
+  }
+
+  .zco-hero h1 {
+    font-size: clamp(1rem, 3.2vw, 1.45rem);
+    letter-spacing: .04em;
+  }
+
+  .zco-hero-reel {
+    width: 100%;
+  }
+
+  .zco-turntable {
+    height: 230px;
+  }
+
+  .zco-turntable-screen {
+    width: 92%;
+  }
+
+  .zco-turntable-plinth {
+    bottom: 0;
+    width: 88%;
+    height: 64px;
+  }
+
+  .zco-turntable-plinth-side {
+    height: 47px;
+  }
+
+  .zco-turntable-plinth-top {
+    height: 43px;
+  }
+
+  .zco-turntable-shadow {
+    bottom: 17px;
+    height: 28px;
+    filter: blur(12px);
+  }
+
+  .zco-turntable-controls {
+    bottom: -4px;
+  }
+
+  .zco-scroll-cue {
+    display: none;
   }
 }
 
