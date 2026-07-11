@@ -15,37 +15,32 @@ export function HandoffSlide() {
       </div>
 
       <div data-reveal className="zco-handoff-stage" aria-label="Entrega completa">
-        <div className="zco-deploy-window">
-          <div className="zco-browser-top">
-            <span />
-            <span />
-            <span />
+        <div className="zco-handoff-diagram" aria-hidden="true">
+          <div className="zco-handoff-plane">
+            <span className="zco-handoff-route zco-handoff-route-a" />
+            <span className="zco-handoff-route zco-handoff-route-b" />
+            <span className="zco-handoff-route zco-handoff-route-c" />
+            <span className="zco-handoff-route zco-handoff-route-d" />
           </div>
-          <div className="zco-deploy-body">
-            <div>
-              <small>zcompany.com.br</small>
-              <strong>Pronto para publicar</strong>
-            </div>
+
+          <div className="zco-handoff-node zco-handoff-node-domain">
             <i />
-            <i />
-            <i />
+            <span>Domínio</span>
           </div>
-        </div>
+          <div className="zco-handoff-node zco-handoff-node-design">
+            <i />
+            <span>Design</span>
+          </div>
+          <div className="zco-handoff-node zco-handoff-node-build">
+            <i />
+            <span>Código</span>
+          </div>
 
-        <div className="zco-launch-card zco-launch-domain">
-          <span>Domínio</span>
-          <strong>conectado</strong>
-        </div>
-
-        <div className="zco-launch-card zco-launch-host">
-          <span>Hospedagem</span>
-          <strong>configurada</strong>
-        </div>
-
-        <div className="zco-handoff-list">
-          <span>Publicação</span>
-          <span>Ajustes finais</span>
-          <span>Suporte inicial</span>
+          <div className="zco-handoff-live">
+            <span className="zco-handoff-live-pulse" />
+            <strong>online</strong>
+            <small>publicado</small>
+          </div>
         </div>
       </div>
 

@@ -24,6 +24,8 @@
   --zco-blue: #76a9ff;
   --zco-gold: #f6c35b;
   --zco-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  --zco-display: var(--font-zco-display), var(--font-zco-sans), system-ui, sans-serif;
+  --zco-mono: var(--font-zco-mono), ui-monospace, monospace;
 }
 
 * {
@@ -107,20 +109,21 @@ select {
 /* Bottom-center scroll invitation — not a primary CTA button */
 .zco-scroll-cue {
   position: absolute;
-  left: 50%;
+  right: 0;
+  left: 0;
   bottom: clamp(22px, 4vh, 40px);
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin: 0;
+  width: max-content;
+  margin-inline: auto;
   padding: 12px 20px;
   border: 0;
   background: none;
   color: rgba(244, 246, 248, 0.78);
   cursor: pointer;
-  transform: translateX(-50%);
   transition: color 220ms ease;
 }
 
@@ -132,6 +135,15 @@ select {
 
 .zco-slide-scroll-cue {
   pointer-events: none;
+}
+
+.zco-slide-scroll-cue.is-icon-only {
+  gap: 0;
+  padding: 8px;
+}
+
+.zco-slide-scroll-cue.is-icon-only .zco-scroll-cue-chevron {
+  animation-delay: 140ms;
 }
 
 .zco-scroll-cue-label {
@@ -258,13 +270,13 @@ select {
   gap: 0.12em;
   color: var(--zco-text);
   /* Same type treatment as "ver projetos" scroll cue */
-  font-family: var(--font-zco-sans), system-ui, sans-serif;
+  font-family: var(--zco-display);
   font-weight: 600;
-  letter-spacing: 0.14em;
-  line-height: 1.15;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
   text-transform: uppercase;
   max-width: 20ch;
-  font-size: clamp(1.65rem, 3.4vw, 2.65rem);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
 }
 
 .zco-hero-line {
@@ -291,6 +303,7 @@ select {
 .zco-hero-reel {
   position: relative;
   z-index: 1;
+  margin-top: clamp(14px, 3.5vh, 42px);
   will-change: transform, opacity, filter;
   transform-style: preserve-3d;
 }
@@ -306,10 +319,11 @@ select {
 .zco-case h2,
 .zco-handoff-copy h2 {
   color: var(--zco-text);
-  font-family: var(--font-zco-sans), system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.94;
+  font-family: var(--zco-display);
+  font-weight: 500;
+  letter-spacing: -0.072em;
+  line-height: 0.91;
+  text-wrap: balance;
 }
 
 /* Contact title — original display sans feel (not serif) */
@@ -367,22 +381,24 @@ select {
   min-height: 46px;
   padding: 0 17px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.045);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
   color: var(--zco-text);
   text-decoration: none;
-  font-family: var(--fontStack-monospace);
+  font-family: var(--zco-mono);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+  box-shadow: inset 0 1px rgba(255,255,255,.08), 0 8px 18px rgba(0,0,0,.12);
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
 }
 
 .zco-case-cta:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.42);
   background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px rgba(255,255,255,.14), 0 14px 26px rgba(0,0,0,.2);
 }
 
 .zco-case-cta-muted {
@@ -398,14 +414,6 @@ select {
 .zco-hero-reel {
   position: relative;
   z-index: 2;
-}
-
-.zco-browser-mock {
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: linear-gradient(145deg, rgba(22, 25, 32, 0.92), rgba(9, 11, 15, 0.92));
-  box-shadow: var(--zco-shadow);
-  overflow: hidden;
 }
 
 .zco-browser-top {
@@ -424,96 +432,307 @@ select {
   background: rgba(255, 255, 255, 0.32);
 }
 
-.zco-reel-main {
-  width: min(720px, 100%);
-  transform: perspective(1200px) rotateX(3deg) rotateY(-8deg);
-}
-
-.zco-shot-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  grid-template-rows: 240px 190px;
-  gap: 12px;
-  padding: 16px;
-}
-
-.zco-shot {
+.zco-turntable {
+  --zco-turntable-accent: var(--zco-green);
   position: relative;
-  min-height: 0;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  overflow: hidden;
+  width: min(760px, 100%);
+  height: 520px;
+  margin-inline: auto;
+  isolation: isolate;
+  perspective: 1600px;
+  transform-style: preserve-3d;
 }
 
-.zco-shot-product {
-  grid-row: span 2;
+.zco-turntable-screen {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 5;
+  width: 90%;
+  aspect-ratio: 16 / 10;
+  transform: translateX(-50%);
+  transform-style: preserve-3d;
 }
 
-.zco-shot img {
+.zco-turntable-screen-motion {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-.zco-shot-product img {
-  object-fit: contain;
-  padding: 26px;
-  animation: zco-hover-product 7s ease-in-out infinite;
+.zco-turntable:hover .zco-turntable-face,
+.zco-turntable:focus-within .zco-turntable-face {
+  border-color: color-mix(in srgb, var(--zco-turntable-accent) 48%, rgba(255,255,255,.22));
 }
 
-.zco-shot-brand img {
-  object-fit: contain;
-  padding: 12px;
-  transform: rotate(-10deg) scale(1.18);
+.zco-turntable-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  color: inherit;
+  perspective: 1500px;
+  text-decoration: none;
+  transform-style: preserve-3d;
 }
 
-.zco-shot-dashboard {
-  display: grid;
-  align-content: center;
-  gap: 18px;
-  padding: 18px;
+.zco-turntable-link:focus-visible {
+  outline: 2px solid var(--zco-turntable-accent);
+  outline-offset: 7px;
 }
 
-.zco-chart-line {
+.zco-turntable.is-spinning .zco-turntable-link {
+  pointer-events: none;
+}
+
+.zco-turntable-rotor {
   position: relative;
-  height: 86px;
-  border-radius: 8px;
-  overflow: hidden;
-  background:
-    linear-gradient(140deg, transparent 10%, rgba(143, 214, 148, 0.8) 12%, transparent 14%),
-    linear-gradient(22deg, transparent 44%, rgba(118, 169, 255, 0.72) 45%, transparent 47%),
-    rgba(255, 255, 255, 0.04);
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-.zco-chart-line::after {
-  content: '';
+.zco-turntable-face {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: translateX(-100%);
-  animation: zco-scan 3.2s ease-in-out infinite;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 14px;
+  background: #f7f6f1;
+  box-shadow: 0 38px 82px rgba(0,0,0,.42), 0 12px 30px rgba(0,0,0,.24);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: border-color 260ms ease;
 }
 
-.zco-chart-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 82px;
+.zco-turntable-face::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px rgba(255,255,255,.42), inset 0 -1px rgba(0,0,0,.08);
+  content: '';
+  pointer-events: none;
 }
 
-.zco-chart-bars i {
+.zco-turntable-face-back {
+  transform: rotateY(180deg);
+}
+
+.zco-turntable-face > img {
   display: block;
-  flex: 1;
-  border-radius: 8px 8px 0 0;
-  background: linear-gradient(180deg, var(--zco-green), rgba(143, 214, 148, 0.18));
-  animation: zco-bars 1.8s ease-in-out infinite;
+  width: calc(100% + 4px);
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
 }
 
-.zco-chart-bars i:nth-child(1) { height: 42%; }
-.zco-chart-bars i:nth-child(2) { height: 72%; animation-delay: 120ms; }
-.zco-chart-bars i:nth-child(3) { height: 54%; animation-delay: 240ms; }
-.zco-chart-bars i:nth-child(4) { height: 88%; animation-delay: 360ms; }
+.zco-turntable-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  z-index: 1;
+  width: 72%;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.5);
+  filter: blur(22px);
+  opacity: .72;
+  transform: translateX(-50%);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.zco-turntable-plinth {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  z-index: 2;
+  width: 82%;
+  height: 142px;
+  transform: translateX(-50%);
+}
+
+.zco-turntable-plinth-side,
+.zco-turntable-plinth-top {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.zco-turntable-plinth-side {
+  bottom: 0;
+  height: 105px;
+  border: 1px solid rgba(255,255,255,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12), transparent 24%),
+    linear-gradient(180deg, #20252a 0%, #12161a 52%, #080a0d 100%);
+  box-shadow: 0 25px 54px rgba(0,0,0,.48), inset 0 -12px 24px rgba(0,0,0,.42);
+}
+
+.zco-turntable-plinth-top {
+  top: 0;
+  height: 98px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  background:
+    radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--zco-turntable-accent) 28%, transparent), transparent 30%),
+    radial-gradient(circle at 50% 50%, #252c30 0 23%, #181d21 24% 53%, #0d1114 54% 100%);
+  box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -12px 24px rgba(0,0,0,.34);
+}
+
+.zco-turntable-plinth-top::after {
+  position: absolute;
+  inset: 8px 4%;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+  content: '';
+}
+
+.zco-turntable-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 17%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--zco-turntable-accent) 56%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--zco-turntable-accent) 12%, #101417);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--zco-turntable-accent) 28%, transparent);
+  transform: translate(-50%, -50%) scaleY(.36);
+}
+
+.zco-turntable-orbit-plane {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 54%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scaleY(.31);
+  transform-origin: center;
+}
+
+.zco-turntable-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--zco-turntable-accent) 46%, rgba(255,255,255,.12));
+  border-radius: 50%;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--zco-turntable-accent) 17%, transparent);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.zco-turntable-orbit::after {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 18%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--zco-turntable-accent);
+  box-shadow: 0 0 16px var(--zco-turntable-accent);
+  content: '';
+  transform: translateX(-50%);
+}
+
+.zco-turntable-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(244,246,248,.72);
+  transform: translateX(-50%);
+}
+
+.zco-turntable-toggle,
+.zco-turntable-dots > button {
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.zco-turntable-toggle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.zco-turntable-toggle:hover,
+.zco-turntable-toggle:focus-visible {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  outline: none;
+}
+
+.zco-turntable-toggle:disabled {
+  cursor: default;
+  opacity: .32;
+}
+
+.zco-turntable-toggle-icon {
+  display: block;
+  width: 7px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+
+.zco-turntable-toggle-icon.is-play {
+  width: 0;
+  height: 0;
+  border: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+}
+
+.zco-turntable-dots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.zco-turntable-dots > button {
+  width: 22px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.zco-turntable-dots > button > span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(244,246,248,.34);
+  transition: width 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.zco-turntable-dots > button:hover > span,
+.zco-turntable-dots > button:focus-visible > span {
+  background: rgba(244,246,248,.78);
+}
+
+.zco-turntable-dots > button:focus-visible {
+  outline: 1px solid rgba(255,255,255,.35);
+  outline-offset: -4px;
+}
+
+.zco-turntable-dots > button[aria-current='true'] > span {
+  width: 14px;
+  background: var(--zco-turntable-accent);
+  box-shadow: 0 0 11px color-mix(in srgb, var(--zco-turntable-accent) 64%, transparent);
+}
 
 .zco-aura-stage {
   position: relative;
@@ -774,118 +993,171 @@ select {
   position: relative;
   z-index: 2;
   width: min(680px, 100%);
-  min-height: 470px;
+  min-height: 460px;
   perspective: 1300px;
 }
 
-.zco-deploy-window {
+.zco-handoff-diagram {
   position: absolute;
-  inset: 52px 0 auto 34px;
-  height: 330px;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: linear-gradient(145deg, rgba(22, 25, 32, 0.96), rgba(8, 10, 14, 0.96));
-  box-shadow: var(--zco-shadow);
+  inset: 24px 0 0;
   overflow: hidden;
-  transform: rotateX(3deg) rotateY(-7deg);
+  transform: rotateX(4deg) rotateY(-6deg);
+  transform-style: preserve-3d;
 }
 
-.zco-deploy-body {
-  display: grid;
-  gap: 14px;
-  padding: 26px;
-}
-
-.zco-deploy-body small {
-  color: rgba(244, 246, 248, 0.54);
-  font-family: var(--font-zco-sans), system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.zco-deploy-body strong {
-  display: block;
-  margin-top: 8px;
-  color: var(--zco-text);
-  font-size: clamp(1.8rem, 3vw, 3.2rem);
-  line-height: 1;
-}
-
-.zco-deploy-body i {
-  display: block;
-  height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  background: linear-gradient(90deg, rgba(143, 214, 148, 0.18), rgba(255, 255, 255, 0.045));
-}
-
-.zco-deploy-body i:nth-child(3) {
-  width: 86%;
-}
-
-.zco-deploy-body i:nth-child(4) {
-  width: 68%;
-}
-
-.zco-launch-card {
+.zco-handoff-plane {
   position: absolute;
-  display: grid;
-  gap: 6px;
-  min-width: 178px;
-  padding: 18px;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: rgba(10, 12, 16, 0.82);
-  box-shadow: var(--zco-shadow);
-  backdrop-filter: blur(18px);
+  inset: 30px 26px 44px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 62% 37%, rgba(143,214,148,.16), transparent 20%),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    radial-gradient(ellipse at center, #182126 0%, #0d1114 72%);
+  background-size: auto, 32px 32px, 32px 32px, auto;
+  box-shadow: inset 0 1px rgba(255,255,255,.13), 0 34px 58px rgba(0,0,0,.36);
 }
 
-.zco-launch-card span {
-  color: rgba(244, 246, 248, 0.52);
-  font-size: 12px;
+.zco-handoff-plane::after {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 50%;
+  content: '';
+}
+
+.zco-handoff-route {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(143,214,148,.14), rgba(143,214,148,.82));
+  box-shadow: 0 0 14px rgba(143,214,148,.23);
+}
+
+.zco-handoff-route-a {
+  top: 66%;
+  left: 13%;
+  width: 30%;
+  height: 1px;
+}
+
+.zco-handoff-route-b {
+  top: 41%;
+  left: 43%;
+  width: 1px;
+  height: 25%;
+  background: linear-gradient(180deg, rgba(143,214,148,.82), rgba(143,214,148,.32));
+}
+
+.zco-handoff-route-c {
+  top: 41%;
+  left: 43%;
+  width: 30%;
+  height: 1px;
+}
+
+.zco-handoff-route-d {
+  top: 41%;
+  left: 73%;
+  width: 1px;
+  height: 18%;
+  background: linear-gradient(180deg, rgba(143,214,148,.82), rgba(143,214,148,.18));
+}
+
+.zco-handoff-node {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: rgba(244,246,248,.64);
+  font-family: var(--zco-mono);
+  font-size: 9px;
   font-weight: 700;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 
-.zco-launch-card strong {
-  color: var(--zco-text);
-  font-size: 22px;
-  line-height: 1;
+.zco-handoff-node i {
+  display: block;
+  width: 13px;
+  aspect-ratio: 1;
+  border: 3px solid #101417;
+  border-radius: 50%;
+  background: var(--zco-green);
+  box-shadow: 0 0 0 1px rgba(143,214,148,.54), 0 0 17px rgba(143,214,148,.46);
 }
 
-.zco-launch-domain {
-  top: 0;
-  right: 22px;
+.zco-handoff-node-domain {
+  top: 59%;
+  left: 11%;
 }
 
-.zco-launch-host {
-  left: 0;
-  bottom: 62px;
+.zco-handoff-node-design {
+  top: 31%;
+  left: 35%;
 }
 
-.zco-handoff-list {
+.zco-handoff-node-build {
+  top: 31%;
+  left: 66%;
+}
+
+.zco-handoff-live {
   position: absolute;
-  right: 18px;
-  bottom: 0;
-  width: min(360px, 72%);
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
+  top: 46%;
+  left: 64%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 128px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(143,214,148,.48);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(143,214,148,.26), rgba(18,28,29,.92) 67%);
+  box-shadow: 0 0 0 14px rgba(143,214,148,.035), 0 0 44px rgba(143,214,148,.18);
+  color: var(--zco-text);
+  transform: translate(-50%, -50%);
 }
 
-.zco-handoff-list span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 42px;
-  padding: 0 16px;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.055);
-  color: rgba(244, 246, 248, 0.8);
-  font-size: 14px;
-  font-weight: 700;
+.zco-handoff-live::before,
+.zco-handoff-live::after {
+  position: absolute;
+  border: 1px solid rgba(143,214,148,.16);
+  border-radius: 50%;
+  content: '';
+}
+
+.zco-handoff-live::before { inset: -13px; }
+.zco-handoff-live::after { inset: -27px; opacity: .55; }
+
+.zco-handoff-live-pulse {
+  width: 7px;
+  height: 7px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  background: var(--zco-green);
+  box-shadow: 0 0 15px var(--zco-green);
+}
+
+.zco-handoff-live strong {
+  font-family: var(--zco-display);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -.07em;
+  line-height: .8;
+}
+
+.zco-handoff-live small {
+  margin-top: 7px;
+  color: rgba(244,246,248,.54);
+  font-family: var(--zco-mono);
+  font-size: 7px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 
 .zco-contact-panel {
@@ -978,21 +1250,6 @@ select {
   50% { transform: translate3d(-4%, 3%, 0) scale(1.08); }
 }
 
-@keyframes zco-hover-product {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-16px) scale(1.03); }
-}
-
-@keyframes zco-scan {
-  0% { transform: translateX(-120%); }
-  58%, 100% { transform: translateX(120%); }
-}
-
-@keyframes zco-bars {
-  0%, 100% { transform: scaleY(0.72); }
-  50% { transform: scaleY(1); }
-}
-
 @media (max-width: 900px) {
   .zco-nav-inner {
     justify-content: center !important;
@@ -1011,24 +1268,32 @@ select {
   .zco-slide {
     grid-template-columns: 1fr;
     align-content: start;
+    justify-items: center;
     gap: 24px;
     padding: 86px 24px 44px;
     overflow: hidden;
+    text-align: center;
   }
 
   .zco-hero {
     grid-template-columns: 1fr;
+    align-content: start;
+    justify-items: center;
   }
 
   .zco-hero-copy {
     z-index: 3;
+    justify-items: center;
     max-width: min(340px, 100%);
+    text-align: center;
   }
 
   .zco-hero h1 {
     max-width: 22ch;
-    font-size: clamp(1.35rem, 5.4vw, 1.9rem);
-    letter-spacing: 0.12em;
+    align-items: center;
+    font-size: clamp(1.75rem, 7.2vw, 2.35rem);
+    letter-spacing: -0.035em;
+    text-align: center;
   }
 
   .zco-hero-line {
@@ -1037,6 +1302,7 @@ select {
 
   .zco-hero-reel {
     z-index: 1;
+    margin-top: clamp(16px, 3vh, 30px);
   }
 
   .zco-case h2 {
@@ -1058,11 +1324,12 @@ select {
     grid-template-columns: 1fr;
     align-content: start;
     gap: 24px;
-    text-align: left;
+    text-align: center;
   }
 
   .zco-handoff-copy {
-    justify-items: start;
+    justify-items: center;
+    text-align: center;
   }
 
   .zco-handoff-copy h2 {
@@ -1082,42 +1349,21 @@ select {
   .zco-handoff-copy p {
     max-width: 30ch;
     font-size: 15px;
+    text-align: center;
   }
 
   .zco-handoff-stage {
     width: 100%;
-    min-height: 360px;
+    min-height: 330px;
   }
 
-  .zco-deploy-window {
-    inset: 34px 0 auto 0;
-    height: 250px;
+  .zco-handoff-diagram {
+    inset: 4px 0 0;
     transform: none;
   }
 
-  .zco-launch-card {
-    min-width: 142px;
-    padding: 14px;
-  }
-
-  .zco-launch-card strong {
-    font-size: 18px;
-  }
-
-  .zco-launch-domain {
-    top: 0;
-    right: 0;
-  }
-
-  .zco-launch-host {
-    left: 0;
-    bottom: 34px;
-  }
-
-  .zco-handoff-list {
-    right: 0;
-    bottom: 0;
-    width: min(260px, 76%);
+  .zco-handoff-plane {
+    inset: 28px 0 28px;
   }
 
   .zco-hero p,
@@ -1254,13 +1500,37 @@ select {
     transform: translateY(-3px);
   }
 
-  .zco-reel-main {
-    transform: none;
+  .zco-turntable {
+    width: min(620px, 100%);
+    height: clamp(280px, 46vh, 390px);
   }
 
-  .zco-shot-grid {
-    grid-template-rows: 180px 132px;
-    padding: 10px;
+  .zco-turntable-screen {
+    top: 0;
+    width: min(92%, max(320px, calc(73.6vh - 67px)));
+  }
+
+  .zco-turntable-plinth {
+    bottom: 6px;
+    width: 86%;
+    height: 112px;
+  }
+
+  .zco-turntable-plinth-side {
+    height: 82px;
+  }
+
+  .zco-turntable-plinth-top {
+    height: 76px;
+  }
+
+  .zco-turntable-shadow {
+    bottom: 36px;
+    height: 48px;
+  }
+
+  .zco-turntable-controls {
+    bottom: 11px;
   }
 
   .zco-contact-panel {
@@ -1427,32 +1697,29 @@ select {
     font-size: clamp(2.2rem, 9vw, 2.9rem);
   }
 
-  .zco-handoff-list {
-    gap: 8px;
-    max-width: 300px;
-  }
-
-  .zco-handoff-list span {
-    min-height: 36px;
-    padding-inline: 12px;
-    font-size: 13px;
-  }
-
   .zco-handoff-stage {
-    min-height: 330px;
+    min-height: 276px;
   }
 
-  .zco-deploy-window {
-    height: 226px;
+  .zco-handoff-diagram {
+    inset: 0;
   }
 
-  .zco-deploy-body {
-    padding: 18px;
+  .zco-handoff-plane {
+    inset: 25px 0 22px;
   }
 
-  .zco-deploy-body i {
-    height: 34px;
+  .zco-handoff-node {
+    gap: 5px;
+    font-size: 7px;
   }
+
+  .zco-handoff-node i { width: 10px; border-width: 2px; }
+  .zco-handoff-live { width: 96px; }
+  .zco-handoff-live strong { font-size: 20px; }
+  .zco-handoff-live small { margin-top: 5px; font-size: 5.5px; }
+  .zco-handoff-live::before { inset: -9px; }
+  .zco-handoff-live::after { inset: -18px; }
 
   .zco-contact-copy {
     transform: translateY(-18px);
@@ -1487,13 +1754,108 @@ select {
     gap: 12px;
   }
 
-  .zco-shot-grid {
-    grid-template-columns: 1fr 0.82fr;
-    grid-template-rows: 152px 110px;
+  .zco-turntable {
+    height: clamp(250px, 36vh, 292px);
+  }
+
+  .zco-turntable-screen {
+    width: 100%;
+  }
+
+  .zco-turntable-face,
+  .zco-turntable-link {
+    border-radius: 9px;
+  }
+
+  .zco-turntable-face {
+    box-shadow: 0 24px 52px rgba(0,0,0,.36), 0 8px 18px rgba(0,0,0,.2);
+  }
+
+  .zco-turntable-plinth {
+    bottom: 0;
+    width: 90%;
+    height: 82px;
+  }
+
+  .zco-turntable-plinth-side {
+    height: 59px;
+  }
+
+  .zco-turntable-plinth-top {
+    height: 54px;
+  }
+
+  .zco-turntable-shadow {
+    bottom: 24px;
+    height: 34px;
+    filter: blur(14px);
+  }
+
+  .zco-turntable-controls {
+    bottom: 0;
+    gap: 5px;
   }
 
   .zco-contact-copy {
     gap: 14px;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 560px) and (orientation: landscape) {
+  .zco-slide.zco-hero {
+    grid-template-columns: minmax(160px, .72fr) minmax(250px, 1.28fr);
+    align-content: center;
+    gap: 16px;
+    padding: 58px 24px 22px;
+  }
+
+  .zco-hero-copy {
+    max-width: 210px;
+  }
+
+  .zco-hero h1 {
+    font-size: clamp(1rem, 3.2vw, 1.45rem);
+    letter-spacing: .04em;
+  }
+
+  .zco-hero-reel {
+    width: 100%;
+  }
+
+  .zco-turntable {
+    height: 230px;
+  }
+
+  .zco-turntable-screen {
+    width: 92%;
+  }
+
+  .zco-turntable-plinth {
+    bottom: 0;
+    width: 88%;
+    height: 64px;
+  }
+
+  .zco-turntable-plinth-side {
+    height: 47px;
+  }
+
+  .zco-turntable-plinth-top {
+    height: 43px;
+  }
+
+  .zco-turntable-shadow {
+    bottom: 17px;
+    height: 28px;
+    filter: blur(12px);
+  }
+
+  .zco-turntable-controls {
+    bottom: -4px;
+  }
+
+  .zco-scroll-cue {
+    display: none;
   }
 }
 

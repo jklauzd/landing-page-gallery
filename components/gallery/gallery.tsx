@@ -64,12 +64,18 @@ export function Gallery() {
     gsap.set(outEl, { zIndex: 1 })
 
     const reveals = inEl.querySelectorAll('[data-reveal]')
+    const titles = inEl.querySelectorAll<HTMLElement>('h2[data-reveal]')
     gsap.set(reveals, {
       y: 56,
       opacity: 0,
       filter: prefersReduced ? 'none' : 'blur(10px)',
       scale: prefersReduced ? 1 : 0.97,
     })
+    if (!prefersReduced) {
+      gsap.set(titles, {
+        clipPath: 'inset(0 0 100% 0)',
+      })
+    }
 
     gsap
       .timeline({
@@ -78,6 +84,7 @@ export function Gallery() {
           gsap.set(inEl, { y: 0, yPercent: 0, autoAlpha: 1, scale: 1 })
           gsap.set(outEl, { autoAlpha: 0, scale: 1, y: window.innerHeight, yPercent: 0 })
           gsap.set(reveals, { clearProps: 'filter' })
+          gsap.set(titles, { clearProps: 'clipPath' })
           // brief cooldown so trackpad momentum doesn't chain slides
           window.setTimeout(() => {
             lockRef.current = false
@@ -99,6 +106,15 @@ export function Gallery() {
           ease: 'power4.out',
         },
         duration * 0.42,
+      )
+      .to(
+        titles,
+        {
+          clipPath: 'inset(0 0 0% 0)',
+          duration: prefersReduced ? 0 : 0.8,
+          ease: 'power4.out',
+        },
+        duration * 0.38,
       )
   }, [])
 

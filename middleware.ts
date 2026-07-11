@@ -6,6 +6,7 @@ const SUBDOMAIN_SITES: Record<string, string> = {
   advocacia: 'advocacia',
   dashboard: 'dashboard',
   petluxe: 'petluxe',
+  faro: 'faro',
 }
 
 export function middleware(request: NextRequest) {
