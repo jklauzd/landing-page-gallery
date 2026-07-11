@@ -74,7 +74,6 @@ export function Gallery() {
     if (!prefersReduced) {
       gsap.set(titles, {
         clipPath: 'inset(0 0 100% 0)',
-        letterSpacing: '0.01em',
       })
     }
 
@@ -85,7 +84,7 @@ export function Gallery() {
           gsap.set(inEl, { y: 0, yPercent: 0, autoAlpha: 1, scale: 1 })
           gsap.set(outEl, { autoAlpha: 0, scale: 1, y: window.innerHeight, yPercent: 0 })
           gsap.set(reveals, { clearProps: 'filter' })
-          gsap.set(titles, { clearProps: 'clipPath,letterSpacing' })
+          gsap.set(titles, { clearProps: 'clipPath' })
           // brief cooldown so trackpad momentum doesn't chain slides
           window.setTimeout(() => {
             lockRef.current = false
@@ -112,7 +111,6 @@ export function Gallery() {
         titles,
         {
           clipPath: 'inset(0 0 0% 0)',
-          letterSpacing: '-0.065em',
           duration: prefersReduced ? 0 : 0.8,
           ease: 'power4.out',
         },

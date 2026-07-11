@@ -109,20 +109,21 @@ select {
 /* Bottom-center scroll invitation — not a primary CTA button */
 .zco-scroll-cue {
   position: absolute;
-  left: 50%;
+  right: 0;
+  left: 0;
   bottom: clamp(22px, 4vh, 40px);
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin: 0;
+  width: max-content;
+  margin-inline: auto;
   padding: 12px 20px;
   border: 0;
   background: none;
   color: rgba(244, 246, 248, 0.78);
   cursor: pointer;
-  transform: translateX(-50%);
   transition: color 220ms ease;
 }
 
@@ -134,6 +135,15 @@ select {
 
 .zco-slide-scroll-cue {
   pointer-events: none;
+}
+
+.zco-slide-scroll-cue.is-icon-only {
+  gap: 0;
+  padding: 8px;
+}
+
+.zco-slide-scroll-cue.is-icon-only .zco-scroll-cue-chevron {
+  animation-delay: 140ms;
 }
 
 .zco-scroll-cue-label {
@@ -266,7 +276,7 @@ select {
   line-height: 0.98;
   text-transform: uppercase;
   max-width: 20ch;
-  font-size: clamp(1.65rem, 3.4vw, 2.65rem);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
 }
 
 .zco-hero-line {
@@ -293,6 +303,7 @@ select {
 .zco-hero-reel {
   position: relative;
   z-index: 1;
+  margin-top: clamp(14px, 3.5vh, 42px);
   will-change: transform, opacity, filter;
   transform-style: preserve-3d;
 }
@@ -982,118 +993,171 @@ select {
   position: relative;
   z-index: 2;
   width: min(680px, 100%);
-  min-height: 470px;
+  min-height: 460px;
   perspective: 1300px;
 }
 
-.zco-deploy-window {
+.zco-handoff-diagram {
   position: absolute;
-  inset: 52px 0 auto 34px;
-  height: 330px;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: linear-gradient(145deg, rgba(22, 25, 32, 0.96), rgba(8, 10, 14, 0.96));
-  box-shadow: var(--zco-shadow);
+  inset: 24px 0 0;
   overflow: hidden;
-  transform: rotateX(3deg) rotateY(-7deg);
+  transform: rotateX(4deg) rotateY(-6deg);
+  transform-style: preserve-3d;
 }
 
-.zco-deploy-body {
-  display: grid;
-  gap: 14px;
-  padding: 26px;
-}
-
-.zco-deploy-body small {
-  color: rgba(244, 246, 248, 0.54);
-  font-family: var(--font-zco-sans), system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.zco-deploy-body strong {
-  display: block;
-  margin-top: 8px;
-  color: var(--zco-text);
-  font-size: clamp(1.8rem, 3vw, 3.2rem);
-  line-height: 1;
-}
-
-.zco-deploy-body i {
-  display: block;
-  height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  background: linear-gradient(90deg, rgba(143, 214, 148, 0.18), rgba(255, 255, 255, 0.045));
-}
-
-.zco-deploy-body i:nth-child(3) {
-  width: 86%;
-}
-
-.zco-deploy-body i:nth-child(4) {
-  width: 68%;
-}
-
-.zco-launch-card {
+.zco-handoff-plane {
   position: absolute;
-  display: grid;
-  gap: 6px;
-  min-width: 178px;
-  padding: 18px;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: rgba(10, 12, 16, 0.82);
-  box-shadow: var(--zco-shadow);
-  backdrop-filter: blur(18px);
+  inset: 30px 26px 44px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 62% 37%, rgba(143,214,148,.16), transparent 20%),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    radial-gradient(ellipse at center, #182126 0%, #0d1114 72%);
+  background-size: auto, 32px 32px, 32px 32px, auto;
+  box-shadow: inset 0 1px rgba(255,255,255,.13), 0 34px 58px rgba(0,0,0,.36);
 }
 
-.zco-launch-card span {
-  color: rgba(244, 246, 248, 0.52);
-  font-size: 12px;
+.zco-handoff-plane::after {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 50%;
+  content: '';
+}
+
+.zco-handoff-route {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(143,214,148,.14), rgba(143,214,148,.82));
+  box-shadow: 0 0 14px rgba(143,214,148,.23);
+}
+
+.zco-handoff-route-a {
+  top: 66%;
+  left: 13%;
+  width: 30%;
+  height: 1px;
+}
+
+.zco-handoff-route-b {
+  top: 41%;
+  left: 43%;
+  width: 1px;
+  height: 25%;
+  background: linear-gradient(180deg, rgba(143,214,148,.82), rgba(143,214,148,.32));
+}
+
+.zco-handoff-route-c {
+  top: 41%;
+  left: 43%;
+  width: 30%;
+  height: 1px;
+}
+
+.zco-handoff-route-d {
+  top: 41%;
+  left: 73%;
+  width: 1px;
+  height: 18%;
+  background: linear-gradient(180deg, rgba(143,214,148,.82), rgba(143,214,148,.18));
+}
+
+.zco-handoff-node {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: rgba(244,246,248,.64);
+  font-family: var(--zco-mono);
+  font-size: 9px;
   font-weight: 700;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 
-.zco-launch-card strong {
-  color: var(--zco-text);
-  font-size: 22px;
-  line-height: 1;
+.zco-handoff-node i {
+  display: block;
+  width: 13px;
+  aspect-ratio: 1;
+  border: 3px solid #101417;
+  border-radius: 50%;
+  background: var(--zco-green);
+  box-shadow: 0 0 0 1px rgba(143,214,148,.54), 0 0 17px rgba(143,214,148,.46);
 }
 
-.zco-launch-domain {
-  top: 0;
-  right: 22px;
+.zco-handoff-node-domain {
+  top: 59%;
+  left: 11%;
 }
 
-.zco-launch-host {
-  left: 0;
-  bottom: 62px;
+.zco-handoff-node-design {
+  top: 31%;
+  left: 35%;
 }
 
-.zco-handoff-list {
+.zco-handoff-node-build {
+  top: 31%;
+  left: 66%;
+}
+
+.zco-handoff-live {
   position: absolute;
-  right: 18px;
-  bottom: 0;
-  width: min(360px, 72%);
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
+  top: 46%;
+  left: 64%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 128px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(143,214,148,.48);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(143,214,148,.26), rgba(18,28,29,.92) 67%);
+  box-shadow: 0 0 0 14px rgba(143,214,148,.035), 0 0 44px rgba(143,214,148,.18);
+  color: var(--zco-text);
+  transform: translate(-50%, -50%);
 }
 
-.zco-handoff-list span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 42px;
-  padding: 0 16px;
-  border: 1px solid var(--zco-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.055);
-  color: rgba(244, 246, 248, 0.8);
-  font-size: 14px;
-  font-weight: 700;
+.zco-handoff-live::before,
+.zco-handoff-live::after {
+  position: absolute;
+  border: 1px solid rgba(143,214,148,.16);
+  border-radius: 50%;
+  content: '';
+}
+
+.zco-handoff-live::before { inset: -13px; }
+.zco-handoff-live::after { inset: -27px; opacity: .55; }
+
+.zco-handoff-live-pulse {
+  width: 7px;
+  height: 7px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  background: var(--zco-green);
+  box-shadow: 0 0 15px var(--zco-green);
+}
+
+.zco-handoff-live strong {
+  font-family: var(--zco-display);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -.07em;
+  line-height: .8;
+}
+
+.zco-handoff-live small {
+  margin-top: 7px;
+  color: rgba(244,246,248,.54);
+  font-family: var(--zco-mono);
+  font-size: 7px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 
 .zco-contact-panel {
@@ -1204,24 +1268,32 @@ select {
   .zco-slide {
     grid-template-columns: 1fr;
     align-content: start;
+    justify-items: center;
     gap: 24px;
     padding: 86px 24px 44px;
     overflow: hidden;
+    text-align: center;
   }
 
   .zco-hero {
     grid-template-columns: 1fr;
+    align-content: start;
+    justify-items: center;
   }
 
   .zco-hero-copy {
     z-index: 3;
+    justify-items: center;
     max-width: min(340px, 100%);
+    text-align: center;
   }
 
   .zco-hero h1 {
     max-width: 22ch;
-    font-size: clamp(1.35rem, 5.4vw, 1.9rem);
-    letter-spacing: 0.12em;
+    align-items: center;
+    font-size: clamp(1.75rem, 7.2vw, 2.35rem);
+    letter-spacing: -0.035em;
+    text-align: center;
   }
 
   .zco-hero-line {
@@ -1230,6 +1302,7 @@ select {
 
   .zco-hero-reel {
     z-index: 1;
+    margin-top: clamp(16px, 3vh, 30px);
   }
 
   .zco-case h2 {
@@ -1251,11 +1324,12 @@ select {
     grid-template-columns: 1fr;
     align-content: start;
     gap: 24px;
-    text-align: left;
+    text-align: center;
   }
 
   .zco-handoff-copy {
-    justify-items: start;
+    justify-items: center;
+    text-align: center;
   }
 
   .zco-handoff-copy h2 {
@@ -1275,42 +1349,21 @@ select {
   .zco-handoff-copy p {
     max-width: 30ch;
     font-size: 15px;
+    text-align: center;
   }
 
   .zco-handoff-stage {
     width: 100%;
-    min-height: 360px;
+    min-height: 330px;
   }
 
-  .zco-deploy-window {
-    inset: 34px 0 auto 0;
-    height: 250px;
+  .zco-handoff-diagram {
+    inset: 4px 0 0;
     transform: none;
   }
 
-  .zco-launch-card {
-    min-width: 142px;
-    padding: 14px;
-  }
-
-  .zco-launch-card strong {
-    font-size: 18px;
-  }
-
-  .zco-launch-domain {
-    top: 0;
-    right: 0;
-  }
-
-  .zco-launch-host {
-    left: 0;
-    bottom: 34px;
-  }
-
-  .zco-handoff-list {
-    right: 0;
-    bottom: 0;
-    width: min(260px, 76%);
+  .zco-handoff-plane {
+    inset: 28px 0 28px;
   }
 
   .zco-hero p,
@@ -1644,32 +1697,29 @@ select {
     font-size: clamp(2.2rem, 9vw, 2.9rem);
   }
 
-  .zco-handoff-list {
-    gap: 8px;
-    max-width: 300px;
-  }
-
-  .zco-handoff-list span {
-    min-height: 36px;
-    padding-inline: 12px;
-    font-size: 13px;
-  }
-
   .zco-handoff-stage {
-    min-height: 330px;
+    min-height: 276px;
   }
 
-  .zco-deploy-window {
-    height: 226px;
+  .zco-handoff-diagram {
+    inset: 0;
   }
 
-  .zco-deploy-body {
-    padding: 18px;
+  .zco-handoff-plane {
+    inset: 25px 0 22px;
   }
 
-  .zco-deploy-body i {
-    height: 34px;
+  .zco-handoff-node {
+    gap: 5px;
+    font-size: 7px;
   }
+
+  .zco-handoff-node i { width: 10px; border-width: 2px; }
+  .zco-handoff-live { width: 96px; }
+  .zco-handoff-live strong { font-size: 20px; }
+  .zco-handoff-live small { margin-top: 5px; font-size: 5.5px; }
+  .zco-handoff-live::before { inset: -9px; }
+  .zco-handoff-live::after { inset: -18px; }
 
   .zco-contact-copy {
     transform: translateY(-18px);

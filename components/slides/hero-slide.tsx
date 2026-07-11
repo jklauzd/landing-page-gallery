@@ -475,10 +475,10 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
     if (!mock || !title || !cue) return
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const chars = title.querySelectorAll<HTMLElement>('.zco-hero-char')
+    const lines = title.querySelectorAll<HTMLElement>('.zco-hero-line')
 
     if (prefersReduced) {
-      gsap.set([mock, cue, chars], { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: 'none' })
+      gsap.set([mock, cue, lines], { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: 'none' })
       setTurntableReady(true)
       return
     }
@@ -491,12 +491,8 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
       transformOrigin: '50% 100%',
       filter: 'blur(14px)',
     })
-    gsap.set(chars, { opacity: 0, y: 12, scale: 0.97 })
+    gsap.set(lines, { opacity: 0, y: 20, clipPath: 'inset(0 0 100% 0)' })
     gsap.set(cue, { opacity: 0, y: 18 })
-
-    const line1Chars = Array.from(chars).slice(0, LINE_1.length)
-    const line2Chars = Array.from(chars).slice(LINE_1.length, LINE_1.length + LINE_2.length)
-    const line3Chars = Array.from(chars).slice(LINE_1.length + LINE_2.length)
 
     const tl = gsap.timeline({
       defaults: { ease: 'power3.out' },
@@ -519,44 +515,18 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
       0,
     )
 
-    // Letters appear in sequence (no caret)
+    // Each line reveals as one stable unit, avoiding letter-spacing shifts.
     tl.to(
-      line1Chars,
+      lines,
       {
         opacity: 1,
         y: 0,
-        scale: 1,
-        duration: 0.035,
-        stagger: 0.024,
-        ease: 'none',
+        clipPath: 'inset(0 0 0% 0)',
+        duration: 0.68,
+        stagger: 0.11,
+        ease: 'power4.out',
       },
-      0.55,
-    )
-
-    tl.to(
-      line2Chars,
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.035,
-        stagger: 0.024,
-        ease: 'none',
-      },
-      '+=0.08',
-    )
-
-    tl.to(
-      line3Chars,
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.035,
-        stagger: 0.03,
-        ease: 'none',
-      },
-      '+=0.08',
+      0.48,
     )
 
     tl.to(
@@ -611,9 +581,9 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
         type="button"
         className="zco-scroll-cue"
         onClick={onExplore}
-        aria-label="Rolar para ver os projetos"
+        aria-label="Ir para a próxima página"
       >
-        <span className="zco-scroll-cue-label">Ver projetos</span>
+        <span className="zco-scroll-cue-label">Próximo</span>
         <span className="zco-scroll-cue-line" aria-hidden="true" />
         <span className="zco-scroll-cue-chevron" aria-hidden="true">
           <svg width="18" height="10" viewBox="0 0 18 10" fill="none">
