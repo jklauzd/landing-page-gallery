@@ -129,17 +129,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mobile Hamburger Menu Toggle
     const menuToggleBtn = document.getElementById("menu-toggle-btn");
+    const navCloseBtn = document.getElementById("nav-close-btn");
     const navBackdrop = document.getElementById("nav-backdrop");
     if (menuToggleBtn) {
         menuToggleBtn.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
             setMobileNavOpen(!document.body.classList.contains("nav-open"));
+            lucide.createIcons();
+        });
+    }
+    if (navCloseBtn) {
+        navCloseBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setMobileNavOpen(false);
         });
     }
     if (navBackdrop) {
         navBackdrop.addEventListener("click", () => setMobileNavOpen(false));
     }
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setMobileNavOpen(false);
+    });
     window.addEventListener("resize", () => {
         if (window.innerWidth > 768) setMobileNavOpen(false);
     });

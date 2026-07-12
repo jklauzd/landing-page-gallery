@@ -22,6 +22,12 @@
             </a>
             
             <nav class="nav-menu-wrapper" id="nav-menu-wrapper" aria-label="Menu principal">
+                <div class="nav-drawer-header">
+                    <span class="nav-drawer-title">Menu</span>
+                    <button type="button" class="icon-btn nav-close-btn" id="nav-close-btn" aria-label="Fechar menu">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="#home" class="nav-link active" onclick="return navigateToSection('home', event)">Início</a></li>
                     <li><a href="#quiz" class="nav-link" onclick="return navigateToSection('quiz', event)">Box Personalizada</a></li>
@@ -30,25 +36,26 @@
                     <li><a href="#dashboard" class="nav-link" onclick="return navigateToSection('dashboard', event)">Meu Painel</a></li>
                 </ul>
             </nav>
-            <div class="nav-backdrop" id="nav-backdrop" hidden></div>
 
             <div class="nav-actions">
-                <button class="icon-btn" id="theme-toggle-btn" aria-label="Alternar Tema">
+                <button type="button" class="icon-btn" id="theme-toggle-btn" aria-label="Alternar Tema">
                     <i data-lucide="moon" id="theme-icon"></i>
                 </button>
                 <button type="button" class="icon-btn" id="dashboard-btn" aria-label="Minha Conta" onclick="return navigateToSection('dashboard', event)">
                     <i data-lucide="user"></i>
                 </button>
-                <button class="icon-btn cart-toggle-btn" id="cart-toggle-btn" aria-label="Carrinho">
+                <button type="button" class="icon-btn cart-toggle-btn" id="cart-toggle-btn" aria-label="Carrinho">
                     <i data-lucide="shopping-bag"></i>
                     <span class="cart-badge" id="cart-counter">0</span>
                 </button>
                 <button type="button" class="icon-btn menu-toggle" id="menu-toggle-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
-                    <i data-lucide="menu"></i>
+                    <i data-lucide="menu" class="menu-icon-open"></i>
+                    <i data-lucide="x" class="menu-icon-close"></i>
                 </button>
             </div>
         </div>
     </header>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
 
     <!-- Main Content Area (offset for fixed navbar) -->
     <main class="site-main">
@@ -419,8 +426,8 @@
                             <!-- Slots dinâmicos por JS -->
                         </div>
 
-                        <div style="margin-top: 40px; display: flex; justify-content: flex-end;">
-                            <button class="btn btn-primary" onclick="confirmAppointment()">Confirmar Agendamento</button>
+                        <div class="booking-actions">
+                            <button type="button" class="btn btn-primary" onclick="confirmAppointment()">Confirmar Agendamento</button>
                         </div>
                     </div>
 
