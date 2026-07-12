@@ -992,172 +992,241 @@ select {
 .zco-handoff-stage {
   position: relative;
   z-index: 2;
-  width: min(680px, 100%);
-  min-height: 460px;
-  perspective: 1300px;
-}
-
-.zco-handoff-diagram {
-  position: absolute;
-  inset: 24px 0 0;
-  overflow: hidden;
-  transform: rotateX(4deg) rotateY(-6deg);
-  transform-style: preserve-3d;
-}
-
-.zco-handoff-plane {
-  position: absolute;
-  inset: 30px 26px 44px 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 62% 37%, rgba(143,214,148,.16), transparent 20%),
-    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255,255,255,.045) 1px, transparent 1px),
-    radial-gradient(ellipse at center, #182126 0%, #0d1114 72%);
-  background-size: auto, 32px 32px, 32px 32px, auto;
-  box-shadow: inset 0 1px rgba(255,255,255,.13), 0 34px 58px rgba(0,0,0,.36);
-}
-
-.zco-handoff-plane::after {
-  position: absolute;
-  inset: 16px;
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 50%;
-  content: '';
-}
-
-.zco-handoff-route {
-  position: absolute;
-  display: block;
-  z-index: 2;
-  background: linear-gradient(90deg, rgba(143,214,148,.14), rgba(143,214,148,.82));
-  box-shadow: 0 0 14px rgba(143,214,148,.23);
-}
-
-.zco-handoff-route-a {
-  top: 66%;
-  left: 13%;
-  width: 30%;
-  height: 1px;
-}
-
-.zco-handoff-route-b {
-  top: 41%;
-  left: 43%;
-  width: 1px;
-  height: 25%;
-  background: linear-gradient(180deg, rgba(143,214,148,.82), rgba(143,214,148,.32));
-}
-
-.zco-handoff-route-c {
-  top: 41%;
-  left: 43%;
-  width: 30%;
-  height: 1px;
-}
-
-.zco-handoff-route-d {
-  top: 41%;
-  left: 73%;
-  width: 1px;
-  height: 18%;
-  background: linear-gradient(180deg, rgba(143,214,148,.82), rgba(143,214,148,.18));
-}
-
-.zco-handoff-node {
-  position: absolute;
-  z-index: 3;
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  color: rgba(244,246,248,.64);
-  font-family: var(--zco-mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.zco-handoff-node i {
-  display: block;
-  width: 13px;
-  aspect-ratio: 1;
-  border: 3px solid #101417;
-  border-radius: 50%;
-  background: var(--zco-green);
-  box-shadow: 0 0 0 1px rgba(143,214,148,.54), 0 0 17px rgba(143,214,148,.46);
-}
-
-.zco-handoff-node-domain {
-  top: 59%;
-  left: 11%;
-}
-
-.zco-handoff-node-design {
-  top: 31%;
-  left: 35%;
-}
-
-.zco-handoff-node-build {
-  top: 31%;
-  left: 66%;
-}
-
-.zco-handoff-live {
-  position: absolute;
-  top: 46%;
-  left: 64%;
-  z-index: 4;
+  width: min(720px, 100%);
+  min-height: 480px;
   display: grid;
   place-items: center;
-  align-content: center;
-  width: 128px;
-  aspect-ratio: 1;
-  border: 1px solid rgba(143,214,148,.48);
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, rgba(143,214,148,.26), rgba(18,28,29,.92) 67%);
-  box-shadow: 0 0 0 14px rgba(143,214,148,.035), 0 0 44px rgba(143,214,148,.18);
-  color: var(--zco-text);
-  transform: translate(-50%, -50%);
 }
 
-.zco-handoff-live::before,
-.zco-handoff-live::after {
+/* Orbit diagram inspired by the ChatGPT reference: center browser + glass pillars */
+.zco-handoff-orbit {
+  position: relative;
+  width: min(100%, 640px);
+  aspect-ratio: 1.15 / 1;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.zco-handoff-ring {
   position: absolute;
-  border: 1px solid rgba(143,214,148,.16);
   border-radius: 50%;
-  content: '';
+  border: 1px solid rgba(143, 214, 148, 0.14);
+  pointer-events: none;
 }
 
-.zco-handoff-live::before { inset: -13px; }
-.zco-handoff-live::after { inset: -27px; opacity: .55; }
+.zco-handoff-ring-a {
+  width: min(78%, 420px);
+  aspect-ratio: 1;
+  box-shadow: 0 0 40px rgba(143, 214, 148, 0.06) inset;
+}
 
-.zco-handoff-live-pulse {
+.zco-handoff-ring-b {
+  width: min(58%, 310px);
+  aspect-ratio: 1;
+  border-color: rgba(143, 214, 148, 0.22);
+}
+
+.zco-handoff-glow {
+  position: absolute;
+  width: min(48%, 260px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(143, 214, 148, 0.28) 0%, rgba(143, 214, 148, 0.08) 42%, transparent 70%);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.zco-handoff-browser {
+  position: relative;
+  z-index: 4;
+  width: min(46%, 250px);
+  border-radius: 14px;
+  border: 1px solid rgba(143, 214, 148, 0.28);
+  background: linear-gradient(165deg, #1a2220 0%, #0d1211 100%);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 18px 50px rgba(0, 0, 0, 0.45),
+    0 0 48px rgba(143, 214, 148, 0.18);
+  overflow: hidden;
+}
+
+.zco-handoff-browser-top {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 11px;
+  border-bottom: 1px solid rgba(143, 214, 148, 0.12);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.zco-handoff-browser-top > span {
   width: 7px;
   height: 7px;
-  margin-bottom: 5px;
   border-radius: 50%;
-  background: var(--zco-green);
-  box-shadow: 0 0 15px var(--zco-green);
+  background: rgba(143, 214, 148, 0.35);
 }
 
-.zco-handoff-live strong {
-  font-family: var(--zco-display);
-  font-size: 25px;
-  font-weight: 500;
-  letter-spacing: -.07em;
-  line-height: .8;
+.zco-handoff-browser-top > span:nth-child(1) { background: #ff5f57; opacity: 0.85; }
+.zco-handoff-browser-top > span:nth-child(2) { background: #febc2e; opacity: 0.85; }
+.zco-handoff-browser-top > span:nth-child(3) { background: #28c840; opacity: 0.85; }
+
+.zco-handoff-browser-top > em {
+  flex: 1;
+  margin-left: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(143, 214, 148, 0.08);
+  border: 1px solid rgba(143, 214, 148, 0.14);
+  color: rgba(198, 232, 200, 0.92);
+  font-family: var(--zco-mono), ui-monospace, monospace;
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.zco-handoff-live small {
-  margin-top: 7px;
-  color: rgba(244,246,248,.54);
-  font-family: var(--zco-mono);
-  font-size: 7px;
-  letter-spacing: .13em;
+.zco-handoff-browser-body {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 10px;
+  padding: 14px;
+  min-height: 118px;
+}
+
+.zco-handoff-browser-media {
+  border-radius: 8px;
+  border: 1px solid rgba(143, 214, 148, 0.18);
+  background:
+    linear-gradient(135deg, rgba(143, 214, 148, 0.12), transparent 55%),
+    radial-gradient(circle at 30% 35%, rgba(143, 214, 148, 0.35) 0 8px, transparent 9px),
+    linear-gradient(180deg, rgba(143, 214, 148, 0.08), rgba(0, 0, 0, 0.2));
+  position: relative;
+  min-height: 84px;
+}
+
+.zco-handoff-browser-media::after {
+  content: '';
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 18%;
+  height: 28%;
+  border-radius: 4px 4px 0 0;
+  background: rgba(143, 214, 148, 0.22);
+  clip-path: polygon(0 100%, 18% 45%, 38% 70%, 62% 30%, 100% 100%);
+}
+
+.zco-handoff-browser-lines {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.zco-handoff-browser-lines > i {
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(143, 214, 148, 0.22);
+}
+
+.zco-handoff-browser-lines > i:nth-child(1) { width: 92%; }
+.zco-handoff-browser-lines > i:nth-child(2) { width: 78%; }
+.zco-handoff-browser-lines > i:nth-child(3) { width: 64%; }
+
+.zco-handoff-browser-lines > b {
+  display: block;
+  width: 54%;
+  height: 16px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(143, 214, 148, 0.55), rgba(143, 214, 148, 0.22));
+  box-shadow: 0 0 12px rgba(143, 214, 148, 0.2);
+}
+
+.zco-handoff-card {
+  position: absolute;
+  z-index: 5;
+  width: min(148px, 28vw);
+  padding: 12px 12px 11px;
+  border-radius: 14px;
+  border: 1px solid rgba(143, 214, 148, 0.2);
+  background: linear-gradient(160deg, rgba(28, 40, 34, 0.72), rgba(12, 18, 16, 0.78));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: rgba(236, 248, 238, 0.92);
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+
+.zco-handoff-card-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+  border: 1px solid rgba(143, 214, 148, 0.22);
+  background: rgba(143, 214, 148, 0.08);
+  color: var(--zco-green);
+}
+
+.zco-handoff-card-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.zco-handoff-card strong {
+  font-family: var(--font-zco-sans), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: #eaf8ec;
+}
+
+.zco-handoff-card small {
+  font-size: 10px;
+  line-height: 1.35;
+  color: rgba(198, 220, 204, 0.72);
+}
+
+.zco-handoff-card-domain {
+  top: 8%;
+  left: 2%;
+}
+
+.zco-handoff-card-design {
+  top: 8%;
+  right: 2%;
+  left: auto;
+}
+
+.zco-handoff-card-hosting {
+  top: 42%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.zco-handoff-card-code {
+  top: 42%;
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
+}
+
+.zco-handoff-card-security {
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(168px, 42vw);
+  text-align: left;
 }
 
 .zco-contact-panel {
@@ -1354,16 +1423,41 @@ select {
 
   .zco-handoff-stage {
     width: 100%;
-    min-height: 330px;
+    min-height: 0;
   }
 
-  .zco-handoff-diagram {
-    inset: 4px 0 0;
+  .zco-handoff-orbit {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    place-items: stretch;
+  }
+
+  .zco-handoff-ring,
+  .zco-handoff-glow {
+    display: none;
+  }
+
+  .zco-handoff-browser {
+    grid-column: 1 / -1;
+    width: min(100%, 320px);
+    justify-self: center;
+    margin-bottom: 4px;
+  }
+
+  .zco-handoff-card {
+    position: static;
+    width: 100%;
     transform: none;
+    padding: 12px;
   }
 
-  .zco-handoff-plane {
-    inset: 28px 0 28px;
+  .zco-handoff-card-security {
+    grid-column: 1 / -1;
+    width: 100%;
   }
 
   .zco-hero p,
@@ -1698,28 +1792,24 @@ select {
   }
 
   .zco-handoff-stage {
-    min-height: 276px;
+    min-height: 0;
   }
 
-  .zco-handoff-diagram {
-    inset: 0;
+  .zco-handoff-orbit {
+    gap: 8px;
   }
 
-  .zco-handoff-plane {
-    inset: 25px 0 22px;
+  .zco-handoff-browser-top > em {
+    font-size: 8px;
   }
 
-  .zco-handoff-node {
-    gap: 5px;
-    font-size: 7px;
+  .zco-handoff-card strong {
+    font-size: 10px;
   }
 
-  .zco-handoff-node i { width: 10px; border-width: 2px; }
-  .zco-handoff-live { width: 96px; }
-  .zco-handoff-live strong { font-size: 20px; }
-  .zco-handoff-live small { margin-top: 5px; font-size: 5.5px; }
-  .zco-handoff-live::before { inset: -9px; }
-  .zco-handoff-live::after { inset: -18px; }
+  .zco-handoff-card small {
+    font-size: 9px;
+  }
 
   .zco-contact-copy {
     transform: translateY(-18px);
