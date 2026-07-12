@@ -127,23 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Mobile Hamburger Menu Toggle
+    // Mobile Hamburger Menu Toggle (single button: menu ↔ close icon)
     const menuToggleBtn = document.getElementById("menu-toggle-btn");
-    const navCloseBtn = document.getElementById("nav-close-btn");
     const navBackdrop = document.getElementById("nav-backdrop");
     if (menuToggleBtn) {
         menuToggleBtn.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
             setMobileNavOpen(!document.body.classList.contains("nav-open"));
-            lucide.createIcons();
-        });
-    }
-    if (navCloseBtn) {
-        navCloseBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setMobileNavOpen(false);
         });
     }
     if (navBackdrop) {
@@ -208,6 +199,7 @@ function setMobileNavOpen(open) {
     document.body.classList.toggle("nav-open", open);
     const backdrop = document.getElementById("nav-backdrop");
     const toggle = document.getElementById("menu-toggle-btn");
+    const icon = document.getElementById("menu-toggle-icon");
     if (backdrop) {
         if (open) backdrop.removeAttribute("hidden");
         else backdrop.setAttribute("hidden", "");
@@ -215,6 +207,13 @@ function setMobileNavOpen(open) {
     if (toggle) {
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
         toggle.setAttribute("aria-label", open ? "Fechar menu" : "Menu");
+    }
+    // Swap the single Lucide icon (menu ↔ x) so only one control shows
+    if (toggle) {
+        toggle.innerHTML = open
+            ? '<i data-lucide="x" id="menu-toggle-icon"></i>'
+            : '<i data-lucide="menu" id="menu-toggle-icon"></i>';
+        if (window.lucide) lucide.createIcons();
     }
     // Only lock scroll for nav if cart/modal aren't open
     if (!document.getElementById("cart-drawer")?.classList.contains("open") &&

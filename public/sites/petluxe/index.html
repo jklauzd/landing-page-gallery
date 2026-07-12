@@ -22,12 +22,6 @@
             </a>
             
             <nav class="nav-menu-wrapper" id="nav-menu-wrapper" aria-label="Menu principal">
-                <div class="nav-drawer-header">
-                    <span class="nav-drawer-title">Menu</span>
-                    <button type="button" class="icon-btn nav-close-btn" id="nav-close-btn" aria-label="Fechar menu">
-                        <i data-lucide="x"></i>
-                    </button>
-                </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="#home" class="nav-link active" onclick="return navigateToSection('home', event)">Início</a></li>
                     <li><a href="#quiz" class="nav-link" onclick="return navigateToSection('quiz', event)">Box Personalizada</a></li>
@@ -49,8 +43,7 @@
                     <span class="cart-badge" id="cart-counter">0</span>
                 </button>
                 <button type="button" class="icon-btn menu-toggle" id="menu-toggle-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
-                    <i data-lucide="menu" class="menu-icon-open"></i>
-                    <i data-lucide="x" class="menu-icon-close"></i>
+                    <i data-lucide="menu" id="menu-toggle-icon"></i>
                 </button>
             </div>
         </div>

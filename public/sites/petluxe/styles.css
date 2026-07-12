@@ -367,27 +367,11 @@ button, input, select, textarea {
     100% { transform: scale(1); }
 }
 
-/* Hamburger menu for mobile */
+/* Hamburger menu for mobile — single toggle button only */
 .menu-toggle {
     display: none;
     position: relative;
     z-index: 1202;
-}
-
-.menu-toggle .menu-icon-close {
-    display: none;
-}
-
-body.nav-open .menu-toggle .menu-icon-open {
-    display: none;
-}
-
-body.nav-open .menu-toggle .menu-icon-close {
-    display: block;
-}
-
-.nav-drawer-header {
-    display: none;
 }
 
 .nav-backdrop {
@@ -2107,30 +2091,10 @@ body.nav-open .navbar {
         font-size: 0.65rem;
     }
 
-    /* Mobile drawer menu — easy to open/close */
+    /* Mobile drawer menu — easy to open/close (one toggle only) */
     .menu-toggle {
         display: inline-flex;
         z-index: 1202;
-    }
-
-    .nav-drawer-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .nav-drawer-title {
-        font-family: var(--font-heading);
-        font-weight: 700;
-        font-size: 1.1rem;
-    }
-
-    .nav-close-btn {
-        background: var(--bg-main);
-        border: 1px solid var(--border-color);
     }
 
     .nav-menu-wrapper {
@@ -2146,7 +2110,7 @@ body.nav-open .navbar {
         z-index: 1100;
         transform: translateX(105%);
         transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        padding: 20px 16px 24px;
+        padding: 80px 16px 24px;
         box-sizing: border-box;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
