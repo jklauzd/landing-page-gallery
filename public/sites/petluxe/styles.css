@@ -93,10 +93,12 @@ img {
     overflow-x: clip;
 }
 
+/* One continuous landing page — all sections stay visible (scroll navigation) */
 .page-view {
-    display: none;
+    display: block;
     max-width: 100%;
     overflow-x: clip;
+    scroll-margin-top: 88px;
 }
 
 .page-view.active {

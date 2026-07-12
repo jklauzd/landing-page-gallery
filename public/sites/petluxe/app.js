@@ -211,19 +211,18 @@ function setMobileNavOpen(open) {
     }
 }
 
-// --- Multi-page SPA Navigation ---
+// --- Section navigation (single-page scroll) ---
 function navigateToSection(viewId, event) {
     if (event) {
         event.preventDefault();
         event.stopPropagation();
     }
 
-    // Hide all views
+    // Keep all sections visible; mark the target for nav highlight only
     document.querySelectorAll(".page-view").forEach(view => {
         view.classList.remove("active");
     });
     
-    // Show selected view
     const selectedView = document.getElementById(`${viewId}-view`);
     if (selectedView) {
         selectedView.classList.add("active");
@@ -245,8 +244,13 @@ function navigateToSection(viewId, event) {
         renderDashboard();
     }
 
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Smooth-scroll to section (account for fixed navbar)
+    if (selectedView) {
+        const nav = document.getElementById("navbar");
+        const offset = (nav ? nav.offsetHeight : 80) + 8;
+        const top = selectedView.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }
     return false;
 }
 
