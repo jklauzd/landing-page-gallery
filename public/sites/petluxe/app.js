@@ -199,7 +199,6 @@ function setMobileNavOpen(open) {
     document.body.classList.toggle("nav-open", open);
     const backdrop = document.getElementById("nav-backdrop");
     const toggle = document.getElementById("menu-toggle-btn");
-    const icon = document.getElementById("menu-toggle-icon");
     if (backdrop) {
         if (open) backdrop.removeAttribute("hidden");
         else backdrop.setAttribute("hidden", "");
@@ -207,9 +206,7 @@ function setMobileNavOpen(open) {
     if (toggle) {
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
         toggle.setAttribute("aria-label", open ? "Fechar menu" : "Menu");
-    }
-    // Swap the single Lucide icon (menu ↔ x) so only one control shows
-    if (toggle) {
+        // Single control: hamburger ↔ X
         toggle.innerHTML = open
             ? '<i data-lucide="x" id="menu-toggle-icon"></i>'
             : '<i data-lucide="menu" id="menu-toggle-icon"></i>';
