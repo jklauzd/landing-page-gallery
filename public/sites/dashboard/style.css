@@ -360,9 +360,13 @@ h1, h2, h3, h4, h5, h6 {
 .search-bar {
     position: relative;
     width: 320px;
+    display: block;
+    min-width: 0;
 }
 
-.search-bar i {
+/* Lucide replaces <i> with <svg> — style both so the icon stays inside the field */
+.search-bar > i,
+.search-bar > svg {
     position: absolute;
     left: 14px;
     top: 50%;
@@ -371,10 +375,15 @@ h1, h2, h3, h4, h5, h6 {
     height: 16px;
     color: var(--text-muted);
     pointer-events: none;
+    z-index: 1;
+    flex-shrink: 0;
 }
 
 .search-bar input {
+    display: block;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     padding: 10px 14px 10px 42px;
     border-radius: 12px;
     border: 1px solid var(--border-color);
@@ -382,6 +391,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
     font-size: 0.88rem;
     transition: var(--transition-smooth);
+    min-width: 0;
 }
 
 .search-bar input:focus {
@@ -2021,10 +2031,22 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .search-bar {
-        width: 100%;
+        width: auto;
         max-width: none;
-        flex: 1;
+        flex: 1 1 auto;
         min-width: 0;
+    }
+
+    .search-bar > i,
+    .search-bar > svg {
+        left: 12px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .search-bar input {
+        padding-left: 38px;
+        font-size: 0.84rem;
     }
     
     .live-clock {
@@ -2032,7 +2054,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .header-right {
-        gap: 10px;
+        gap: 8px;
+        flex-shrink: 0;
     }
     
     .content-container {
