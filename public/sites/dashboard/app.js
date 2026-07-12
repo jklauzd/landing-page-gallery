@@ -996,6 +996,15 @@ class DashboardApp {
         this.settings.glassmorphism = enabled;
     }
 
+    setSidebarOpen(open) {
+        const toggle = document.getElementById('mobile-menu-toggle');
+        document.body.classList.toggle('sidebar-open', open);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        }
+    }
+
     // --- Setup Listeners ---
     setupEventListeners() {
         // Tab switching
@@ -1004,7 +1013,20 @@ class DashboardApp {
                 e.preventDefault();
                 const tab = li.getAttribute('data-tab');
                 this.switchTab(tab);
+                this.setSidebarOpen(false);
             });
+        });
+
+        // Mobile drawer
+        document.getElementById('mobile-menu-toggle')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.setSidebarOpen(!document.body.classList.contains('sidebar-open'));
+        });
+        document.getElementById('sidebar-backdrop')?.addEventListener('click', () => {
+            this.setSidebarOpen(false);
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) this.setSidebarOpen(false);
         });
 
         // Home button redirect inside Welcome view

@@ -43,6 +43,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 body {
@@ -50,8 +52,14 @@ body {
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* --- Typography --- */
@@ -521,7 +529,7 @@ section {
 
 .areas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -1373,8 +1381,18 @@ section {
 }
 
 @media (max-width: 768px) {
+    .container,
+    .nav-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+
     .section-title {
-        font-size: 2.25rem;
+        font-size: clamp(1.6rem, 6vw, 2rem);
     }
     
     /* Navigation Mobile */
@@ -1386,9 +1404,10 @@ section {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
+        width: min(86%, 360px);
         max-width: 400px;
         height: 100vh;
+        height: 100dvh;
         background-color: var(--bg-secondary);
         border-left: 1px solid var(--border-color);
         flex-direction: column;
@@ -1396,6 +1415,7 @@ section {
         gap: 2rem;
         transition: var(--transition-smooth);
         z-index: 999;
+        overflow-y: auto;
     }
     
     .nav-menu.open {
@@ -1420,7 +1440,13 @@ section {
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
+    }
+
+    .hero-image-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
     
     .hero-ctas {
@@ -1431,29 +1457,45 @@ section {
     .hero-ctas .btn {
         width: 100%;
     }
-    
-    .float-card-1 {
-        left: -5%;
-    }
-    
+
+    /* Keep decorative cards inside the viewport on phones */
+    .float-card-1,
     .float-card-2 {
-        right: -5%;
+        display: none;
     }
     
     .testimonial-card {
-        padding: 2.5rem 1.5rem;
+        padding: 2rem 1.25rem;
     }
     
     .testimonial-quote {
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
     
     .contato-form-wrapper {
-        padding: 2.5rem 1.5rem;
+        padding: 1.75rem 1.15rem;
+    }
+
+    .areas-grid {
+        grid-template-columns: 1fr;
     }
     
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 3.25rem 0;
+    }
+
+    .hero-container {
+        gap: 2.5rem;
+    }
+
+    .logo-text {
+        font-size: 1.05rem;
     }
 }

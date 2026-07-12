@@ -63,6 +63,8 @@
 
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 body {
@@ -70,8 +72,14 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: clip;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -447,7 +455,7 @@ button, input, select, textarea {
 /* --- Category Carousel / Section --- */
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
     gap: 24px;
 }
 
@@ -805,7 +813,7 @@ button, input, select, textarea {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
     gap: 24px;
 }
 
@@ -1893,8 +1901,16 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
     .section {
-        padding: 50px 0;
+        padding: 48px 0;
+    }
+
+    .section-title {
+        font-size: 1.65rem;
     }
 
     .nav-menu {
@@ -1906,21 +1922,46 @@ button, input, select, textarea {
     }
     
     .hero {
-        min-height: 80vh;
+        min-height: min(78vh, 640px);
+        padding-top: 72px;
     }
     
     .hero-title {
-        font-size: 2.25rem;
+        font-size: clamp(1.75rem, 8vw, 2.15rem);
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .category-card {
+        padding: 20px 14px;
     }
     
     .config-container {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
     }
     
     .quiz-card {
         min-height: auto;
-        padding: 24px;
+        padding: 20px;
     }
     
     .quiz-options {
@@ -1932,7 +1973,32 @@ button, input, select, textarea {
     }
     
     .booking-slots {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .payment-method-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-layout,
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .catalog-sidebar,
+    .dashboard-sidebar {
+        position: static;
+        width: 100%;
     }
     
     .cart-drawer {
@@ -1951,15 +2017,11 @@ button, input, select, textarea {
     .checkout-steps-wrapper {
         border-right: none;
         border-bottom: 1px solid var(--border-color);
-        padding: 24px;
+        padding: 20px;
     }
     
     .checkout-summary-sidebar {
-        padding: 24px;
-    }
-    
-    .dashboard-layout {
-        grid-template-columns: 1fr;
+        padding: 20px;
     }
     
     .footer-grid {
@@ -1970,5 +2032,46 @@ button, input, select, textarea {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+    }
+
+    /* Avoid nowrap table rows forcing horizontal zoom */
+    .orders-table,
+    .cart-item-meta {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 40px 0;
+    }
+
+    .hero {
+        min-height: 70vh;
+    }
+
+    .hero-content-wrapper {
+        padding: 0 16px;
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-slots {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .slot-btn {
+        padding: 8px 6px;
+        font-size: 0.8rem;
+    }
+
+    .modal-container {
+        width: calc(100% - 24px);
+        max-width: 100%;
+        margin: 12px;
+        padding: 20px !important;
     }
 }
