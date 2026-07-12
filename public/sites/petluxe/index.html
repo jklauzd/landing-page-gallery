@@ -16,41 +16,42 @@
     <!-- Header / Navbar -->
     <header class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo" onclick="navigateToSection('home')">
+            <a href="#home" class="logo" onclick="return navigateToSection('home', event)">
                 <i data-lucide="paw-print"></i>
                 PET<span>LUXE</span>
             </a>
             
-            <nav class="nav-menu-wrapper">
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active" onclick="navigateToSection('home')">Início</a></li>
-                    <li><a href="#quiz" class="nav-link" onclick="navigateToSection('quiz')">Box Personalizada</a></li>
-                    <li><a href="#catalog" class="nav-link" onclick="navigateToSection('catalog')">Produtos</a></li>
-                    <li><a href="#services" class="nav-link" onclick="navigateToSection('services')">Serviços</a></li>
-                    <li><a href="#dashboard" class="nav-link" onclick="navigateToSection('dashboard')">Meu Painel</a></li>
+            <nav class="nav-menu-wrapper" id="nav-menu-wrapper" aria-label="Menu principal">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link active" onclick="return navigateToSection('home', event)">Início</a></li>
+                    <li><a href="#quiz" class="nav-link" onclick="return navigateToSection('quiz', event)">Box Personalizada</a></li>
+                    <li><a href="#catalog" class="nav-link" onclick="return navigateToSection('catalog', event)">Produtos</a></li>
+                    <li><a href="#services" class="nav-link" onclick="return navigateToSection('services', event)">Serviços</a></li>
+                    <li><a href="#dashboard" class="nav-link" onclick="return navigateToSection('dashboard', event)">Meu Painel</a></li>
                 </ul>
             </nav>
+            <div class="nav-backdrop" id="nav-backdrop" hidden></div>
 
             <div class="nav-actions">
                 <button class="icon-btn" id="theme-toggle-btn" aria-label="Alternar Tema">
                     <i data-lucide="moon" id="theme-icon"></i>
                 </button>
-                <button class="icon-btn" id="dashboard-btn" aria-label="Minha Conta" onclick="navigateToSection('dashboard')">
+                <button type="button" class="icon-btn" id="dashboard-btn" aria-label="Minha Conta" onclick="return navigateToSection('dashboard', event)">
                     <i data-lucide="user"></i>
                 </button>
                 <button class="icon-btn cart-toggle-btn" id="cart-toggle-btn" aria-label="Carrinho">
                     <i data-lucide="shopping-bag"></i>
                     <span class="cart-badge" id="cart-counter">0</span>
                 </button>
-                <button class="icon-btn menu-toggle" id="menu-toggle-btn" aria-label="Menu">
+                <button type="button" class="icon-btn menu-toggle" id="menu-toggle-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main style="padding-top: 80px;">
+    <!-- Main Content Area (offset for fixed navbar) -->
+    <main class="site-main">
 
         <!-- Dynamic Page Sections -->
         
@@ -68,8 +69,8 @@
                                 <h1 class="hero-title">O Cuidado e Estilo que Seu Pet Merece</h1>
                                 <p class="hero-desc">Boutique premium com seleção de produtos de altíssima qualidade, serviços personalizados e a melhor experiência para quem você ama.</p>
                                 <div class="hero-actions">
-                                    <a href="#catalog" class="btn btn-primary" onclick="navigateToSection('catalog')">Ver Coleção</a>
-                                    <a href="#quiz" class="btn btn-secondary" style="color: white; border-color: white;" onclick="navigateToSection('quiz')">Criar Box</a>
+                                    <a href="#catalog" class="btn btn-primary" onclick="return navigateToSection('catalog', event)">Ver Coleção</a>
+                                    <a href="#quiz" class="btn btn-secondary" style="color: white; border-color: white;" onclick="return navigateToSection('quiz', event)">Criar Box</a>
                                 </div>
                             </div>
                         </div>
@@ -829,10 +830,10 @@
             <div class="footer-col">
                 <h3>Navegação</h3>
                 <ul class="footer-links">
-                    <li class="footer-link-item"><a href="#home" onclick="navigateToSection('home')">Início</a></li>
-                    <li class="footer-link-item"><a href="#quiz" onclick="navigateToSection('quiz')">Box Mensal</a></li>
-                    <li class="footer-link-item"><a href="#catalog" onclick="navigateToSection('catalog')">Nossos Produtos</a></li>
-                    <li class="footer-link-item"><a href="#services" onclick="navigateToSection('services')">Agendamentos</a></li>
+                    <li class="footer-link-item"><a href="#home" onclick="return navigateToSection('home', event)">Início</a></li>
+                    <li class="footer-link-item"><a href="#quiz" onclick="return navigateToSection('quiz', event)">Box Mensal</a></li>
+                    <li class="footer-link-item"><a href="#catalog" onclick="return navigateToSection('catalog', event)">Nossos Produtos</a></li>
+                    <li class="footer-link-item"><a href="#services" onclick="return navigateToSection('services', event)">Agendamentos</a></li>
                 </ul>
             </div>
 

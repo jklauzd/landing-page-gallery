@@ -129,19 +129,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mobile Hamburger Menu Toggle
     const menuToggleBtn = document.getElementById("menu-toggle-btn");
-    const navMenu = document.querySelector(".nav-menu");
-    if (menuToggleBtn && navMenu) {
-        menuToggleBtn.addEventListener("click", () => {
-            navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+    const navBackdrop = document.getElementById("nav-backdrop");
+    if (menuToggleBtn) {
+        menuToggleBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setMobileNavOpen(!document.body.classList.contains("nav-open"));
         });
     }
+    if (navBackdrop) {
+        navBackdrop.addEventListener("click", () => setMobileNavOpen(false));
+    }
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) setMobileNavOpen(false);
+    });
 
     // Cart Drawer actions
     const cartToggleBtn = document.getElementById("cart-toggle-btn");
     const cartCloseBtn = document.getElementById("cart-close-btn");
     const drawerOverlay = document.getElementById("drawer-overlay");
     
-    if (cartToggleBtn) cartToggleBtn.addEventListener("click", openCartDrawer);
+    if (cartToggleBtn) cartToggleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openCartDrawer();
+    });
     if (cartCloseBtn) cartCloseBtn.addEventListener("click", closeCartDrawer);
     if (drawerOverlay) drawerOverlay.addEventListener("click", closeCartDrawer);
 
@@ -176,8 +188,36 @@ function toggleTheme() {
     setTheme(currentTheme === "light" ? "dark" : "light");
 }
 
+function setBodyScrollLocked(locked) {
+    document.body.classList.toggle("scroll-locked", locked);
+}
+
+function setMobileNavOpen(open) {
+    document.body.classList.toggle("nav-open", open);
+    const backdrop = document.getElementById("nav-backdrop");
+    const toggle = document.getElementById("menu-toggle-btn");
+    if (backdrop) {
+        if (open) backdrop.removeAttribute("hidden");
+        else backdrop.setAttribute("hidden", "");
+    }
+    if (toggle) {
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Fechar menu" : "Menu");
+    }
+    // Only lock scroll for nav if cart/modal aren't open
+    if (!document.getElementById("cart-drawer")?.classList.contains("open") &&
+        !document.querySelector(".modal-overlay.open")) {
+        setBodyScrollLocked(open);
+    }
+}
+
 // --- Multi-page SPA Navigation ---
-function navigateToSection(viewId) {
+function navigateToSection(viewId, event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
     // Hide all views
     document.querySelectorAll(".page-view").forEach(view => {
         view.classList.remove("active");
@@ -192,16 +232,13 @@ function navigateToSection(viewId) {
     // Manage nav-link states
     document.querySelectorAll(".nav-link").forEach(link => {
         link.classList.remove("active");
-        if (link.getAttribute("onclick") && link.getAttribute("onclick").includes(viewId)) {
+        if (link.getAttribute("onclick") && link.getAttribute("onclick").includes(`'${viewId}'`)) {
             link.classList.add("active");
         }
     });
 
     // Close mobile menu if open
-    const navMenu = document.querySelector(".nav-menu");
-    if (window.innerWidth <= 768 && navMenu) {
-        navMenu.style.display = "none";
-    }
+    setMobileNavOpen(false);
 
     // Special view triggers
     if (viewId === "dashboard") {
@@ -210,17 +247,24 @@ function navigateToSection(viewId) {
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
+    return false;
 }
 
 // --- Cart Drawer State Controllers ---
 function openCartDrawer() {
+    setMobileNavOpen(false);
     document.getElementById("cart-drawer").classList.add("open");
     document.getElementById("drawer-overlay").classList.add("open");
+    setBodyScrollLocked(true);
 }
 
 function closeCartDrawer() {
     document.getElementById("cart-drawer").classList.remove("open");
     document.getElementById("drawer-overlay").classList.remove("open");
+    if (!document.body.classList.contains("nav-open") &&
+        !document.querySelector(".modal-overlay.open")) {
+        setBodyScrollLocked(false);
+    }
 }
 
 function updateCartDisplay() {
@@ -542,11 +586,18 @@ function addDetailToCart() {
 
 // --- Modals Global Controllers ---
 function openModal(modalId) {
+    setMobileNavOpen(false);
     document.getElementById(modalId).classList.add("open");
+    setBodyScrollLocked(true);
 }
 
 function closeModal(modalId) {
     document.getElementById(modalId).classList.remove("open");
+    if (!document.getElementById("cart-drawer")?.classList.contains("open") &&
+        !document.body.classList.contains("nav-open") &&
+        !document.querySelector(".modal-overlay.open")) {
+        setBodyScrollLocked(false);
+    }
 }
 
 // --- Pet Box Configurator Wizard (Quiz) ---
