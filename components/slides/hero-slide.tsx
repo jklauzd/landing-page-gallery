@@ -198,19 +198,20 @@ function HeroTurntable({ ready }: { ready: boolean }) {
 
     const autoplay = gsap.timeline({ paused: true, repeat: -1, repeatRefresh: true })
     autoplay
-      .to({}, { duration: 3.15 })
+      // Hold before each flip — shorter so the first virada starts sooner
+      .to({}, { duration: 1.45 })
       .call(() => {
         pendingTargetRef.current = (activeIndexRef.current + 1) % HERO_PROJECTS.length
         markSpinning(true)
       })
-      .to(screen, { y: -5, duration: 0.16, ease: 'power2.out' })
-      .to(rotor, { rotationY: 180, duration: 1.05, ease: 'power3.inOut' }, '<')
+      .to(screen, { y: -5, duration: 0.14, ease: 'power2.out' })
+      .to(rotor, { rotationY: 180, duration: 0.88, ease: 'power3.inOut' }, '<')
       .to(
         shadow,
         {
           scaleX: 0.7,
           opacity: 0.34,
-          duration: 0.525,
+          duration: 0.44,
           repeat: 1,
           yoyo: true,
           ease: 'sine.inOut',
@@ -347,14 +348,14 @@ function HeroTurntable({ ready }: { ready: boolean }) {
         },
       })
       manual
-        .to(screen, { y: -5, duration: 0.16, ease: 'power2.out' })
-        .to(rotor, { rotationY: 180, duration: 1.05, ease: 'power3.inOut' }, '<')
+        .to(screen, { y: -5, duration: 0.14, ease: 'power2.out' })
+        .to(rotor, { rotationY: 180, duration: 0.88, ease: 'power3.inOut' }, '<')
         .to(
           shadow,
           {
             scaleX: 0.7,
             opacity: 0.34,
-            duration: 0.525,
+            duration: 0.44,
             repeat: 1,
             yoyo: true,
             ease: 'sine.inOut',
@@ -496,11 +497,10 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
 
     const tl = gsap.timeline({
       defaults: { ease: 'power3.out' },
-      delay: 0.12,
-      onComplete: () => setTurntableReady(true),
+      delay: 0.08,
     })
 
-    // Mockup rises from below
+    // Mockup rises from below — enable turntable as soon as it's mostly in place
     tl.to(
       mock,
       {
@@ -509,8 +509,9 @@ export function HeroSlide({ onExplore }: { onExplore: () => void }) {
         scale: 1,
         rotateX: 0,
         filter: 'blur(0px)',
-        duration: 1.4,
+        duration: 1.15,
         ease: 'power4.out',
+        onComplete: () => setTurntableReady(true),
       },
       0,
     )
